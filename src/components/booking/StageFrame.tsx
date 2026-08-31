@@ -27,10 +27,10 @@ export function StageFrame({ eyebrow, title, prompt, children, aside, footer }: 
           </span>
         ))}
       </h1>
-      {prompt ? <p className="body-lg mt-5 max-w-xl">{prompt}</p> : null}
+      {prompt ? <p className="body-lg mt-3 max-w-xl">{prompt}</p> : null}
       {aside}
-      <div className="mt-10">{children}</div>
-      {footer ? <div className="mt-10">{footer}</div> : null}
+      <div className="mt-7">{children}</div>
+      {footer ? <div className="mt-7">{footer}</div> : null}
     </div>
   );
 }

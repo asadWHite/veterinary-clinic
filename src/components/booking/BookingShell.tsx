@@ -41,7 +41,7 @@ export function BookingShell({
       pets={pets}
       initialDoctorId={initialDoctorId}
     >
-      <div className="min-h-screen bg-canvas">
+      <div className="booking-shell min-h-screen bg-canvas">
         <BookingTopBar />
         <BookingProgress />
         <BookingLayout services={services} pets={pets} />

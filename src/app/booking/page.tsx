@@ -33,7 +33,7 @@ export default async function BookingPage({
   // render a clear, translated screen instead of a server error.
   if (!dbStatus.ok) {
     return (
-      <div className="min-h-screen bg-canvas">
+      <div className="booking-shell min-h-screen bg-canvas">
         <div className="border-b border-[var(--line)]">
           <div className="shell flex h-16 items-center justify-between gap-6">
             <a href="/" className="label link-underline text-ink/55 hover:text-ink">

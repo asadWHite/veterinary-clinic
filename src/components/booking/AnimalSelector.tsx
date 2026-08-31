@@ -21,7 +21,7 @@ export function AnimalSelector() {
       <div
         role="radiogroup"
         aria-label="Species"
-        className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5"
+        className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5"
       >
         {speciesOptions.map((option) => {
           const isOther = option.value === "other";
