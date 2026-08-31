@@ -9,7 +9,7 @@ export async function EmergencyBand() {
     <section className="bg-forest text-white">
       <div className="grid grid-cols-1 lg:grid-cols-12">
         <div className="lg:col-span-7">
-          <div className="shell py-14 lg:py-20">
+          <div className="shell py-9 lg:py-20">
             <p className="label text-white/50">{t("home.emergency.label")}</p>
             <h2 className="display d2 mt-6 uppercase">
               {t("home.emergency.title1")}

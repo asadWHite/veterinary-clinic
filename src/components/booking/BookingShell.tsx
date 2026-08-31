@@ -115,7 +115,7 @@ function BookingLayout({
 
       <main className="lg:col-span-8">
         {showCompanion ? <BookingSummary compact /> : null}
-        <div className="px-[var(--gutter)] py-10 lg:py-14">
+        <div className="px-[var(--gutter)] py-8 lg:py-14">
           {stage === "companion" ? (
             <>
               <PetSelector pets={pets} />

@@ -44,7 +44,7 @@ export default async function DoctorsPage() {
       <div className="shell border-t border-[var(--line)] bg-paper">
         <ul className="vdivide">
           {doctors.map((doctor, i) => (
-            <li key={doctor.id} className="py-12 lg:py-16">
+            <li key={doctor.id} className="py-8 lg:py-16">
               <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
                 <div className="lg:col-span-4">
                   <Reveal variant="scale">

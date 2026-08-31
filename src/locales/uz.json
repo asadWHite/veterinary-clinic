@@ -92,7 +92,7 @@
       "line2": "aytolmaydi",
       "line3": "nima og‘riyotganini.",
       "response": "Shuning uchun biz sezishni o‘rganamiz.",
-      "cta": "U kimdan boshlaymiz",
+      "cta": "Hayvoningizdan boshlaymiz",
       "items": [
         {
           "k": "Kuzatish",
@@ -193,12 +193,12 @@
   "care": {
     "title1": "Biz qiladigan",
     "title2": "hamma narsa.",
-    "intro": "O‘nta turdagi qabul va har biriga yetarli vaqt ajratilgan. Narxlar klinika narx ro‘yxati e’lon qilinmaguncha vaqtinchalik.",
+    "intro": "O‘n xil qabul, har biriga yetarli vaqt ajratilgan. Narxlar klinika narx ro‘yxati e’lon qilinmaguncha vaqtinchalik.",
     "from": "dan",
     "bookThis": "Shunga yozilish",
-    "notSureLabel": "11 — Qaysi birini tanlashni bilmasangiz?",
-    "notSureTitle1": "O‘zingiz hal",
-    "notSureTitle2": "qilishingiz shart emas.",
+    "notSureLabel": "11 — Qaysi biri ekanini bilmasangiz",
+    "notSureTitle1": "Buni o‘zingiz",
+    "notSureTitle2": "hal qilishingiz shart emas.",
     "notSureBody": "Yozilishni boshlang va nima sezganingiz haqida bir nechta oddiy savolga javob bering. Biz mos keladigan qabulni tavsiya qilamiz — tibbiy atamalar bilishi shart emas.",
     "notSureCta": "Hayvoningizdan boshlang"
   },
@@ -256,7 +256,7 @@
   "notFound": {
     "title1": "Bu yerda",
     "title2": "hech narsa yo‘q.",
-    "body": "Siz izlagan sahifa ko‘chib ketgan yoki umuman bo‘lmagan. Mushuk befarq."
+    "body": "Siz izlagan sahifa ko‘chib ketgan yoki umuman mavjud emas. Mushukqa befarq."
   },
   "booking": {
     "title": "Qabulga yozilish",
@@ -285,8 +285,8 @@
     },
     "age": {
       "eyebrow": "02 — Yosh",
-      "title1": "Uning",
-      "title2": "yoshi nechchida?",
+      "title1": "U",
+      "title2": "necha yoshda?",
       "prompt": "Yosh nimalarni tekshirishimiz va qancha vaqt ajratishimizni belgilaydi.",
       "orExact": "Yoki aniq yoshini kiriting",
       "years": "yosh",
@@ -297,7 +297,7 @@
       "title1": "Sizni bugun",
       "title2": "nima",
       "title3": "olib keldi?",
-      "prompt": "O‘z so‘zlaringiz bilan. Tibbiy qismini biz aniqlaymiz.",
+      "prompt": "O‘z so‘zlaringiz bilan ayting. Tibbiy qismini biz aniqlaymiz.",
       "continueQuiet": "Davom etish",
       "continueMore": "Batafsilroq"
     },
@@ -305,9 +305,9 @@
       "eyebrow": "04 — Tafsilotlar",
       "backAnswer": "← Oldingi savol",
       "backConcern": "← Sababga qaytish",
-      "multiPrompt": "Mos keladiganlarning hammasini tanlang — bir nechtasini ham bo‘ladi.",
-      "optionalPrompt": "Majburiy emas. Shifokor tashrifdan oldin o‘qishi kerak bo‘lgan narsalar.",
-      "anythingElsePlaceholder": "Odatlar, sabablar, uyda boshqa hayvonlar, sizni bezovta qilgan narsalar…"
+      "multiPrompt": "Mos keladiganlarining hammasini tanlang — bir nechtasini ham bo‘ladi.",
+      "optionalPrompt": "Majburiy emas. Shifokor tashrifdan oldin o‘qishi kerak bo‘lgan narsalarni yozing.",
+      "anythingElsePlaceholder": "Odatlari, uyda boshqa hayvonlar, sizni bezovta qilgan narsalar…"
     },
     "care": {
       "eyebrow": "05 — Tavsiya etilgan qabul",
@@ -318,7 +318,7 @@
       "chooseClinician": "Shifokor tanlash",
       "change": "Bu to‘g‘ri emas — boshqasini tanlash",
       "close": "Yopish",
-      "noDiagnosis": "Biz onlayn tashxis qo‘ymaymiz. Bu mos keladigan qabul haqidagi tavsiya, nima bo‘lgani haqida emas."
+      "noDiagnosis": "Biz onlayn tashxis qo‘ymaymiz. Bu faqat qanday qabul kerakligi haqidagi tavsiya, nima bo‘lgani haqida emas."
     },
     "doctor": {
       "eyebrow": "06 — Shifokor",
@@ -407,7 +407,7 @@
       "alsoCall": "Iltimos, qo‘ng‘iroq ham qiling",
       "viewAppointment": "Yozilishni ko‘rish",
       "backHome": "Bosh sahifaga",
-      "emailNote": "Bu versiyada tasdiqlash xatlari sozlanmagan. Tashrif saqlandi va siz tizimda bo‘lsangiz kabinetda ko‘rinadi."
+      "emailNote": "Bu versiyada tasdiqlash xatlari sozlanmagan. Tashrif saqlandi va tizimda bo‘lsangiz kabinetda ko‘rinadi."
     },
     "urgency": {
       "routine": "Rejalashtirilgan",
@@ -515,8 +515,8 @@
     "reviews": "Sharhlar",
     "favorites": "Saqlanganlar",
     "settings": "Sozlamalar",
-    "greeting1": "Sizni ko‘rganimiz",
-    "greeting2": "xush.",
+    "greeting1": "Ko‘rganimizdan",
+    "greeting2": "xursandmiz.",
     "nextVisit": "Keyingi tashrif",
     "yourCompanions": "Sizning hayvonlaringiz",
     "managePets": "Hayvonlarni boshqarish",

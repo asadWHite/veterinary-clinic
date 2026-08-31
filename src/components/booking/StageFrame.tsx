@@ -15,7 +15,7 @@ type StageFrameProps = {
 /** Shared frame so every step of the flow feels like one continuous chapter. */
 export function StageFrame({ eyebrow, title, prompt, children, aside, footer }: StageFrameProps) {
   const { state , t, locale } = useBooking();
-  const lines = title.split("\n");
+  const lines = title.split("\n").filter((line) => line.trim().length > 0);
 
   return (
     <div key={state.stage} className="hero-rise">

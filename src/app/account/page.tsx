@@ -22,7 +22,7 @@ export default async function AccountPage() {
   const next = upcoming[0];
 
   return (
-    <div className="px-[var(--gutter)] py-10 lg:py-14">
+    <div className="px-[var(--gutter)] py-8 lg:py-14">
       <p className="label text-ink/40">{t("account.overview")}</p>
       <h1 className="display d2 mt-5 uppercase">
         {t("account.greeting1")}
@@ -31,7 +31,7 @@ export default async function AccountPage() {
       </h1>
 
       {next ? (
-        <section className="mt-12 border-t border-[var(--line)] pt-8">
+        <section className="mt-8 border-t border-[var(--line)] pt-8">
           <p className="label text-ink/40">{t("account.nextVisit")}</p>
           <div className="mt-6 grid grid-cols-1 gap-8 border border-[var(--line)] p-6 sm:grid-cols-12">
             <div className="sm:col-span-4">
@@ -76,7 +76,7 @@ export default async function AccountPage() {
         </section>
       ) : null}
 
-      <section className="mt-14 border-t border-[var(--line)] pt-8">
+      <section className="mt-9 border-t border-[var(--line)] pt-8">
         <div className="flex items-end justify-between gap-4">
           <p className="label text-ink/40">{t("account.yourCompanions")}</p>
           <Link href="/pets" className="label link-underline text-forest">
@@ -127,7 +127,7 @@ export default async function AccountPage() {
         )}
       </section>
 
-      <section className="mt-14 grid grid-cols-1 gap-8 border-t border-[var(--line)] pt-8 sm:grid-cols-3">
+      <section className="mt-9 grid grid-cols-1 gap-8 border-t border-[var(--line)] pt-8 sm:grid-cols-3">
         <div>
           <p className="label text-ink/40">{t("account.vaccinationReminders")}</p>
           <p className="display d5 mt-3 uppercase">{t("common.comingSoon")}</p>
@@ -152,7 +152,7 @@ export default async function AccountPage() {
         </div>
       </section>
 
-      <p className="label mt-14 border-t border-[var(--line)] pt-6 text-ink/30">
+      <p className="label mt-9 border-t border-[var(--line)] pt-6 text-ink/30">
         {t("pets.age")}: {pets.length > 0 ? ageLabelL(pets[0].birthYear, locale) : t("notAvailable")}
       </p>
     </div>

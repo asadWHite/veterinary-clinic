@@ -35,7 +35,7 @@ export default async function JournalPage() {
         </div>
       </section>
 
-      <div className="shell border-t border-[var(--line)] py-12 lg:py-16">
+      <div className="shell border-t border-[var(--line)] py-8 lg:py-16">
         <Link
           href={`/journal/${lead.slug}`}
           className="group grid grid-cols-1 gap-8 lg:grid-cols-12"

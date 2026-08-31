@@ -26,6 +26,8 @@ export function QuestionRenderer({
 }: QuestionRendererProps) {
   const { setAnswer , t, locale } = useBooking();
   const [text, setText] = useState(typeof value === "string" ? value : "");
+  /** Shows the choice for a moment before moving on, so the flow reads calmly. */
+  const [chosen, setChosen] = useState<string | null>(null);
   const isMulti = question.type === "multi";
   const selectedList = answerList(value);
 
@@ -89,12 +91,20 @@ export function QuestionRenderer({
                 label={pickL(option.label, locale)}
                 hint={option.hint ? pickL(option.hint, locale) : undefined}
                 tone={option.tone}
-                selected={isMulti ? selectedList.includes(option.value) : value === option.value}
+                selected={
+                  isMulti
+                    ? selectedList.includes(option.value)
+                    : value === option.value || chosen === option.value
+                }
                 onSelect={() => {
                   if (isMulti) {
                     toggleMulti(option.value);
-                  } else {
-                    setAnswer(question.id, option.value);
+                  } else if (value !== option.value) {
+                    setChosen(option.value);
+                    window.setTimeout(() => {
+                      setAnswer(question.id, option.value);
+                      setChosen(null);
+                    }, 300);
                   }
                 }}
               />

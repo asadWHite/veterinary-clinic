@@ -34,7 +34,7 @@ export default async function AccountAppointmentsPage() {
     .orderBy(desc(appointments.date), desc(appointments.startTime));
 
   return (
-    <div className="px-[var(--gutter)] py-10 lg:py-14">
+    <div className="px-[var(--gutter)] py-8 lg:py-14">
       <p className="label text-ink/40">Appointments</p>
       <h1 className="display d2 mt-5 uppercase">Your visits.</h1>
 

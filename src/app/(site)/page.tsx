@@ -62,7 +62,7 @@ export default async function HomePage() {
       <EmotionalHook />
 
       {/* 03 — Animal types */}
-      <div className="border-t border-[var(--line)] bg-paper py-14 lg:py-20">
+      <div className="border-t border-[var(--line)] bg-paper py-9 lg:py-20">
         <SectionHeader index="03" label={t("home.species.label")}>
           <h2 className="display d2 uppercase">
             {t("home.species.title1")}
@@ -78,7 +78,7 @@ export default async function HomePage() {
       </div>
 
       {/* 04 — Care */}
-      <div className="bg-canvas py-14 lg:py-20">
+      <div className="bg-canvas py-9 lg:py-20">
         <SectionHeader index="04" label={t("home.care.label")}>
           <h2 className="display d2 uppercase">
             {t("home.care.title1")}
@@ -92,7 +92,7 @@ export default async function HomePage() {
       </div>
 
       {/* 05 — Doctors */}
-      <div className="border-t border-[var(--line)] bg-paper py-14 lg:py-20">
+      <div className="border-t border-[var(--line)] bg-paper py-9 lg:py-20">
         <SectionHeader index="05" label={t("home.doctors.label")} />
         <div className="mt-10">
           <DoctorsPreview />
@@ -100,7 +100,7 @@ export default async function HomePage() {
       </div>
 
       {/* Journal strip */}
-      <div className="border-t border-[var(--line)] bg-cream/60 py-14 lg:py-20">
+      <div className="border-t border-[var(--line)] bg-cream/60 py-9 lg:py-20">
         <SectionHeader index="06" label={t("home.journal.label")}>
           <h2 className="display d3 uppercase">{t("home.journal.title")}</h2>
         </SectionHeader>

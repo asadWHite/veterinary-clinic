@@ -25,7 +25,7 @@ export function BookingConfirmation() {
         {t("booking.confirmation.title2")}
       </h1>
 
-      <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-12">
+      <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <Image
             src={asset.src}

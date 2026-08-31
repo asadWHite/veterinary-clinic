@@ -29,7 +29,7 @@ export default async function AccountReviewsPage() {
     .orderBy(desc(reviews.createdAt));
 
   return (
-    <div className="px-[var(--gutter)] py-10 lg:py-14">
+    <div className="px-[var(--gutter)] py-8 lg:py-14">
       <p className="label text-ink/40">Reviews</p>
       <h1 className="display d2 mt-5 uppercase">{"What you"}<br />{"told us."}</h1>
       <p className="body-lg mt-5 max-w-lg">

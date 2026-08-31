@@ -24,7 +24,7 @@ export default async function AccountFavoritesPage() {
   const list = doctors.filter((d) => savedIds.has(d.id));
 
   return (
-    <div className="px-[var(--gutter)] py-10 lg:py-14">
+    <div className="px-[var(--gutter)] py-8 lg:py-14">
       <p className="label text-ink/40">Favorites</p>
       <h1 className="display d2 mt-5 uppercase">Saved clinicians.</h1>
 

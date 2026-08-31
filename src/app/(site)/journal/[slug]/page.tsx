@@ -59,7 +59,7 @@ export default async function JournalArticlePage({
         <p className="label mt-6 text-ink/35">{monthDayL(article.published, locale)}</p>
       </div>
 
-      <div className="shell mt-10 lg:mt-14">
+      <div className="shell mt-10 lg:mt-9">
         <Image
           src={asset.src}
           alt={asset.alt}

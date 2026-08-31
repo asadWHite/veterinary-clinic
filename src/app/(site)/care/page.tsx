@@ -40,7 +40,7 @@ export default async function CarePage() {
       <div className="shell border-t border-[var(--line)]">
         <ul className="vdivide">
           {services.map((service, i) => (
-            <li key={service.id} id={service.slug} className="scroll-mt-24 py-12 lg:py-16">
+            <li key={service.id} id={service.slug} className="scroll-mt-24 py-8 lg:py-16">
               <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
                 <div className="lg:col-span-2">
                   <span className="display d3 mono-num text-ink/20">
@@ -96,7 +96,7 @@ export default async function CarePage() {
         </ul>
       </div>
 
-      <div className="py-14 lg:py-20">
+      <div className="py-9 lg:py-20">
         <SectionHeader index="11" label={t("care.notSureLabel")} />
         <div className="shell grid grid-cols-1 gap-8 py-12 lg:grid-cols-12">
           <div className="lg:col-span-7">

@@ -28,7 +28,7 @@ export default async function GalleryPage() {
         </div>
       </section>
 
-      <div className="border-t border-[var(--line)] py-12 lg:py-16">
+      <div className="border-t border-[var(--line)] py-8 lg:py-16">
         <GalleryGrid />
       </div>
     </>

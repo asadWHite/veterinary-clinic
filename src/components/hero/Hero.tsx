@@ -110,7 +110,7 @@ export function Hero() {
         {/* the animal — no card, no frame, just the subject on white */}
         <div className="relative z-10 flex flex-1 items-end justify-center">
           <div
-            className="hero-image relative w-[min(86vw,520px)] lg:w-[min(44vw,620px)]"
+            className="hero-image relative w-[min(64vw,520px)] lg:w-[min(42vw,620px)]"
             style={{ transform: "translate3d(calc(var(--mx) * -6px), calc(var(--my) * -5px), 0)" }}
           >
             <Image

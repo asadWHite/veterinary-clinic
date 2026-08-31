@@ -43,7 +43,7 @@ export default async function AboutPage() {
       </section>
 
       {/* OUR APPROACH */}
-      <div className="py-14 lg:py-20">
+      <div className="py-9 lg:py-20">
         <SectionHeader index="01" label={t("about.approachLabel")} />
         <div className="shell grid grid-cols-1 gap-10 py-12 lg:grid-cols-12 lg:py-16">
           <div className="lg:col-span-5">
@@ -77,11 +77,11 @@ export default async function AboutPage() {
       </div>
 
       {/* OUR TEAM */}
-      <div className="py-14 lg:py-20">
+      <div className="py-9 lg:py-20">
         <SectionHeader index="02" label={t("about.teamLabel")} />
-        <div className="shell py-12 lg:py-16">
+        <div className="shell py-8 lg:py-16">
           <h2 className="display d3 uppercase max-w-3xl">{t("about.teamTitle")}</h2>
-          <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {doctors.map((doctor, i) => (
               <Reveal key={doctor.id} delay={i * 90}>
                 <div>
@@ -97,12 +97,12 @@ export default async function AboutPage() {
               </Reveal>
             ))}
           </div>
-          <p className="label mt-12 max-w-lg leading-[1.9] text-ink/35">{t("about.teamNote")}</p>
+          <p className="label mt-8 max-w-lg leading-[1.9] text-ink/35">{t("about.teamNote")}</p>
         </div>
       </div>
 
       {/* OUR CLINIC */}
-      <div className="border-t border-[var(--line)] py-14 lg:py-20">
+      <div className="border-t border-[var(--line)] py-9 lg:py-20">
         <div className="shell grid grid-cols-1 gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="label text-ink/40">{t("about.clinicLabel")}</p>

@@ -107,7 +107,7 @@ export const questions: QuestionDef[] = [
   {
     id: "limpingOnset",
     group: "context",
-    title: { uz: "Cho‘kish qachon boshlandi?", ru: "Когда началась хромота?", en: "When did the limping start?" },
+    title: { uz: "Oyoq cho‘kishi qachon boshlandi?", ru: "Когда появилась хромота?", en: "When did the limping start?" },
     type: "single",
     options: [
       { value: "today", label: { uz: "Bugun", ru: "Сегодня", en: "Today" } },
@@ -132,7 +132,7 @@ export const questions: QuestionDef[] = [
   {
     id: "eating",
     group: "history",
-    title: { uz: "Ovqatni oddiydagidek yeyaptimi?", ru: "Аппетит как обычно?", en: "Are they eating normally?" },
+    title: { uz: "Ovqatni oddiydagidek yeyaptimi?", ru: "Ест ли он как обычно?", en: "Are they eating normally?" },
     type: "single",
     options: [
       { value: "yes", label: { uz: "Ha, oddiydagidek", ru: "Да, как обычно", en: "Yes, normally" }, tone: "calm" },
@@ -146,7 +146,7 @@ export const questions: QuestionDef[] = [
   {
     id: "drinking",
     group: "history",
-    title: { uz: "Suvni oddiydagidek ichyaptimi?", ru: "Пьёт как обычно?", en: "Are they drinking normally?" },
+    title: { uz: "Suvni oddiydagidek ichyaptimi?", ru: "Пьёт ли он как обычно?", en: "Are they drinking normally?" },
     type: "single",
     options: [
       { value: "yes", label: { uz: "Ha, oddiydagidek", ru: "Да, как обычно", en: "Yes, normally" }, tone: "calm" },
@@ -185,7 +185,7 @@ export const questions: QuestionDef[] = [
   {
     id: "vaccinationStatus",
     group: "history",
-    title: { uz: "Emlashlari bajrilganmi?", ru: "Прививки актуальны?", en: "Are their vaccinations up to date?" },
+    title: { uz: "Emlashlari to‘liq bajrilganmi?", ru: "Все ли прививки сделаны вовремя?", en: "Are their vaccinations up to date?" },
     type: "single",
     options: [
       { value: "yes", label: { uz: "Ha", ru: "Да", en: "Yes" } },
@@ -210,7 +210,7 @@ export const questions: QuestionDef[] = [
   {
     id: "previousVet",
     group: "history",
-    title: { uz: "Buning uchun allaqachon ko‘rildimi?", ru: "По этому поводу уже были на приёме?", en: "Have they already been seen for this?" },
+    title: { uz: "Bu muammo uchun oldin shifokorga ko‘rildimi?", ru: "Обращались ли вы по этому поводу раньше?", en: "Have they already been seen for this?" },
     type: "single",
     options: [
       { value: "no", label: { uz: "Yo‘q, birinchi marta bo‘ladi", ru: "Нет, это будет первый раз", en: "No, this would be the first time" } },

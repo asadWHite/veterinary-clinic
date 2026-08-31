@@ -46,7 +46,7 @@ export default async function PetProfilePage({ params }: { params: Promise<{ id:
   const asset = assetById(pet.photoAssetId ?? speciesInfo(species, locale).assetId);
 
   return (
-    <div className="px-[var(--gutter)] py-10 lg:py-14">
+    <div className="px-[var(--gutter)] py-8 lg:py-14">
       <Link href="/pets" className="label link-underline text-ink/45 hover:text-ink">
         {t("pets.allCompanions")}
       </Link>
@@ -97,7 +97,7 @@ export default async function PetProfilePage({ params }: { params: Promise<{ id:
         </div>
       </div>
 
-      <section className="mt-16 grid grid-cols-1 gap-10 border-t border-[var(--line)] pt-10 lg:grid-cols-12">
+      <section className="mt-10 grid grid-cols-1 gap-10 border-t border-[var(--line)] pt-10 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <p className="label text-ink/40">{t("pets.appointments")}</p>
           {visits.length === 0 ? (
