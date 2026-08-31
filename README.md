@@ -113,7 +113,20 @@ blank server-error screen.
 ### 1. Create a database
 
 Any hosted Postgres works — [Neon](https://neon.tech) (free), Supabase, or Vercel Postgres.
-Copy the connection string.
+
+> **⚠️ Supabase users — important.**
+> The *direct* connection string (`db.<project-ref>.supabase.co:5432`) resolves to **IPv6 only**.
+> Vercel functions usually cannot reach it, so you get `ENETUNREACH` / a server error.
+>
+> Use the **Connection pooling** URI instead ( Supabase → **Connect** → *Connection pooling* →
+> **Session mode** ). It looks like this and is IPv4:
+>
+> ```
+> postgresql://postgres.<project-ref>:<password>@aws-0-<region>.pooler.supabase.com:5432/postgres
+> ```
+>
+> If your password contains special characters such as `@`, they must be URL-encoded
+> ( `@` → `%40` ), otherwise the connection string will not parse.
 
 ### 2. Set the environment variable
 
