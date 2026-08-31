@@ -127,6 +127,10 @@ Any hosted Postgres works — [Neon](https://neon.tech) (free), Supabase, or Ver
 >
 > If your password contains special characters such as `@`, they must be URL-encoded
 > ( `@` → `%40` ), otherwise the connection string will not parse.
+>
+> **Connection limit.** Session mode allows only **15 clients per project**. The app therefore
+> opens a single connection per instance ( `max: 1` ). If you expect heavy traffic, set
+> `PG_POOL_MAX` or switch `DATABASE_URL` to the transaction-mode pooler ( port `6543` ).
 
 ### 2. Set the environment variable
 

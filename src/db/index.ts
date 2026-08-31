@@ -50,8 +50,9 @@ export const pool =
   new Pool({
     connectionString: databaseUrl,
     ssl: requiresSsl ? { rejectUnauthorized: false } : undefined,
-    // Serverless-friendly: few connections, fail fast, never hang a request.
-    max: 3,
+    // Serverless-friendly. Supabase's session-mode pooler allows only 15
+    // clients per project, so keep a single connection per instance.
+    max: Number(process.env.PG_POOL_MAX ?? 1),
     connectionTimeoutMillis: 4000,
     idleTimeoutMillis: 10000,
   });
