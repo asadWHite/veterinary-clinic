@@ -104,6 +104,48 @@ public/images/              # animals/ · doctors/ (all on pure white)
 
 ---
 
+## Deploying to Vercel
+
+The app is designed to **degrade gracefully**: if `DATABASE_URL` is missing or unreachable, every
+page still renders (200) with a small notice, and only booking is disabled — you never get a
+blank server-error screen.
+
+### 1. Create a database
+
+Any hosted Postgres works — [Neon](https://neon.tech) (free), Supabase, or Vercel Postgres.
+Copy the connection string.
+
+### 2. Set the environment variable
+
+Vercel → your project → **Settings → Environment Variables**:
+
+| Name | Value |
+| ---- | ----- |
+| `DATABASE_URL` | `postgresql://…?sslmode=require` |
+
+Add it for **Production**, **Preview** and **Development**, then **Redeploy**.
+
+### 3. Create the tables
+
+Run once from your machine with the same `DATABASE_URL`:
+
+```bash
+DATABASE_URL="postgres://…" npx drizzle-kit push
+```
+
+### 4. Verify
+
+Open `https://your-app.vercel.app/api/health` — you should see:
+
+```json
+{"ok":true,"database":"connected"}
+```
+
+If it says `"database":"unavailable"`, the banner on the site will also tell you. TLS is enabled
+automatically for any non-localhost host, so hosted Postgres works without extra config.
+
+---
+
 ## Multilingual (UZ / RU / EN)
 
 - Default language: **Uzbek**

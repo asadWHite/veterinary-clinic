@@ -429,7 +429,8 @@
       "addPhone": "Please enter your phone number.",
       "unknownService": "Unknown service.",
       "chooseClinician": "Please choose a clinician.",
-      "saveFailed": "Could not save the appointment."
+      "saveFailed": "Could not save the appointment.",
+      "databaseDown": "Booking needs a working database. Set DATABASE_URL in your host's environment variables and redeploy — everything else on this site still works."
     }
   },
   "species": {

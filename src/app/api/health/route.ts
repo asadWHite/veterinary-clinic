@@ -1,13 +1,16 @@
-import { db } from "@/db";
-import { sql } from "drizzle-orm";
+import { NextResponse } from "next/server";
+import { checkDatabase } from "@/db";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  try {
-    await db.execute(sql`select 1`);
-    return Response.json({ ok: true });
-  } catch {
-    return Response.json({ ok: false }, { status: 500 });
-  }
+  const database = await checkDatabase();
+  return NextResponse.json(
+    {
+      ok: true,
+      database: database.ok ? "connected" : "unavailable",
+      ...(database.error ? { databaseError: database.error } : {}),
+    },
+    { status: 200, headers: { "cache-control": "no-store" } },
+  );
 }

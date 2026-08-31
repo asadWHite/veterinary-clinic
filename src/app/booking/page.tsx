@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { eq } from "drizzle-orm";
-import { db } from "@/db";
+import { db, checkDatabase } from "@/db";
 import { doctors as doctorsTable } from "@/db/schema";
 import { BookingShell } from "@/components/booking/BookingShell";
+import { DbNotice } from "@/components/ui/DbNotice";
 import { getDoctorsWithAvailability, getPetsForUser, getServices } from "@/lib/clinic";
 import { getSessionUser } from "@/lib/auth";
 import { getI18n } from "@/i18n/server";
@@ -21,15 +22,43 @@ export default async function BookingPage({
 }: {
   searchParams: Promise<{ doctor?: string }>;
 }) {
-  const params = await searchParams;
-  const [{ locale }, user, doctors, services] = await Promise.all([
+  const [{ locale, t }, params, user, dbStatus] = await Promise.all([
     getI18n(),
+    searchParams,
     getSessionUser(),
-    getDoctorsWithAvailability(30),
-    getServices(),
+    checkDatabase(),
   ]);
 
-  const pets = user ? await getPetsForUser(user.id) : [];
+  // No database (for example a fresh deploy without DATABASE_URL):
+  // render a clear, translated screen instead of a server error.
+  if (!dbStatus.ok) {
+    return (
+      <div className="min-h-screen bg-canvas">
+        <div className="border-b border-[var(--line)]">
+          <div className="shell flex h-16 items-center justify-between gap-6">
+            <a href="/" className="label link-underline text-ink/55 hover:text-ink">
+              ← {t("common.backToSite")}
+            </a>
+            <p className="display d5 uppercase">{t("booking.title")}</p>
+          </div>
+        </div>
+        <DbNotice />
+        <div className="shell py-20">
+          <h1 className="display d2 uppercase">{t("booking.title")}</h1>
+          <p className="body-lg mt-6 max-w-xl">{t("booking.errors.databaseDown")}</p>
+          <a href="/api/health" className="label link-underline mt-8 inline-block text-forest">
+            /api/health
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  const [doctors, services, pets] = await Promise.all([
+    getDoctorsWithAvailability(30),
+    getServices(),
+    user ? getPetsForUser(user.id) : Promise.resolve([]),
+  ]);
 
   let initialDoctorId: string | null = null;
   if (params.doctor) {

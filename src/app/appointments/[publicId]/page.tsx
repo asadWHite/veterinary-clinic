@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { eq } from "drizzle-orm";
-import { db } from "@/db";
+import { db, safeQuery } from "@/db";
 import { appointments, doctors, services } from "@/db/schema";
 import { getSessionUser } from "@/lib/auth";
 import { assetById, speciesMeta, type SpeciesKey } from "@/data/animals";
@@ -21,38 +21,47 @@ export default async function AppointmentPage({
   const { publicId } = await params;
   const user = await getSessionUser();
 
-  const [row] = await db
-    .select({
-      id: appointments.id,
-      publicId: appointments.publicId,
-      date: appointments.date,
-      startTime: appointments.startTime,
-      endTime: appointments.endTime,
-      durationMinutes: appointments.durationMinutes,
-      status: appointments.status,
-      petName: appointments.petName,
-      species: appointments.species,
-      ownerName: appointments.ownerName,
-      ownerPhone: appointments.ownerPhone,
-      notes: appointments.notes,
-      doctorName: doctors.name,
-      doctorSpecialization: doctors.specialization,
-      serviceName: services.name,
-    })
-    .from(appointments)
-    .innerJoin(doctors, eq(doctors.id, appointments.doctorId))
-    .innerJoin(services, eq(services.id, appointments.serviceId))
-    .where(eq(appointments.publicId, publicId))
-    .limit(1);
+  const fetchAppointment = () =>
+    db
+        .select({
+        id: appointments.id,
+        publicId: appointments.publicId,
+        date: appointments.date,
+        startTime: appointments.startTime,
+        endTime: appointments.endTime,
+        durationMinutes: appointments.durationMinutes,
+        status: appointments.status,
+        petName: appointments.petName,
+        species: appointments.species,
+        ownerName: appointments.ownerName,
+        ownerPhone: appointments.ownerPhone,
+        notes: appointments.notes,
+        doctorName: doctors.name,
+        doctorSpecialization: doctors.specialization,
+        serviceName: services.name,
+      })
+      .from(appointments)
+      .innerJoin(doctors, eq(doctors.id, appointments.doctorId))
+      .innerJoin(services, eq(services.id, appointments.serviceId))
+      .where(eq(appointments.publicId, publicId))
+      .limit(1);
 
+  const rows = await safeQuery(fetchAppointment, [], "appointment");
+  const row = rows[0];
   if (!row) notFound();
 
   // Private data stays private: signed-in owners only see their own visits.
-  const [owner] = await db
-    .select({ userId: appointments.userId })
-    .from(appointments)
-    .where(eq(appointments.id, row.id))
-    .limit(1);
+  const ownerRows = await safeQuery(
+    () =>
+      db
+        .select({ userId: appointments.userId })
+        .from(appointments)
+        .where(eq(appointments.id, row.id))
+        .limit(1),
+    [],
+    "appointmentOwner",
+  );
+  const owner = ownerRows[0];
   if (owner?.userId && owner.userId !== user?.id) notFound();
 
   const species = (row.species as SpeciesKey) ?? "dog";

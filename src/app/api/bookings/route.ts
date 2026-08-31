@@ -3,6 +3,7 @@ import { and, desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { appointments, doctors, pets, services } from "@/db/schema";
 import { assertSlotFree, minutesToTime, timeToMinutes, todayISO } from "@/lib/availability";
+import { checkDatabase } from "@/db";
 import { generatePublicId, getSessionUser } from "@/lib/auth";
 import { ensureSeeded } from "@/db/seed";
 
@@ -55,6 +56,14 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const status = await checkDatabase();
+  if (!status.ok) {
+    return NextResponse.json(
+      { error: "Database unavailable. Please try again later.", code: "database-unavailable" },
+      { status: 503 },
+    );
+  }
+
   await ensureSeeded();
 
   let payload: BookingPayload;

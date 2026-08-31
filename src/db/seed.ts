@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { db } from "@/db";
+import { db, isDatabaseDown } from "@/db";
 import { appointments, availabilityRules, blockedSlots, doctors, services } from "@/db/schema";
 import { doctorSeeds } from "@/data/doctors";
 import { serviceSeeds } from "@/data/services";
@@ -15,6 +15,7 @@ let seedPromise: Promise<void> | null = null;
 
 /** Idempotent bootstrap so the preview always has a usable clinic. */
 export function ensureSeeded(): Promise<void> {
+  if (isDatabaseDown()) return Promise.resolve();
   if (!seedPromise) {
     seedPromise = runSeed().catch((error) => {
       seedPromise = null;

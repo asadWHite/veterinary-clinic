@@ -429,7 +429,8 @@
       "addPhone": "Telefon raqamingizni kiriting.",
       "unknownService": "Noma’lum xizmat.",
       "chooseClinician": "Iltimos, shifokorni tanlang.",
-      "saveFailed": "Yozilishni saqlab bo‘lmadi."
+      "saveFailed": "Yozilishni saqlab bo‘lmadi.",
+      "databaseDown": "Qabulga yozilish ishlaydigan ma’lumot bazasini talab qiladi. Hosting muhit o‘zgaruvchilarida DATABASE_URL ni o‘rnating va qayta deploy qiling — saytning boshqa bo‘limlari ishlaydi."
     }
   },
   "species": {
