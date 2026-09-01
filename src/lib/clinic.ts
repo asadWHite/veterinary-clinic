@@ -1,6 +1,6 @@
 import { asc, eq } from "drizzle-orm";
 import { db, safeQuery } from "@/db";
-import { appointments, doctors, pets, services } from "@/db/schema";
+import { appointments, availabilityRules, doctors, pets, services } from "@/db/schema";
 import { ensureSeeded } from "@/db/seed";
 import { doctorSeeds } from "@/data/doctors";
 import { serviceSeeds } from "@/data/services";
@@ -20,6 +20,13 @@ export type DoctorWithNext = {
   speciesFocus: string[];
   languages: string[];
   next: { date: string; time: string } | null;
+  /**
+   * Whether the clinician has working hours at all. `next === null` means two
+   * very different things depending on this flag: "no schedule published yet"
+   * or "fully booked for the next two weeks". Showing "fully booked" for a
+   * doctor with no schedule is what made every clinician look busy.
+   */
+  hasSchedule: boolean;
 };
 
 /**
@@ -41,6 +48,7 @@ const fallbackDoctors: DoctorWithNext[] = doctorSeeds.map((d) => ({
   speciesFocus: d.speciesFocus,
   languages: d.languages,
   next: null,
+  hasSchedule: false,
 }));
 
 const fallbackServices = serviceSeeds.map((s) => ({
@@ -57,6 +65,19 @@ const fallbackServices = serviceSeeds.map((s) => ({
 
 export type LocalizedService = (typeof fallbackServices)[number];
 
+/** Doctor ids that have at least one working-hours rule. */
+async function doctorIdsWithSchedule(): Promise<Set<string>> {
+  const rows = await safeQuery(
+    () =>
+      db
+        .selectDistinct({ doctorId: availabilityRules.doctorId })
+        .from(availabilityRules),
+    [],
+    "doctorSchedule",
+  );
+  return new Set(rows.map((r) => r.doctorId));
+}
+
 export async function getDoctors(): Promise<DoctorWithNext[]> {
   await ensureSeeded();
   const rows = await safeQuery(
@@ -65,6 +86,8 @@ export async function getDoctors(): Promise<DoctorWithNext[]> {
     "getDoctors",
   );
   if (rows.length === 0) return fallbackDoctors;
+
+  const withSchedule = await doctorIdsWithSchedule();
 
   return rows.map((r) => ({
     id: r.id,
@@ -80,28 +103,50 @@ export async function getDoctors(): Promise<DoctorWithNext[]> {
     speciesFocus: r.speciesFocus ?? [],
     languages: r.languages ?? [],
     next: null,
+    hasSchedule: withSchedule.has(r.id),
   }));
+}
+
+/**
+ * Doctors plus their next free slot.
+ *
+ * Returns `scheduleUnavailable` when the schedule could not be calculated
+ * (database hiccup, timeout, …). That is deliberately *not* the same thing as
+ * "no free slots": callers must be able to tell an unknown schedule from a
+ * fully booked one, otherwise every clinician renders as "busy".
+ */
+export async function getDoctorsWithAvailabilitySafe(durationMinutes = 30): Promise<{
+  doctors: DoctorWithNext[];
+  scheduleUnavailable: boolean;
+}> {
+  const docs = await getDoctors();
+  let range: Awaited<ReturnType<typeof getAvailabilityRange>> = {};
+  let scheduleUnavailable = false;
+
+  try {
+    range = await getAvailabilityRange({
+      doctorIds: docs.map((d) => d.id),
+      startDate: todayISO(),
+      days: 14,
+      durationMinutes,
+    });
+  } catch (error) {
+    console.error("[clinic] availability range failed:", error);
+    scheduleUnavailable = true;
+  }
+
+  const next = findNextAvailable(range);
+  return {
+    doctors: docs.map((d) => ({ ...d, next: next[d.id] ?? null })),
+    scheduleUnavailable,
+  };
 }
 
 export async function getDoctorsWithAvailability(
   durationMinutes = 30,
 ): Promise<DoctorWithNext[]> {
-  const docs = await getDoctors();
-
-  const range = await safeQuery(
-    () =>
-      getAvailabilityRange({
-        doctorIds: docs.map((d) => d.id),
-        startDate: todayISO(),
-        days: 14,
-        durationMinutes,
-      }),
-    {},
-    "getAvailabilityRange",
-  );
-
-  const next = findNextAvailable(range);
-  return docs.map((d) => ({ ...d, next: next[d.id] ?? null }));
+  const { doctors } = await getDoctorsWithAvailabilitySafe(durationMinutes);
+  return doctors;
 }
 
 export async function getServices(): Promise<LocalizedService[]> {

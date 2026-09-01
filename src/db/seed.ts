@@ -13,6 +13,14 @@ const CLOSE = "19:00";
 
 let seedPromise: Promise<void> | null = null;
 
+/**
+ * Arbitrary key for the advisory lock that serialises concurrent seeds.
+ * Several serverless instances can boot at the same time; without the lock
+ * two of them could both decide a doctor is missing a schedule and insert it
+ * twice, which would duplicate every slot in the grid.
+ */
+const SEED_LOCK_KEY = 871_245_113;
+
 /** Idempotent bootstrap so the preview always has a usable clinic. */
 export function ensureSeeded(): Promise<void> {
   if (isDatabaseDown()) return Promise.resolve();
@@ -26,10 +34,17 @@ export function ensureSeeded(): Promise<void> {
 }
 
 async function runSeed(): Promise<void> {
-  const existing = await db.select({ id: doctors.id }).from(doctors).limit(1);
-  if (existing.length > 0) return;
-
   await db.transaction(async (tx) => {
+    // Serialise concurrent seeds; purely defensive, so a failure is ignored.
+    try {
+      await tx.execute(sql`select pg_advisory_xact_lock(${SEED_LOCK_KEY}::bigint)`);
+    } catch {
+      /* advisory locks unavailable — fall back to plain checks below */
+    }
+
+    const existing = await tx.select({ id: doctors.id }).from(doctors).limit(1);
+    const isFirstSeed = existing.length === 0;
+
     const insertedServices = await tx
       .insert(services)
       .values(
@@ -47,7 +62,25 @@ async function runSeed(): Promise<void> {
       .onConflictDoNothing()
       .returning({ id: services.id, slug: services.slug, duration: services.durationMinutes });
 
-    const insertedDoctors = await tx
+    /**
+     * `onConflictDoNothing()` returns nothing when the rows already exist, so
+     * the inserted list can be empty on a database that was populated earlier
+     * (a first seed that was interrupted, a partially seeded database, doctors
+     * added by hand, …). Always read the real rows back — every following step
+     * works from what is actually in the database, not from what we just wrote.
+     */
+    const serviceRows =
+      insertedServices.length > 0
+        ? insertedServices
+        : await tx
+            .select({
+              id: services.id,
+              slug: services.slug,
+              duration: services.durationMinutes,
+            })
+            .from(services);
+
+    await tx
       .insert(doctors)
       .values(
         doctorSeeds.map((d) => ({
@@ -65,40 +98,68 @@ async function runSeed(): Promise<void> {
           sortOrder: d.sortOrder,
         })),
       )
-      .onConflictDoNothing()
-      .returning({ id: doctors.id, slug: doctors.slug });
+      .onConflictDoNothing();
 
-    const rules = insertedDoctors.flatMap((doc) =>
-      OPEN_WEEKDAYS.map((weekday) => ({
-        doctorId: doc.id,
-        weekday,
-        startTime: OPEN,
-        endTime: CLOSE,
-      })),
-    );
+    const doctorRows = await tx
+      .select({ id: doctors.id, slug: doctors.slug })
+      .from(doctors);
+
+    /* ------------------------------------------------------------------
+       Schedule repair — the fix for "every day is closed".
+
+       A clinician without working hours can never be booked: every day comes
+       back `open: false`, the day rail is disabled and the card reads "full".
+       So every doctor without a single rule gets the default week, and every
+       doctor without recurring blocks gets the seeded breaks. Runs on every
+       boot, but only writes what is genuinely missing.
+       ------------------------------------------------------------------ */
+    const ruleRows = await tx
+      .select({ doctorId: availabilityRules.doctorId })
+      .from(availabilityRules);
+    const doctorsWithRules = new Set(ruleRows.map((r) => r.doctorId));
+    const rules = doctorRows
+      .filter((doc) => !doctorsWithRules.has(doc.id))
+      .flatMap((doc) =>
+        OPEN_WEEKDAYS.map((weekday) => ({
+          doctorId: doc.id,
+          weekday,
+          startTime: OPEN,
+          endTime: CLOSE,
+        })),
+      );
     if (rules.length > 0) await tx.insert(availabilityRules).values(rules);
 
-    const blocks = insertedDoctors.flatMap((doc) => {
-      const seed = doctorSeeds.find((d) => d.slug === doc.slug);
-      if (!seed) return [];
-      return seed.weekdayBlocks.map((b) => ({
-        doctorId: doc.id,
-        date: null,
-        weekday: b.weekday,
-        startTime: b.startTime,
-        endTime: b.endTime,
-        label: b.label,
-        reason: b.reason,
-      }));
-    });
+    const blockRows = await tx
+      .select({ doctorId: blockedSlots.doctorId })
+      .from(blockedSlots);
+    const doctorsWithBlocks = new Set(blockRows.map((b) => b.doctorId));
+    const blocks = doctorRows
+      .filter((doc) => !doctorsWithBlocks.has(doc.id))
+      .flatMap((doc) => {
+        const seed = doctorSeeds.find((d) => d.slug === doc.slug);
+        if (!seed) return [];
+        return seed.weekdayBlocks.map((b) => ({
+          doctorId: doc.id,
+          date: null,
+          weekday: b.weekday,
+          startTime: b.startTime,
+          endTime: b.endTime,
+          label: b.label,
+          reason: b.reason,
+        }));
+      });
     if (blocks.length > 0) await tx.insert(blockedSlots).values(blocks);
 
+    // Demo data below is written once, on the very first seed only — a clinic
+    // that has cleared its own bookings must not get fake ones back.
+    if (!isFirstSeed) return;
+
     // A realistic day: some slots already taken, so BOOKED / BLOCKED states are real.
-    const general = insertedServices.find((s) => s.slug === "general-examination");
-    const diagnostic = insertedServices.find((s) => s.slug === "diagnostic-consultation");
-    const doctor01 = insertedDoctors.find((d) => d.slug === "doctor-01");
-    const doctor02 = insertedDoctors.find((d) => d.slug === "doctor-02");
-    const doctor03 = insertedDoctors.find((d) => d.slug === "doctor-03");
+    const general = serviceRows.find((s) => s.slug === "general-examination");
+    const diagnostic = serviceRows.find((s) => s.slug === "diagnostic-consultation");
+    const doctor01 = doctorRows.find((d) => d.slug === "doctor-01");
+    const doctor02 = doctorRows.find((d) => d.slug === "doctor-02");
+    const doctor03 = doctorRows.find((d) => d.slug === "doctor-03");
 
     const today = todayISO();
     const demoAppointments: {
@@ -157,9 +218,12 @@ async function runSeed(): Promise<void> {
     push(doctor02?.id, diagnostic?.id, d5, "17:30", 45, "[PET NAME]", "cat");
 
     if (demoAppointments.length > 0) {
-      await tx.insert(appointments).values(
-        demoAppointments.map((a) => ({ ...a, publicId: generatePublicId() })),
-      );
+      // onConflictDoNothing: a slot that is already taken must never roll the
+      // whole seed (and therefore the schedule repair) back.
+      await tx
+        .insert(appointments)
+        .values(demoAppointments.map((a) => ({ ...a, publicId: generatePublicId() })))
+        .onConflictDoNothing();
     }
 
     // One dated block so UNAVAILABLE is visible even on a doctor's normal day.

@@ -56,7 +56,11 @@ export async function DoctorsPreview() {
                       {doctor.next ? doctor.next.time : "—"}
                     </p>
                     <p className="label text-ink/35">
-                      {doctor.next ? shortDateL(doctor.next.date, locale) : t("home.doctors.full")}
+                      {doctor.next
+                        ? shortDateL(doctor.next.date, locale)
+                        : doctor.hasSchedule
+                          ? t("home.doctors.full")
+                          : t("notAvailable")}
                     </p>
                   </div>
                 </div>

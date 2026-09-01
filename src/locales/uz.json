@@ -333,7 +333,11 @@
       "chooseTime": "Vaqt tanlash",
       "fullList": "to‘liq ro‘yxatni ko‘rish",
       "nextAvailable": "Eng yaqin vaqt",
-      "full": "Bo‘sh vaqt yo‘q"
+      "full": "Bo‘sh vaqt yo‘q",
+      "noSchedule": "Jadval kiritilmagan",
+      "scheduleUnavailable": "Jadval noma’lum",
+      "scheduleUnavailableTitle": "Bo‘sh vaqtlarni yuklab bo‘lmadi",
+      "scheduleUnavailableBody": "Shifokorlar ko‘rsatilgan, lekin jadvalni tekshirib bo‘lmadi. Sahifani yangilang yoki keyinroq urinib ko‘ring."
     },
     "time": {
       "eyebrow": "07 — Vaqt",
@@ -360,7 +364,14 @@
       "legendBooked": "Band",
       "legendPast": "O‘TDI — vaqti o‘tib ketgan",
       "legendBlocked": "MAVJUD EMAS — tanaffus yoki blok",
-      "passedDay": "Bu kun o‘tib ketgan."
+      "passedDay": "Bu kun o‘tib ketgan.",
+      "noScheduleTitle": "Jadval topilmadi",
+      "noScheduleBody": "Bu shifokor uchun hozircha ish jadvali kiritilmagan. Boshqa shifokorni tanlang yoki klinikaga qo‘ng‘iroq qiling.",
+      "noSlotsTitle": "Bo‘sh vaqt yo‘q",
+      "noSlotsBody": "Bu kunda ushbu qabul uchun mos vaqt qolmadi. Boshqa kunni tanlang.",
+      "loadErrorTitle": "Jadval yuklanmadi",
+      "loadErrorBody": "Bo‘sh vaqtlarni tekshirib bo‘lmadi. Iltimos, qayta urinib ko‘ring.",
+      "pickAnotherClinician": "Boshqa shifokorni tanlash"
     },
     "details": {
       "eyebrow": "08 — Tasdiqlash",

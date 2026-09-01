@@ -4,7 +4,11 @@ import { db, checkDatabase } from "@/db";
 import { doctors as doctorsTable } from "@/db/schema";
 import { BookingShell } from "@/components/booking/BookingShell";
 import { DbNotice } from "@/components/ui/DbNotice";
-import { getDoctorsWithAvailability, getPetsForUser, getServices } from "@/lib/clinic";
+import {
+  getDoctorsWithAvailabilitySafe,
+  getPetsForUser,
+  getServices,
+} from "@/lib/clinic";
 import { getSessionUser } from "@/lib/auth";
 import { getI18n } from "@/i18n/server";
 import { pickL } from "@/i18n/localized";
@@ -54,8 +58,8 @@ export default async function BookingPage({
     );
   }
 
-  const [doctors, services, pets] = await Promise.all([
-    getDoctorsWithAvailability(30),
+  const [{ doctors, scheduleUnavailable }, services, pets] = await Promise.all([
+    getDoctorsWithAvailabilitySafe(30),
     getServices(),
     user ? getPetsForUser(user.id) : Promise.resolve([]),
   ]);
@@ -75,6 +79,7 @@ export default async function BookingPage({
       doctors={doctors}
       user={user}
       initialDoctorId={initialDoctorId}
+      scheduleUnavailable={scheduleUnavailable}
       pets={pets.map((p) => ({
         id: p.id,
         name: p.name,

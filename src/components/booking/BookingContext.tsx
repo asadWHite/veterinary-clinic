@@ -104,7 +104,18 @@ function reducer(state: BookingState, action: Action): BookingState {
       };
     case "field": {
       const next = { ...state, [action.key]: action.value } as BookingState;
-      if (action.key === "doctorId" || action.key === "serviceSlug") next.time = null;
+      // A slot only ever belongs to one clinician, date and visit length —
+      // changing any of them invalidates the chosen time. Re-picking the very
+      // same value must not wipe the selection, though.
+      if (action.key === "doctorId" && action.value !== state.doctorId) {
+        next.date = null;
+        next.time = null;
+      } else if (
+        (action.key === "date" && action.value !== state.date) ||
+        (action.key === "serviceSlug" && action.value !== state.serviceSlug)
+      ) {
+        next.time = null;
+      }
       return next;
     }
     case "owner":
@@ -129,6 +140,8 @@ export type BookingContextValue = {
   recommendation: Recommendation;
   doctors: DoctorWithNext[];
   isGuest: boolean;
+  /** True when the database could not be read, so no schedule is known. */
+  scheduleUnavailable: boolean;
   t: Translator;
   locale: Locale;
   go: (stage: Stage) => void;
@@ -151,6 +164,7 @@ export function BookingProvider({
   user,
   pets,
   initialDoctorId = null,
+  scheduleUnavailable = false,
 }: {
   children: ReactNode;
   doctors: DoctorWithNext[];
@@ -164,6 +178,7 @@ export function BookingProvider({
     photoAssetId: string | null;
   }[];
   initialDoctorId?: string | null;
+  scheduleUnavailable?: boolean;
 }) {
   const { locale, t } = useI18n();
   const [state, dispatch] = useReducer(reducer, {
@@ -263,6 +278,7 @@ export function BookingProvider({
     recommendation,
     doctors,
     isGuest: !user,
+    scheduleUnavailable,
     t,
     locale,
     go,
