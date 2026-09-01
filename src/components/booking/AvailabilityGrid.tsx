@@ -29,6 +29,17 @@ export function AvailabilityGrid({
     );
   }
 
+  // Working day, but nothing bookable fits in it — an empty grid would just
+  // look broken, so explain it.
+  if (day.slots.length === 0) {
+    return (
+      <div className="border border-[var(--line)] p-10 text-center">
+        <p className="display d5 uppercase">{t("booking.time.noSlotsTitle")}</p>
+        <p className="label mt-3 text-ink/40">{t("booking.time.noSlotsBody")}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-8">
       {PARTS.map((part) => {

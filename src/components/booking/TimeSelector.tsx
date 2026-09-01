@@ -5,45 +5,68 @@ import { useBooking } from "@/components/booking/BookingContext";
 import { DateSelector } from "@/components/booking/DateSelector";
 import { AvailabilityGrid } from "@/components/booking/AvailabilityGrid";
 import type { AvailabilityResponse, DayAvailabilityDto } from "@/types/booking";
-import { longDateL, durationLabelL } from "@/lib/format";
+import { longDateL, durationLabelL, todayISO } from "@/lib/format";
 import { specialtyOf } from "@/data/doctors";
-import { pickL } from "@/i18n/localized";
-import { todayISO } from "@/lib/format";
 
 export function TimeSelector() {
-  const { state, recommendation, doctors, setField, back, next , t, locale } = useBooking();
+  const { state, recommendation, doctors, setField, back, next, t, locale } = useBooking();
   const activeSlug = state.serviceSlug ?? recommendation.serviceSlug;
   const doctor = doctors.find((d) => d.id === state.doctorId);
 
   const [days, setDays] = useState<Record<string, DayAvailabilityDto>>({});
   const [loading, setLoading] = useState(true);
-  const [selectedDate, setSelectedDate] = useState<string | null>(state.date);
+  const [loadError, setLoadError] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
     if (!state.doctorId) return;
     let cancelled = false;
     setLoading(true);
+    setLoadError(false);
+
     fetch(`/api/availability?doctorId=${state.doctorId}&service=${activeSlug}&days=14`, {
       cache: "no-store",
     })
-      .then((res) => res.json() as Promise<AvailabilityResponse>)
+      .then((res) =>
+        res.ok
+          ? (res.json() as Promise<AvailabilityResponse>)
+          : Promise.reject(new Error(String(res.status))),
+      )
       .then((data) => {
         if (cancelled) return;
-        setDays(data.days ?? {});
+        const nextDays = data.days ?? {};
+        setDays(nextDays);
         setLoading(false);
-        const first = Object.keys(data.days ?? {})
-          .sort()
-          .find((d) => (data.days?.[d]?.freeCount ?? 0) > 0);
-        if (first) setSelectedDate((prev) => prev ?? first);
+        if (data.status && data.status !== "ok") setLoadError(true);
+
+        /**
+         * Auto-pick the first day that still has room — and write it into the
+         * booking state, not only into local state. Previously the day was
+         * highlighted on screen but `state.date` stayed empty, so the summary
+         * showed "—" and submitting failed with "choose a date".
+         */
+        const ordered = Object.keys(nextDays).sort();
+        const firstFree = ordered.find((d) => (nextDays[d]?.freeCount ?? 0) > 0);
+        const firstOpen = ordered.find((d) => nextDays[d]?.open);
+        const wanted = firstFree ?? firstOpen ?? null;
+        if (wanted !== state.date) setField("date", wanted);
       })
-      .catch(() => !cancelled && setLoading(false));
+      .catch(() => {
+        if (cancelled) return;
+        setLoadError(true);
+        setLoading(false);
+      });
+
     return () => {
       cancelled = true;
     };
-  }, [state.doctorId, activeSlug]);
+    // `state.date` is deliberately not a dependency: re-fetching on every day
+    // change would fight the user's own selection.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.doctorId, activeSlug, reloadKey]);
 
   const list = Object.values(days).sort((a, b) => a.date.localeCompare(b.date));
-  const activeDay = selectedDate ? days[selectedDate] : undefined;
+  const activeDay = state.date ? days[state.date] : undefined;
 
   return (
     <div className="hero-rise">
@@ -70,17 +93,37 @@ export function TimeSelector() {
             </div>
           ))}
         </div>
-      ) : (
+      ) : list.length > 0 ? (
         <div className="mt-10">
           <DateSelector
             days={list}
-            selected={selectedDate}
-            onSelect={(date) => {
-              setSelectedDate(date);
-              setField("date", date);
-              setField("time", null);
-            }}
+            selected={state.date}
+            onSelect={(date) => setField("date", date)}
           />
+        </div>
+      ) : (
+        /* Nothing came back: say so, instead of leaving a blank rail that
+           looks like "this clinic is fully booked". */
+        <div className="mt-10 border border-[var(--line)] p-10 text-center">
+          <p className="display d5 uppercase">
+            {loadError ? t("booking.time.loadErrorTitle") : t("booking.time.noScheduleTitle")}
+          </p>
+          <p className="label mt-3 leading-[1.9] text-ink/40">
+            {loadError ? t("booking.time.loadErrorBody") : t("booking.time.noScheduleBody")}
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={() => setReloadKey((k) => k + 1)}
+              className="label arrow-forward flex items-center gap-3 bg-ink px-6 py-4 text-white"
+            >
+              {t("common.retry")}
+              <span className="arrow">→</span>
+            </button>
+            <button type="button" onClick={back} className="label px-2 py-4 text-ink/50 hover:text-ink">
+              {t("booking.time.pickAnotherClinician")}
+            </button>
+          </div>
         </div>
       )}
 
@@ -90,9 +133,13 @@ export function TimeSelector() {
             <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-[var(--line)] pb-3">
               <p className="display d5 uppercase">{longDateL(activeDay.date, locale)}</p>
               <p className="label mono-num text-ink/40">
-                {activeDay.freeCount === 1
-                  ? t("booking.time.slotOpen")
-                  : t("booking.time.slotsOpen", { count: activeDay.freeCount })}
+                {activeDay.freeCount > 1
+                  ? t("booking.time.slotsOpen", { count: activeDay.freeCount })
+                  : activeDay.freeCount === 1
+                    ? t("booking.time.slotOpen")
+                    : activeDay.open
+                      ? t("booking.time.fullyBooked")
+                      : t("booking.time.closed")}
               </p>
             </div>
             <div className="mt-8">
@@ -121,7 +168,7 @@ export function TimeSelector() {
         </button>
       </div>
 
-      {selectedDate && selectedDate < todayISO() ? (
+      {state.date && state.date < todayISO() ? (
         <p className="label mt-4 text-forest">{t("booking.time.passedDay")}</p>
       ) : null}
     </div>

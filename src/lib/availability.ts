@@ -83,6 +83,33 @@ function overlaps(aStart: number, aEnd: number, bStart: number, bEnd: number) {
   return aStart < bEnd && bStart < aEnd;
 }
 
+/** Collapses rules that describe the exact same window on the same weekday. */
+function dedupeRules<T extends { weekday: number; startTime: string; endTime: string }>(
+  rows: T[],
+): T[] {
+  const seen = new Set<string>();
+  return rows.filter((r) => {
+    const key = `${r.weekday}|${r.startTime}|${r.endTime}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+/**
+ * Placeholder ids (`offline-…`) are used for the marketing pages when the
+ * database is unreachable. They are not UUIDs, so sending them to Postgres
+ * raises `invalid input syntax for type uuid` — which used to kill the whole
+ * availability query and leave every doctor looking fully booked. Filtering
+ * them out keeps a bad id from taking down the schedule for everybody else.
+ */
+export function isUuid(value: string): boolean {
+  return UUID_RE.test(value);
+}
+
 /**
  * Real slot calculation.
  * Availability = doctor schedule − blocked periods − existing appointments,
@@ -95,7 +122,8 @@ export async function getAvailabilityRange(params: {
   days: number;
   durationMinutes: number;
 }): Promise<Record<string, Record<string, DayAvailability>>> {
-  const { doctorIds, startDate, days, durationMinutes } = params;
+  const { startDate, days, durationMinutes } = params;
+  const doctorIds = params.doctorIds.filter(isUuid);
   const result: Record<string, Record<string, DayAvailability>> = {};
   if (doctorIds.length === 0) return result;
 
@@ -136,7 +164,12 @@ export async function getAvailabilityRange(params: {
 
   for (const doctorId of doctorIds) {
     result[doctorId] = {};
-    const doctorRules = rules.filter((r) => r.doctorId === doctorId);
+    /**
+     * One window per distinct start–end pair: duplicated rules (a seed that
+     * ran twice, two instances repairing at once) must never render the same
+     * slot twice.
+     */
+    const doctorRules = dedupeRules(rules.filter((r) => r.doctorId === doctorId));
 
     for (const iso of dateList) {
       const weekday = weekdayOf(iso);
@@ -198,11 +231,17 @@ export async function getAvailabilityRange(params: {
         }
       }
 
+      // Overlapping windows can produce the same clock time twice — keep one
+      // slot per time, ordered through the day.
+      const orderedSlots = [...new Map(slots.map((s) => [s.time, s])).values()].sort(
+        (a, b) => a.minutes - b.minutes,
+      );
+
       result[doctorId][iso] = {
         date: iso,
         open: windows.length > 0,
-        slots,
-        freeCount: slots.filter((s) => s.state === "free").length,
+        slots: orderedSlots,
+        freeCount: orderedSlots.filter((s) => s.state === "free").length,
       };
     }
   }

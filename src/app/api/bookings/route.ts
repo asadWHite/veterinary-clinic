@@ -2,7 +2,13 @@ import { NextResponse } from "next/server";
 import { and, desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { appointments, doctors, pets, services } from "@/db/schema";
-import { assertSlotFree, minutesToTime, timeToMinutes, todayISO } from "@/lib/availability";
+import {
+  assertSlotFree,
+  isUuid,
+  minutesToTime,
+  timeToMinutes,
+  todayISO,
+} from "@/lib/availability";
 import { checkDatabase } from "@/db";
 import { generatePublicId, getSessionUser } from "@/lib/auth";
 import { ensureSeeded } from "@/db/seed";
@@ -86,6 +92,9 @@ export async function POST(request: Request) {
 
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !/^\d{2}:\d{2}$/.test(startTime))
     return NextResponse.json({ error: "Please choose a date and time." }, { status: 400 });
+  // A placeholder id (`offline-…`) would blow up the UUID comparison below.
+  if (!isUuid(doctorId))
+    return NextResponse.json({ error: "Please choose a clinician." }, { status: 400 });
   if (petName.length < 1) return NextResponse.json({ error: "Please add a name." }, { status: 400 });
   if (ownerName.length < 2)
     return NextResponse.json({ error: "Please add your name." }, { status: 400 });

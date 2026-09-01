@@ -13,6 +13,16 @@ export type DayAvailabilityDto = {
   freeCount: number;
 };
 
+/**
+ * `status` separates an *unknown* schedule from an *empty* one:
+ *  - "ok"              — the schedule below is real
+ *  - "error"           — the schedule could not be calculated (retry)
+ *  - "database"        — no database connection
+ *  - "unknown-doctor"  — the requested clinician is not a real record
+ * Only an empty `days` with status "ok" means "genuinely nothing free".
+ */
+export type AvailabilityStatus = "ok" | "error" | "database" | "unknown-doctor";
+
 export type AvailabilityResponse = {
   doctors: {
     id: string;
@@ -23,7 +33,9 @@ export type AvailabilityResponse = {
     photoKey: string | null;
     initials: string;
     next: { date: string; time: string } | null;
+    hasSchedule?: boolean;
   }[];
   duration: number;
   days: Record<string, DayAvailabilityDto>;
+  status?: AvailabilityStatus;
 };

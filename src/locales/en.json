@@ -333,7 +333,11 @@
       "chooseTime": "Choose a time",
       "fullList": "see the full list",
       "nextAvailable": "Next available",
-      "full": "Full"
+      "full": "Full",
+      "noSchedule": "No schedule set",
+      "scheduleUnavailable": "Schedule unknown",
+      "scheduleUnavailableTitle": "Could not load availability",
+      "scheduleUnavailableBody": "The clinicians are shown, but their schedules could not be checked. Refresh the page or try again shortly."
     },
     "time": {
       "eyebrow": "07 — Time",
@@ -360,7 +364,14 @@
       "legendBooked": "Booked",
       "legendPast": "PAST — already passed",
       "legendBlocked": "UNAVAILABLE — blocked or break",
-      "passedDay": "That day has already passed."
+      "passedDay": "That day has already passed.",
+      "noScheduleTitle": "No schedule found",
+      "noScheduleBody": "Working hours have not been set for this clinician yet. Please choose another clinician or call the clinic.",
+      "noSlotsTitle": "No time left",
+      "noSlotsBody": "Nothing fits this visit on that day. Please choose another day.",
+      "loadErrorTitle": "Schedule not loaded",
+      "loadErrorBody": "We could not check availability. Please try again.",
+      "pickAnotherClinician": "Choose another clinician"
     },
     "details": {
       "eyebrow": "08 — Confirm",

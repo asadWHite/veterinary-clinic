@@ -8,13 +8,31 @@ import { shortDateL } from "@/lib/format";
 import { specialtyOf } from "@/data/doctors";
 
 export function DoctorSelector() {
-  const { state, doctors, recommendation, setField, next, back, isGuest , t, locale } = useBooking();
+  const { state, doctors, recommendation, setField, next, back, isGuest, scheduleUnavailable, t, locale } = useBooking();
 
   const sorted = [...doctors].sort((a, b) => {
     const score = (d: typeof a) =>
       d.specialization === recommendation.focusSpecialty ? 0 : 1;
-    return score(a) - score(b);
+    // Matching specialty first, then whoever can actually be seen soonest.
+    // A clinician with no working hours at all sinks to the bottom instead of
+    // sitting among the bookable ones.
+    const reach = (d: typeof a) => (d.next ? 0 : d.hasSchedule ? 1 : 2);
+    return score(a) - score(b) || reach(a) - reach(b);
   });
+
+  /** Honest availability text — never "busy" when we simply do not know. */
+  const availabilityLabel = (doctor: (typeof doctors)[number], matches: boolean) => {
+    if (scheduleUnavailable) return t("booking.doctor.scheduleUnavailable");
+    if (!doctor.hasSchedule) return t("booking.doctor.noSchedule");
+    if (!doctor.next) return t("booking.doctor.full");
+    return matches ? t("booking.doctor.bestMatch") : t("booking.doctor.available");
+  };
+
+  const nextLabel = (doctor: (typeof doctors)[number]) => {
+    if (doctor.next) return shortDateL(doctor.next.date, locale);
+    if (scheduleUnavailable || !doctor.hasSchedule) return t("booking.doctor.noSchedule");
+    return t("booking.doctor.full");
+  };
 
   return (
     <div className="hero-rise">
@@ -29,6 +47,18 @@ export function DoctorSelector() {
       <p className="body-lg mt-5 max-w-xl">
         {t("booking.doctor.prompt", { specialty: recommendation.focusSpecialty })}
       </p>
+
+      {scheduleUnavailable ? (
+        <div
+          role="status"
+          className="mt-8 border border-[var(--line)] bg-cream px-5 py-4"
+        >
+          <p className="label text-forest">{t("booking.doctor.scheduleUnavailableTitle")}</p>
+          <p className="label mt-2 leading-[1.9] text-ink/50">
+            {t("booking.doctor.scheduleUnavailableBody")}
+          </p>
+        </div>
+      ) : null}
 
       <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {sorted.map((doctor) => {
@@ -68,13 +98,17 @@ export function DoctorSelector() {
                     <p className="mono-num mt-2 text-sm font-bold">
                       {doctor.next ? doctor.next.time : "—"}
                     </p>
-                    <p className="label text-ink/35">{doctor.next ? shortDateL(doctor.next.date, locale) : t("booking.doctor.full")}</p>
+                    <p className="label text-ink/35">{nextLabel(doctor)}</p>
                   </div>
                 </div>
               </button>
 
               <div className="mt-3 flex items-center justify-between gap-2">
-                <span className="label text-forest">{matches ? t("booking.doctor.bestMatch") : t("booking.doctor.available")}</span>
+                <span
+                  className={`label ${doctor.next && !scheduleUnavailable ? "text-forest" : "text-ink/40"}`}
+                >
+                  {availabilityLabel(doctor, matches)}
+                </span>
                 {!treatsSpecies ? (
                   <span className="label text-ink/35">{t("booking.doctor.confirmSpecies")}</span>
                 ) : null}

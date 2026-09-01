@@ -25,6 +25,8 @@ type ShellProps = {
   pets: PetOption[];
   services: { slug: string; name: string; durationMinutes: number; summary: string }[];
   initialDoctorId?: string | null;
+  /** True when the schedule could not be read from the database. */
+  scheduleUnavailable?: boolean;
 };
 
 export function BookingShell({
@@ -33,6 +35,7 @@ export function BookingShell({
   pets,
   services,
   initialDoctorId,
+  scheduleUnavailable = false,
 }: ShellProps) {
   return (
     <BookingProvider
@@ -40,6 +43,7 @@ export function BookingShell({
       user={user}
       pets={pets}
       initialDoctorId={initialDoctorId}
+      scheduleUnavailable={scheduleUnavailable}
     >
       <div className="booking-shell min-h-screen bg-canvas">
         <BookingTopBar />
