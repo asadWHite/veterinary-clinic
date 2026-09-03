@@ -167,7 +167,10 @@ export function SiteHeader({
             </Link>
           )}
 
-          <Link href={`/${locale}/book`} className="btn btn-primary hidden !px-5 !py-3 sm:inline-flex">
+          <Link
+            href={`/${locale}/book`}
+            className="btn btn-primary !px-4 !py-2.5 text-[0.62rem] sm:!px-5 sm:!py-3 sm:text-[0.75rem]"
+          >
             {t("nav.book")}
           </Link>
 

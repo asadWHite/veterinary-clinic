@@ -116,6 +116,13 @@ export function PetSelector({
     go("age");
   }
 
+  function skipStep() {
+    // Pet details are optional: the appointment still carries species,
+    // life stage and the questionnaire answers.
+    set({ pet: null });
+    go("age");
+  }
+
   function submitDraft() {
     set({
       pet: {
@@ -167,19 +174,12 @@ export function PetSelector({
       )}
 
       {isAuthenticated && !adding && (
-        <div className="flex flex-wrap items-center gap-4">
-          <button type="button" onClick={() => setAdding(true)} className="btn btn-ghost">
+        <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+          <button type="button" onClick={() => setAdding(true)} className="btn btn-ghost w-full sm:w-auto">
             {t("booking.pet.addNew")}
           </button>
-          <button
-            type="button"
-            onClick={() => {
-              set({ pet: { id: null, name: "", species: state.species, breed: "", birthDate: "", weight: "", sex: "", notes: "" } });
-              go("age");
-            }}
-            className="link-underline text-[0.72rem] tracking-[0.14em] text-ink-2 uppercase"
-          >
-            {t("booking.pet.guest")}
+          <button type="button" onClick={skipStep} className="btn btn-quiet w-full sm:w-auto">
+            {t("booking.pet.skip")}
           </button>
         </div>
       )}
@@ -258,18 +258,24 @@ export function PetSelector({
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4">
-            <button type="button" onClick={submitDraft} className="btn btn-primary">
-              {t("booking.questions.continue")}
-            </button>
-            {isAuthenticated && (
-              <button type="button" onClick={() => setAdding(false)} className="btn btn-quiet">
-                {t("common.back")}
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <button type="button" onClick={submitDraft} className="btn btn-primary w-full sm:w-auto">
+                {t("booking.questions.continue")}
               </button>
-            )}
-            {!isAuthenticated && (
-              <p className="max-w-xs text-xs leading-relaxed text-ink-2">{t("booking.pet.guestNote")}</p>
-            )}
+              <button type="button" onClick={skipStep} className="btn btn-quiet w-full sm:w-auto">
+                {t("booking.pet.skip")}
+              </button>
+              {isAuthenticated && (
+                <button type="button" onClick={() => setAdding(false)} className="btn btn-quiet w-full sm:w-auto">
+                  {t("common.back")}
+                </button>
+              )}
+            </div>
+            <p className="max-w-sm text-xs leading-relaxed text-ink-2">
+              {t("booking.pet.skipHint")}
+              {!isAuthenticated ? ` ${t("booking.pet.guestNote")}` : ""}
+            </p>
           </div>
         </div>
       )}

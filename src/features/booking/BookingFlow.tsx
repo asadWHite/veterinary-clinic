@@ -167,7 +167,7 @@ export function BookingFlow(props: BookingFlowProps) {
           })}
         </ol>
 
-        <div className="flex flex-col gap-4 border border-line bg-canvas-2/50 p-5">
+        <div className="hidden flex-col gap-4 border border-line bg-canvas-2/50 p-5 lg:flex">
           <span className="label-eyebrow">{t("booking.summary.pet")}</span>
           <div className="relative aspect-[4/3] w-full overflow-hidden bg-canvas">
             <Image

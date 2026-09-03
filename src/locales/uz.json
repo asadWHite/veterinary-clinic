@@ -258,7 +258,9 @@
       "male": "Erkak",
       "female": "Urg‘ochi",
       "notes": "Qo‘shimcha izoh",
-      "years": "yosh"
+      "years": "yosh",
+      "skip": "Bu qadamni o‘tkazib yuborish",
+      "skipHint": "Ma’lumotlarsiz davom etish mumkin — ularni qabulda to‘ldiramiz."
     },
     "age": {
       "question": "Yoshi qancha?",

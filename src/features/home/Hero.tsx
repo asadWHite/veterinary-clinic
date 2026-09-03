@@ -20,9 +20,29 @@ export function Hero({
 
   return (
     <section className="relative overflow-hidden border-b border-line">
-      <div className="mx-auto grid w-full max-w-[100rem] grid-cols-1 gap-10 px-5 pt-12 pb-16 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-20 lg:pb-24 xl:gap-20">
-        <div className="flex flex-col justify-between gap-10">
-          <div className="flex flex-col gap-8">
+      <div className="mx-auto grid w-full max-w-[100rem] grid-cols-1 gap-10 px-5 pt-12 pb-14 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-20 lg:pb-24 xl:gap-20">
+        {/* ── text column ─────────────────────────────────────────────── */}
+        <div className="relative isolate flex flex-col justify-between gap-9">
+          {/* White cat, barely visible, behind the headline */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+          >
+            <Image
+              src="/images/hero-cat-white.jpg"
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover object-[68%_28%] opacity-[0.5] lg:opacity-[0.17]"
+              style={{ filter: "saturate(0.5) brightness(1.05)" }}
+            />
+            {/* veils keep the text on a clean canvas and fade the cat in */}
+            <div className="absolute inset-0 bg-gradient-to-r from-canvas via-canvas/60 to-canvas/15" />
+            <div className="absolute inset-0 bg-gradient-to-t from-canvas/15 via-canvas/40 to-canvas/85" />
+            <div className="absolute inset-0 bg-canvas/25 lg:bg-canvas/45" />
+          </div>
+
+          <div className="flex flex-col gap-7">
             <div className="flex flex-wrap items-center gap-4">
               <span className="text-[0.7rem] font-medium tracking-[0.4em] text-forest uppercase">
                 {CLINIC.name}
@@ -47,38 +67,39 @@ export function Hero({
               </p>
             </Reveal>
 
-            <Reveal delay={220} className="flex flex-wrap items-center gap-4">
-              <Link href={`/${locale}/book`} className="btn btn-primary">
+            <Reveal delay={220} className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+              <Link href={`/${locale}/book`} className="btn btn-primary w-full sm:w-auto">
                 {t("home.hero.primaryCta")}
               </Link>
-              <Link href={`/${locale}/services`} className="btn btn-ghost">
+              <Link href={`/${locale}/services`} className="btn btn-ghost w-full sm:w-auto">
                 {t("home.hero.secondaryCta")}
               </Link>
             </Reveal>
           </div>
 
           <Reveal delay={300}>
-            <dl className="grid grid-cols-3 gap-6 border-t border-line pt-8">
+            <dl className="grid grid-cols-3 gap-4 border-t border-line pt-7 sm:gap-6">
               <div className="flex flex-col gap-1">
                 <dt className="label-eyebrow">{t("nav.services")}</dt>
-                <dd className="font-serif text-2xl text-ink">{serviceCount}</dd>
+                <dd className="font-serif text-xl text-ink sm:text-2xl">{serviceCount}</dd>
               </div>
               <div className="flex flex-col gap-1">
                 <dt className="label-eyebrow">{t("nav.doctors")}</dt>
-                <dd className="font-serif text-2xl text-ink">{doctorCount}</dd>
+                <dd className="font-serif text-xl text-ink sm:text-2xl">{doctorCount}</dd>
               </div>
               <div className="flex flex-col gap-1">
                 <dt className="label-eyebrow">{t("nav.journal")}</dt>
-                <dd className="font-serif text-2xl text-ink">{journalCount}</dd>
+                <dd className="font-serif text-xl text-ink sm:text-2xl">{journalCount}</dd>
               </div>
             </dl>
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-ink-2">
+            <p className="mt-5 max-w-md text-[0.8rem] leading-relaxed text-ink-2 sm:text-sm">
               {t("home.story.pillars.0.title")} · {t("home.story.pillars.1.title")} ·{" "}
               {t("home.story.pillars.2.title")}
             </p>
           </Reveal>
         </div>
 
+        {/* ── image column ────────────────────────────────────────────── */}
         <Reveal delay={100} className="relative">
           <div className="relative aspect-[4/5] w-full overflow-hidden bg-canvas-2 lg:aspect-auto lg:h-full lg:min-h-[36rem]">
             <Image
@@ -95,7 +116,7 @@ export function Hero({
             <span className="editorial-serif max-w-[16rem] text-sm text-forest-2">
               {t("home.story.pillars.1.body")}
             </span>
-            <span className="flex flex-col items-end gap-1 text-right">
+            <span className="flex flex-col items-start gap-1 text-left sm:items-end sm:text-right">
               <span className="label-eyebrow">{t("contact.address")}</span>
               <span>{pick(CLINIC.addressShort, locale)}</span>
               <a href="tel:+998994064640" className="link-underline text-ink">

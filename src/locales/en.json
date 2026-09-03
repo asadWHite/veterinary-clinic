@@ -258,7 +258,9 @@
       "male": "Male",
       "female": "Female",
       "notes": "Additional notes",
-      "years": "years old"
+      "years": "years old",
+      "skip": "Skip this step",
+      "skipHint": "You can continue without the details — we fill them in at the visit."
     },
     "age": {
       "question": "How old are they?",
