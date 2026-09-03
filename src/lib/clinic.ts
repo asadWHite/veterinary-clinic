@@ -1,219 +1,162 @@
-import { asc, eq } from "drizzle-orm";
-import { db, safeQuery } from "@/db";
-import { appointments, availabilityRules, doctors, pets, services } from "@/db/schema";
-import { ensureSeeded } from "@/db/seed";
-import { doctorSeeds } from "@/data/doctors";
-import { serviceSeeds } from "@/data/services";
-import { findNextAvailable, getAvailabilityRange, todayISO } from "@/lib/availability";
+import content from "@/clinic-content.json";
 
-export type DoctorWithNext = {
-  id: string;
-  slug: string;
-  code: string;
+export type Localized = { uz: string; ru: string; en: string };
+export type Locale = "uz" | "ru" | "en";
+
+export type ClinicBrand = {
   name: string;
-  role: string;
-  specialization: string;
-  summary: string;
-  bio: string;
-  photoKey: string | null;
-  initials: string;
-  speciesFocus: string[];
-  languages: string[];
-  next: { date: string; time: string } | null;
-  /**
-   * Whether the clinician has working hours at all. `next === null` means two
-   * very different things depending on this flag: "no schedule published yet"
-   * or "fully booked for the next two weeks". Showing "fully booked" for a
-   * doctor with no schedule is what made every clinician look busy.
-   */
-  hasSchedule: boolean;
+  fullName: Localized;
+  shortLabel: Localized;
+  website: string;
+  instagramHandle: string;
+  instagramUrl: string;
+  phones: string[];
+  phoneLinks: string[];
+  email: string;
+  address: Localized;
+  addressShort: Localized;
+  hours: Localized;
+  hoursWeekdays: Localized;
+  hoursWeekend: Localized;
+  lastAppointment: string;
+  timezone: string;
 };
 
-/**
- * Static fallback so the marketing pages stay complete and the site keeps
- * rendering when the database is unreachable (for example on a fresh deploy
- * where DATABASE_URL has not been configured yet).
- */
-const fallbackDoctors: DoctorWithNext[] = doctorSeeds.map((d) => ({
-  id: `offline-${d.slug}`,
-  slug: d.slug,
-  code: d.code,
-  name: d.name,
-  role: d.role,
-  specialization: d.specialization.en,
-  summary: d.summary,
-  bio: d.bio,
-  photoKey: d.photoKey,
-  initials: d.initials,
-  speciesFocus: d.speciesFocus,
-  languages: d.languages,
-  next: null,
-  hasSchedule: false,
-}));
+export const CLINIC: ClinicBrand = content.brand;
 
-const fallbackServices = serviceSeeds.map((s) => ({
-  id: `offline-${s.slug}`,
-  slug: s.slug,
-  name: s.name,
-  category: s.category,
-  summary: s.summary,
-  description: s.description,
-  durationMinutes: s.durationMinutes,
-  priceFrom: s.priceFrom,
-  sortOrder: s.sortOrder,
-}));
+export const CLINIC_SERVICES = content.services;
+export const CLINIC_DOCTORS = content.doctors;
+export const CLINIC_JOURNAL = content.journal;
+export const CLINIC_SCHEDULE = content.schedule;
 
-export type LocalizedService = (typeof fallbackServices)[number];
+export const LAST_APPOINTMENT_MINUTE: number = content.schedule.lastAppointmentMinute;
 
-/** Doctor ids that have at least one working-hours rule. */
-async function doctorIdsWithSchedule(): Promise<Set<string>> {
-  const rows = await safeQuery(
-    () =>
-      db
-        .selectDistinct({ doctorId: availabilityRules.doctorId })
-        .from(availabilityRules),
-    [],
-    "doctorSchedule",
-  );
-  return new Set(rows.map((r) => r.doctorId));
-}
-
-export async function getDoctors(): Promise<DoctorWithNext[]> {
-  await ensureSeeded();
-  const rows = await safeQuery(
-    () => db.select().from(doctors).where(eq(doctors.active, true)).orderBy(asc(doctors.sortOrder)),
-    [],
-    "getDoctors",
-  );
-  if (rows.length === 0) return fallbackDoctors;
-
-  const withSchedule = await doctorIdsWithSchedule();
-
-  return rows.map((r) => ({
-    id: r.id,
-    slug: r.slug,
-    code: r.code,
-    name: r.name,
-    role: r.role,
-    specialization: r.specialization,
-    summary: r.summary,
-    bio: r.bio,
-    photoKey: r.photoKey,
-    initials: r.initials,
-    speciesFocus: r.speciesFocus ?? [],
-    languages: r.languages ?? [],
-    next: null,
-    hasSchedule: withSchedule.has(r.id),
+/** 0 = Monday … 6 = Sunday */
+export function clinicIntervalsForWeekday(weekday: number): Array<{ start: number; end: number }> {
+  const isWeekend = weekday === 5 || weekday === 6;
+  const raw = isWeekend ? CLINIC_SCHEDULE.weekend : CLINIC_SCHEDULE.weekdays;
+  return raw.map((interval) => ({
+    start: Number(interval.start.slice(0, 2)) * 60 + Number(interval.start.slice(3, 5)),
+    end: Number(interval.end.slice(0, 2)) * 60 + Number(interval.end.slice(3, 5)),
   }));
 }
 
-/**
- * Doctors plus their next free slot.
- *
- * Returns `scheduleUnavailable` when the schedule could not be calculated
- * (database hiccup, timeout, …). That is deliberately *not* the same thing as
- * "no free slots": callers must be able to tell an unknown schedule from a
- * fully booked one, otherwise every clinician renders as "busy".
- */
-export async function getDoctorsWithAvailabilitySafe(durationMinutes = 30): Promise<{
-  doctors: DoctorWithNext[];
-  scheduleUnavailable: boolean;
-}> {
-  const docs = await getDoctors();
-  let range: Awaited<ReturnType<typeof getAvailabilityRange>> = {};
-  let scheduleUnavailable = false;
-
-  try {
-    range = await getAvailabilityRange({
-      doctorIds: docs.map((d) => d.id),
-      startDate: todayISO(),
-      days: 14,
-      durationMinutes,
-    });
-  } catch (error) {
-    console.error("[clinic] availability range failed:", error);
-    scheduleUnavailable = true;
-  }
-
-  const next = findNextAvailable(range);
-  return {
-    doctors: docs.map((d) => ({ ...d, next: next[d.id] ?? null })),
-    scheduleUnavailable,
-  };
+export function clinicWeekdaysForPattern(pattern: string): number[] {
+  if (pattern === "weekdays") return [0, 1, 2, 3, 4];
+  if (pattern === "weekdaysPlusSaturday") return [0, 1, 2, 3, 4, 5];
+  return [0, 1, 2, 3, 4, 5, 6];
 }
 
-export async function getDoctorsWithAvailability(
-  durationMinutes = 30,
-): Promise<DoctorWithNext[]> {
-  const { doctors } = await getDoctorsWithAvailabilitySafe(durationMinutes);
-  return doctors;
+export function pick(value: Localized | null | undefined, locale: Locale): string {
+  if (!value) return "";
+  return value[locale] || value.en || value.uz || value.ru || "";
 }
 
-export async function getServices(): Promise<LocalizedService[]> {
-  await ensureSeeded();
-  const rows = await safeQuery(
-    () => db.select().from(services).orderBy(asc(services.sortOrder)),
-    [],
-    "getServices",
-  );
-  if (rows.length === 0) return fallbackServices;
+export function clinicNameFor(locale: Locale): string {
+  return pick(CLINIC.fullName, locale);
+}
 
-  return rows.map((row) => {
-    const seed = fallbackServices.find((s) => s.slug === row.slug);
+export function clinicAddressFor(locale: Locale): string {
+  return pick(CLINIC.address, locale);
+}
+
+export function clinicHoursFor(locale: Locale): string {
+  return pick(CLINIC.hours, locale);
+}
+
+/* ------------------------------------------------------------ offline cards */
+
+export type OfflineService = {
+  id: number;
+  slug: string;
+  title: string;
+  summary: string;
+  description: string;
+  durationMinutes: number;
+  sortOrder: number;
+};
+
+export function offlineServices(locale: Locale): OfflineService[] {
+  return CLINIC_SERVICES.map((service, index) => ({
+    id: index + 1,
+    slug: service.slug,
+    title: pick(service.title, locale),
+    summary: pick(service.summary, locale),
+    description: pick(service.description, locale),
+    durationMinutes: service.duration,
+    sortOrder: service.order,
+  }));
+}
+
+export type OfflineDoctor = {
+  id: number;
+  slug: string;
+  name: string;
+  title: string;
+  bio: string;
+  photoUrl: string | null;
+  experienceYears: number | null;
+  languages: string[];
+  isPlaceholder: boolean;
+  serviceSlugs: string[];
+  reviewCount: number;
+  averageRating: number | null;
+  weekdayBits: number;
+};
+
+export function offlineDoctors(locale: Locale): OfflineDoctor[] {
+  return CLINIC_DOCTORS.map((doctor, index) => ({
+    id: index + 1,
+    slug: doctor.slug,
+    name: pick(doctor.name, locale),
+    title: pick(doctor.title, locale),
+    bio: pick(doctor.bio, locale),
+    photoUrl: null,
+    experienceYears: null,
+    languages: doctor.languages,
+    isPlaceholder: true,
+    serviceSlugs: doctor.services,
+    reviewCount: 0,
+    averageRating: null,
+    weekdayBits: clinicWeekdaysForPattern(doctor.schedulePattern).reduce(
+      (bits, weekday) => bits | (1 << weekday),
+      0,
+    ),
+  }));
+}
+
+export type OfflineJournal = {
+  id: number;
+  slug: string;
+  title: string;
+  excerpt: string;
+  body: string;
+  categoryKey: string;
+  coverUrl: string | null;
+  readingMinutes: number | null;
+  publishedAt: Date;
+};
+
+export function offlineJournal(locale: Locale): OfflineJournal[] {
+  return CLINIC_JOURNAL.map((post, index) => {
+    const published = new Date();
+    published.setUTCDate(published.getUTCDate() + post.publishedOffsetDays);
     return {
-      id: row.id,
-      slug: row.slug,
-      name: seed?.name ?? fallbackServices[0].name,
-      category: seed?.category ?? fallbackServices[0].category,
-      summary: seed?.summary ?? fallbackServices[0].summary,
-      description: seed?.description ?? fallbackServices[0].description,
-      durationMinutes: row.durationMinutes,
-      priceFrom: row.priceFrom,
-      sortOrder: row.sortOrder,
+      id: index + 1,
+      slug: post.slug,
+      title: pick(post.title, locale),
+      excerpt: pick(post.excerpt, locale),
+      body: pick(post.body, locale),
+      categoryKey: post.category,
+      coverUrl: post.cover,
+      readingMinutes: post.minutes,
+      publishedAt: published,
     };
-  });
+  }).sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
 }
 
-export async function getServiceBySlug(slug: string) {
-  const all = await getServices();
-  return all.find((s) => s.slug === slug) ?? null;
-}
+/* ---------------------------------------------------------- database status */
 
-export async function getUpcomingForUser(userId: string) {
-  const today = todayISO();
-  const rows = await safeQuery(
-    () =>
-      db
-        .select({
-          id: appointments.id,
-          publicId: appointments.publicId,
-          date: appointments.date,
-          startTime: appointments.startTime,
-          endTime: appointments.endTime,
-          durationMinutes: appointments.durationMinutes,
-          status: appointments.status,
-          petName: appointments.petName,
-          species: appointments.species,
-          doctorName: doctors.name,
-          doctorCode: doctors.code,
-          doctorSpecialization: doctors.specialization,
-          serviceName: services.name,
-        })
-        .from(appointments)
-        .innerJoin(doctors, eq(doctors.id, appointments.doctorId))
-        .innerJoin(services, eq(services.id, appointments.serviceId))
-        .where(eq(appointments.userId, userId))
-        .orderBy(asc(appointments.date), asc(appointments.startTime)),
-    [],
-    "getUpcomingForUser",
-  );
-  return rows.filter((r) => r.date >= today);
-}
-
-export async function getPetsForUser(userId: string) {
-  return safeQuery(
-    () => db.select().from(pets).where(eq(pets.userId, userId)).orderBy(asc(pets.createdAt)),
-    [],
-    "getPetsForUser",
-  );
+export function isDatabaseConfigured(): boolean {
+  return Boolean(process.env.DATABASE_URL && process.env.DATABASE_URL.trim().length > 0);
 }

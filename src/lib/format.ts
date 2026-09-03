@@ -1,147 +1,167 @@
-import type { Locale } from "@/i18n/config";
-import { intlLocale } from "@/i18n/config";
-import { translate } from "@/i18n/dictionaries";
+import { localeTags, type Locale } from "@/lib/i18n/config";
 
-const WEEKDAYS = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+export const CLINIC_TIMEZONE_FALLBACK = "Asia/Tashkent";
+/** Minimum notice before an appointment can start today. */
+export const BOOKING_LEAD_MINUTES = 60;
+/** Grid step for generated slots. */
+export const SLOT_STEP_MINUTES = 15;
+/** How many days ahead a client can book. */
+export const BOOKING_HORIZON_DAYS = 30;
 
-const MONTHS = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-export function parseISO(iso: string): Date {
-  const [y, m, d] = iso.split("-").map(Number);
-  return new Date(y, (m ?? 1) - 1, d ?? 1);
-}
-
-function format(iso: string, locale: Locale, options: Intl.DateTimeFormatOptions): string {
-  const date = parseISO(iso);
-  try {
-    return new Intl.DateTimeFormat(intlLocale[locale], options).format(date);
-  } catch {
-    return new Intl.DateTimeFormat("en-US", options).format(date);
-  }
-}
-
-/* ---------- locale-aware formatting ---------- */
-
-export function weekdayNameL(iso: string, locale: Locale): string {
-  return format(iso, locale, { weekday: "long" });
-}
-
-export function weekdayShortL(iso: string, locale: Locale): string {
-  return format(iso, locale, { weekday: "short" });
-}
-
-export function monthShortL(iso: string, locale: Locale): string {
-  return format(iso, locale, { month: "short" });
-}
-
-export function dayNumber(iso: string): string {
-  return format(iso, "en", { day: "2-digit" });
-}
-
-export function monthDayL(iso: string, locale: Locale): string {
-  return format(iso, locale, { day: "numeric", month: "long" });
-}
-
-/** EN: "Monday, September 1" · RU: "понедельник, 1 сентября" · UZ: "dushanba, 1-sentabr" */
-export function longDateL(iso: string, locale: Locale): string {
-  return format(iso, locale, { weekday: "long", day: "numeric", month: "long" });
-}
-
-export function shortDateL(iso: string, locale: Locale): string {
-  return format(iso, locale, { day: "2-digit", month: "short" });
-}
-
-export function relativeDayL(iso: string, locale: Locale): string | null {
-  const today = new Date();
-  const todayISO = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(
-    today.getDate(),
-  ).padStart(2, "0")}`;
-  if (iso === todayISO) return translate(locale, "time.today");
-  const diff = Math.round((parseISO(iso).getTime() - parseISO(todayISO).getTime()) / 86400000);
-  if (diff === 1) return translate(locale, "time.tomorrow");
-  if (diff === -1) return translate(locale, "time.yesterday");
-  return null;
-}
-
-export function durationLabelL(minutes: number, locale: Locale): string {
-  if (minutes < 60) return `${minutes} ${translate(locale, "common.minutes")}`;
+export function minutesToTime(minutes: number): string {
   const h = Math.floor(minutes / 60);
   const m = minutes % 60;
-  const hours = `${h} ${translate(locale, "common.hours")}`;
-  return m === 0 ? hours : `${hours} ${m} ${translate(locale, "common.minutes")}`;
+  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
 }
 
-/* ---------- English fallbacks (used where a locale is not yet threaded) ---------- */
-
-export function weekdayName(iso: string): string {
-  return WEEKDAYS[parseISO(iso).getDay()] ?? "";
+export function timeToMinutes(value: string): number {
+  const [h, m] = value.split(":").map((part) => Number.parseInt(part, 10));
+  return (h || 0) * 60 + (m || 0);
 }
 
-export function weekdayShort(iso: string): string {
-  return (WEEKDAYS[parseISO(iso).getDay()] ?? "").slice(0, 3).toUpperCase();
+/** Current date/time in a specific IANA zone, without external dependencies. */
+export function nowInZone(timeZone: string = CLINIC_TIMEZONE_FALLBACK): {
+  day: string;
+  minute: number;
+  weekday: number;
+} {
+  const formatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    weekday: "short",
+  });
+  const parts = formatter.formatToParts(new Date());
+  const get = (type: string) => parts.find((part) => part.type === type)?.value ?? "";
+  const day = `${get("year")}-${get("month")}-${get("day")}`;
+  const hour = Number.parseInt(get("hour"), 10) % 24;
+  const minute = Number.parseInt(get("minute"), 10);
+  const weekdayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const weekdayIndex = weekdayNames.indexOf(get("weekday").slice(0, 3));
+  return { day, minute: hour * 60 + minute, weekday: weekdayIndex < 0 ? 0 : weekdayIndex };
 }
 
-export function monthShort(iso: string): string {
-  return (MONTHS[parseISO(iso).getMonth()] ?? "").slice(0, 3).toUpperCase();
+export function parseDay(day: string): Date {
+  const [y, m, d] = day.split("-").map((part) => Number.parseInt(part, 10));
+  return new Date(Date.UTC(y, (m || 1) - 1, d || 1));
 }
 
-export function monthDay(iso: string): string {
-  const d = parseISO(iso);
-  return `${MONTHS[d.getMonth()]} ${d.getDate()}`;
+export function toDayString(date: Date): string {
+  return date.toISOString().slice(0, 10);
 }
 
-export function longDate(iso: string): string {
-  const d = parseISO(iso);
-  return `${WEEKDAYS[d.getDay()]} · ${MONTHS[d.getMonth()]} ${d.getDate()}`;
+export function addDays(day: string, amount: number): string {
+  const date = parseDay(day);
+  date.setUTCDate(date.getUTCDate() + amount);
+  return toDayString(date);
 }
 
-export function shortDate(iso: string): string {
-  const d = parseISO(iso);
-  return `${MONTHS[d.getMonth()].slice(0, 3).toUpperCase()} ${String(d.getDate()).padStart(2, "0")}`;
+/** 0 = Monday … 6 = Sunday */
+export function weekdayOf(day: string): number {
+  const iso = parseDay(day).getUTCDay(); // 0 = Sunday
+  return (iso + 6) % 7;
 }
 
-export function durationLabel(minutes: number): string {
-  return durationLabelL(minutes, "en");
+export function formatDateLong(day: string, locale: Locale): string {
+  return new Intl.DateTimeFormat(localeTags[locale], {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  }).format(parseDay(day));
 }
 
-export function relativeDay(iso: string): string | null {
-  return relativeDayL(iso, "en");
+export function formatDateMedium(day: string, locale: Locale): string {
+  return new Intl.DateTimeFormat(localeTags[locale], {
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  }).format(parseDay(day));
 }
 
-export function todayISO(): string {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+export function formatDateShort(day: string, locale: Locale): string {
+  return new Intl.DateTimeFormat(localeTags[locale], {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(parseDay(day));
 }
 
-export function ageLabel(years: number | null | undefined): string {
-  if (years === null || years === undefined) return "—";
-  if (years < 1) return "Under a year";
-  return `${years} ${years === 1 ? "year" : "years"}`;
+export function formatWeekdayShort(day: string, locale: Locale): string {
+  return new Intl.DateTimeFormat(localeTags[locale], {
+    weekday: "short",
+    timeZone: "UTC",
+  }).format(parseDay(day));
 }
 
-export function ageLabelL(years: number | null | undefined, locale: Locale): string {
-  if (years === null || years === undefined) return translate(locale, "notAvailable");
-  const stage = years < 1 ? "baby" : years < 3 ? "young" : years < 8 ? "adult" : "senior";
-  return `${years} — ${translate(locale, `ageStage.${stage}`)}`;
+export function formatDateTime(value: Date | string, locale: Locale): string {
+  const date = typeof value === "string" ? new Date(value) : value;
+  return new Intl.DateTimeFormat(localeTags[locale], {
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(date);
+}
+
+export function formatRelativeDay(day: string, locale: Locale, t: (key: string) => string): string {
+  const today = nowInZone().day;
+  if (day === today) return t("common.today");
+  if (day === addDays(today, 1)) return t("common.tomorrow");
+  return formatDateLong(day, locale);
+}
+
+export function ageFromBirthDate(
+  birthDate: string | null | undefined,
+  locale: Locale,
+): string | null {
+  if (!birthDate) return null;
+  const birth = parseDay(birthDate);
+  if (Number.isNaN(birth.getTime())) return null;
+  const now = new Date();
+  let months =
+    (now.getUTCFullYear() - birth.getUTCFullYear()) * 12 + (now.getUTCMonth() - birth.getUTCMonth());
+  if (now.getUTCDate() < birth.getUTCDate()) months -= 1;
+  if (months < 0) months = 0;
+  const years = Math.floor(months / 12);
+  const rest = months % 12;
+  const rtf = new Intl.RelativeTimeFormat(localeTags[locale], { numeric: "auto" });
+  const yearPart = years > 0 ? new Intl.NumberFormat(localeTags[locale]).format(years) : "";
+  const monthPart = rest > 0 ? rtf.format(rest, "month").replace(/^[^\d]*/, "") : "";
+  if (years > 0 && rest > 0) return `${yearPart} · ${monthPart}`;
+  if (years > 0) return yearPart;
+  if (rest > 0) return monthPart;
+  return rtf.format(0, "month").replace(/^[^\d]*/, "");
+}
+
+export function lifeStageFromBirthDate(birthDate: string | null | undefined): "baby" | "young" | "adult" | "senior" {
+  if (!birthDate) return "adult";
+  const months = monthDiff(birthDate);
+  if (months <= 6) return "baby";
+  if (months <= 24) return "young";
+  if (months <= 84) return "adult";
+  return "senior";
+}
+
+function monthDiff(birthDate: string): number {
+  const birth = parseDay(birthDate);
+  const now = new Date();
+  let months =
+    (now.getUTCFullYear() - birth.getUTCFullYear()) * 12 + (now.getUTCMonth() - birth.getUTCMonth());
+  if (now.getUTCDate() < birth.getUTCDate()) months -= 1;
+  return Math.max(0, months);
+}
+
+export function bookingDayRange(fromDay: string, count: number): string[] {
+  return Array.from({ length: count }, (_, index) => addDays(fromDay, index));
+}
+
+export function icsTimestamp(day: string, minute: number): string {
+  const date = parseDay(day);
+  const h = String(Math.floor(minute / 60)).padStart(2, "0");
+  const m = String(minute % 60).padStart(2, "0");
+  return `${date.toISOString().slice(0, 10).replace(/-/g, "")}T${h}${m}00`;
 }

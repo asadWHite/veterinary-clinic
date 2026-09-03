@@ -1,0 +1,415 @@
+{
+  "brand": {
+    "name": "ELVET",
+    "fullName": {
+      "uz": "ELVET Veterinar Klinikasi",
+      "ru": "Ветеринарная клиника ELVET",
+      "en": "ELVET Veterinary Clinic"
+    },
+    "shortLabel": {
+      "uz": "Veterinar klinika",
+      "ru": "Ветеринарная клиника",
+      "en": "Veterinary Clinic"
+    },
+    "website": "elvet.uz",
+    "instagramHandle": "@elvet.uz",
+    "instagramUrl": "https://instagram.com/elvet.uz",
+    "phones": ["+998 99 406 46 40", "+998 98 700 46 40"],
+    "phoneLinks": ["+998994064640", "+998987004640"],
+    "email": "",
+    "address": {
+      "uz": "Yakkasaroy, Shoxjahon 4A, Toshkent, O‘zbekiston",
+      "ru": "Якасарай, улица Шохжахон 4А, Ташкент, Узбекистан",
+      "en": "Yakkasaroy, Shoxjahon 4A, Tashkent, Uzbekistan"
+    },
+    "addressShort": {
+      "uz": "Yakkasaroy, Shoxjahon 4A, Toshkent",
+      "ru": "Якасарай, Шохжахон 4А, Ташкент",
+      "en": "Yakkasaroy, Shoxjahon 4A, Tashkent"
+    },
+    "hours": {
+      "uz": "Dushanba–Juma 10:00–19:00 · Shanba–Yakshanba 11:00–19:00",
+      "ru": "Понедельник–пятница 10:00–19:00 · Суббота–воскресенье 11:00–19:00",
+      "en": "Monday–Friday 10:00–19:00 · Saturday–Sunday 11:00–19:00"
+    },
+    "hoursWeekdays": {
+      "uz": "Dushanba–Juma: 10:00–19:00",
+      "ru": "Понедельник–пятница: 10:00–19:00",
+      "en": "Monday–Friday: 10:00–19:00"
+    },
+    "hoursWeekend": {
+      "uz": "Shanba–Yakshanba: 11:00–19:00",
+      "ru": "Суббота–воскресенье: 11:00–19:00",
+      "en": "Saturday–Sunday: 11:00–19:00"
+    },
+    "lastAppointment": "18:30",
+    "timezone": "Asia/Tashkent"
+  },
+  "schedule": {
+    "weekdays": [{ "start": "10:00", "end": "19:00" }],
+    "weekend": [{ "start": "11:00", "end": "19:00" }],
+    "lastAppointmentMinute": 1110
+  },
+  "services": [
+    {
+      "slug": "general-check-up",
+      "duration": 30,
+      "order": 1,
+      "title": {
+        "uz": "Umumiy ko‘rik",
+        "ru": "Общий приём",
+        "en": "General consultation"
+      },
+      "summary": {
+        "uz": "To‘liq ko‘rik, anamnez va yozma xulosa.",
+        "ru": "Полный осмотр, анамнез и письменное заключение.",
+        "en": "Full examination, history and a written summary."
+      },
+      "description": {
+        "uz": "Biz vaznni, ishtahani, terini, ko‘z-quloq-og‘izni va yurak-nafas tizimini ko‘ramiz. Siz nima kuzatganingizni so‘raymiz va keyingi qadamlarni yozma reja qilib beramiz.",
+        "ru": "Мы проверяем вес, аппетит, кожу, глаза, уши, полость рта, сердце и дыхание. Спрашиваем, что вы наблюдали дома, и отдаём письменный план следующих шагов.",
+        "en": "We check weight, appetite, skin, eyes, ears, mouth, heart and breathing. We ask what you have observed at home and give you a written plan for the next steps."
+      }
+    },
+    {
+      "slug": "vaccination",
+      "duration": 30,
+      "order": 2,
+      "title": {
+        "uz": "Emlash",
+        "ru": "Вакцинация",
+        "en": "Vaccination"
+      },
+      "summary": {
+        "uz": "Mavjud emlash holatiga qarab reja.",
+        "ru": "План с учётом предыдущих прививок.",
+        "en": "A plan based on previous vaccinations."
+      },
+      "description": {
+        "uz": "Emlashdan oldin biz umumiy holatni bahalaymiz: isitma, ishtaha, yaqindagi kasalliklar. Keyin eslatmalar jadvalini tuzamiz va keyingi muddatlarni yozib beramiz.",
+        "ru": "Перед вакцинацией мы оцениваем общее состояние: температуру, аппетит, недавние болезни. Затем составляем календарь и записываем следующие сроки.",
+        "en": "Before vaccinating we assess general condition: temperature, appetite, recent illness. Then we build a calendar and write down the next due dates."
+      }
+    },
+    {
+      "slug": "diagnostics",
+      "duration": 45,
+      "order": 3,
+      "title": {
+        "uz": "Diagnostika",
+        "ru": "Диагностика",
+        "en": "Diagnostics"
+      },
+      "summary": {
+        "uz": "Tekshiruvlar va natijalarni tushuntirish.",
+        "ru": "Исследования и объяснение результатов.",
+        "en": "Investigations with results explained."
+      },
+      "description": {
+        "uz": "Qon, siydik, ultratovush va rentgen — barchasi natija nima ma’noni anglatishini tushuntirish bilan. Faqat haqiqatan kerak bo‘lgan tekshiruv.",
+        "ru": "Кровь, моча, УЗИ и рентген — всегда с объяснением, что означает результат. Только те исследования, которые действительно нужны.",
+        "en": "Blood, urine, ultrasound and imaging — always with an explanation of what the result means. Only the investigations that are genuinely needed."
+      }
+    },
+    {
+      "slug": "surgery",
+      "duration": 90,
+      "order": 4,
+      "title": {
+        "uz": "Jarrohlik",
+        "ru": "Хирургия",
+        "en": "Surgery"
+      },
+      "summary": {
+        "uz": "Rejalashtirilgan aralashuv va tayyorgarlik.",
+        "ru": "Плановые вмешательства и подготовка.",
+        "en": "Planned procedures and preparation."
+      },
+      "description": {
+        "uz": "Aralashuvdan oldin ko‘rik va tayyorgarlik rejalashtiriladi. Biz nima bo‘lishini, qancha vaqt oshishini va uyda qanday parvarish qilishni oldindan aytamiz.",
+        "ru": "Перед вмешательством планируются осмотр и подготовка. Мы заранее объясняем, что произойдёт, сколько времени займёт восстановление и какой нужен уход дома.",
+        "en": "Before a procedure we plan the examination and preparation. We explain in advance what will happen, how long recovery takes and what home care involves."
+      }
+    },
+    {
+      "slug": "dental-care",
+      "duration": 60,
+      "order": 5,
+      "title": {
+        "uz": "Stomatologiya",
+        "ru": "Стоматология",
+        "en": "Dental care"
+      },
+      "summary": {
+        "uz": "Tosh, yallig‘lanish va parvarish reja.",
+        "ru": "Камень, воспаление и план ухода.",
+        "en": "Tartar, inflammation and a care plan."
+      },
+      "description": {
+        "uz": "Og‘iz bo‘shlig‘ini ko‘ramiz, davolash imkoniyatlarini va uyda parvarishni tushuntiramiz. Og‘riqsiz ko‘rikdan boshlaymiz.",
+        "ru": "Осматриваем полость рта, объясняем варианты лечения и уход дома. Начинаем с безболезненного осмотра.",
+        "en": "We examine the mouth, explain treatment options and home care. We always begin with a painless examination."
+      }
+    },
+    {
+      "slug": "dermatology",
+      "duration": 45,
+      "order": 6,
+      "title": {
+        "uz": "Dermatologiya",
+        "ru": "Дерматология",
+        "en": "Dermatology"
+      },
+      "summary": {
+        "uz": "Teri, jun va qichishish sabablari.",
+        "ru": "Причины проблем кожи, шерсти и зуда.",
+        "en": "Causes behind skin, coat and itching."
+      },
+      "description": {
+        "uz": "Teri holati parazitlar, allergiya va ovqatlanish bilan bog‘liq bo‘lishi mumkin. Biz bosqichma-bosqich tekshirib, eng oddiy sababdan boshlaymiz.",
+        "ru": "Состояние кожи может быть связано с паразитами, аллергией и питанием. Мы проверяем последовательно и начинаем с самой простой причины.",
+        "en": "Skin condition can involve parasites, allergy and nutrition. We check step by step, starting with the simplest cause."
+      }
+    },
+    {
+      "slug": "urgent-care",
+      "duration": 30,
+      "order": 7,
+      "title": {
+        "uz": "Shoshilinch qabul",
+        "ru": "Экстренный приём",
+        "en": "Urgent care"
+      },
+      "summary": {
+        "uz": "Kechiktirilmaydigan belgilar uchun qabul.",
+        "ru": "Приём для признаков, которые нельзя откладывать.",
+        "en": "For signs that should not wait."
+      },
+      "description": {
+        "uz": "Nafas olish qiyinligi, kuchli og‘riq, uzoq ovqat yemaslik, shikastlanish. Bunday holatlarda qo‘ng‘iroq qilish onlayn yozilishdan tezroq: +998 99 406 46 40.",
+        "ru": "Затруднение дыхания, сильная боль, длительный отказ от еды, травма. В таких случаях звонок быстрее онлайн-записи: +998 99 406 46 40.",
+        "en": "Breathing difficulty, severe pain, refusing food for a long time, injury. Calling is faster in these cases: +998 99 406 46 40."
+      }
+    },
+    {
+      "slug": "preventive-care",
+      "duration": 45,
+      "order": 8,
+      "title": {
+        "uz": "Profilaktika",
+        "ru": "Профилактика",
+        "en": "Preventive care"
+      },
+      "summary": {
+        "uz": "Yoshga va zotga moslab ozuqa, parazitlar, tishlar.",
+        "ru": "Питание, паразиты и зубы — по возрасту и породе.",
+        "en": "Nutrition, parasites and teeth, matched to age and breed."
+      },
+      "description": {
+        "uz": "Profilaktika — bu yillik ko‘rik, parazitlar nazorati, tishlar holati va vazn monitoringi. Biz eslatma jadvalini birga tuzamiz.",
+        "ru": "Профилактика — это ежегодный осмотр, контроль паразитов, состояние зубов и мониторинг веса. Календарь напоминаний составляем вместе.",
+        "en": "Prevention means an annual exam, parasite control, dental condition and weight monitoring. We build the reminder calendar together."
+      }
+    },
+    {
+      "slug": "nutrition-consultation",
+      "duration": 45,
+      "order": 9,
+      "title": {
+        "uz": "Ovqatlanish konsultatsiyasi",
+        "ru": "Консультация по питанию",
+        "en": "Nutrition consultation"
+      },
+      "summary": {
+        "uz": "Yosh, vazn va sog‘liqqa mos ovqatlanish.",
+        "ru": "Питание с учётом возраста, веса и здоровья.",
+        "en": "Feeding matched to age, weight and health."
+      },
+      "description": {
+        "uz": "Hozirgi ratsionni ko‘rib chiqamiz, vazn va tana holatini bahalaymiz, o‘zgarishlarni bosqichma-bosqich rejalashtiramiz.",
+        "ru": "Разбираем текущий рацион, оцениваем вес и состояние тела, планируем изменения постепенно.",
+        "en": "We review the current diet, assess weight and body condition, and plan changes gradually."
+      }
+    }
+  ],
+  "doctors": [
+    {
+      "slug": "doctor-01",
+      "order": 1,
+      "schedulePattern": "all",
+      "languages": ["uz", "ru"],
+      "services": ["general-check-up", "vaccination", "preventive-care", "nutrition-consultation", "urgent-care"],
+      "name": {
+        "uz": "Shifokor 01",
+        "ru": "Врач 01",
+        "en": "Doctor 01"
+      },
+      "title": {
+        "uz": "Umumiy amaliyot",
+        "ru": "Общая практика",
+        "en": "General practice"
+      },
+      "bio": {
+        "uz": "Ma’lumot jamoa tasdiqlangandan keyin to‘ldiriladi. Hozircha bu yozuv bazadagi vaqtinchalik qiymat.",
+        "ru": "Информация будет заполнена после согласования состава команды. Пока это временное значение из базы.",
+        "en": "Details will be filled in once the team roster is confirmed. For now this is a temporary database value."
+      }
+    },
+    {
+      "slug": "doctor-02",
+      "order": 2,
+      "schedulePattern": "weekdays",
+      "languages": ["uz", "ru", "en"],
+      "services": ["surgery", "diagnostics", "urgent-care", "general-check-up"],
+      "name": {
+        "uz": "Shifokor 02",
+        "ru": "Врач 02",
+        "en": "Doctor 02"
+      },
+      "title": {
+        "uz": "Jarrohlik",
+        "ru": "Хирургия",
+        "en": "Surgery"
+      },
+      "bio": {
+        "uz": "Ma’lumot jamoa tasdiqlangandan keyin to‘ldiriladi. Hozircha bu yozuv bazadagi vaqtinchalik qiymat.",
+        "ru": "Информация будет заполнена после согласования состава команды. Пока это временное значение из базы.",
+        "en": "Details will be filled in once the team roster is confirmed. For now this is a temporary database value."
+      }
+    },
+    {
+      "slug": "doctor-03",
+      "order": 3,
+      "schedulePattern": "weekdaysPlusSaturday",
+      "languages": ["uz", "ru"],
+      "services": ["dermatology", "general-check-up", "preventive-care"],
+      "name": {
+        "uz": "Shifokor 03",
+        "ru": "Врач 03",
+        "en": "Doctor 03"
+      },
+      "title": {
+        "uz": "Dermatologiya",
+        "ru": "Дерматология",
+        "en": "Dermatology"
+      },
+      "bio": {
+        "uz": "Ma’lumot jamoa tasdiqlangandan keyin to‘ldiriladi. Hozircha bu yozuv bazadagi vaqtinchalik qiymat.",
+        "ru": "Информация будет заполнена после согласования состава команды. Пока это временное значение из базы.",
+        "en": "Details will be filled in once the team roster is confirmed. For now this is a temporary database value."
+      }
+    },
+    {
+      "slug": "doctor-04",
+      "order": 4,
+      "schedulePattern": "weekdays",
+      "languages": ["uz", "en"],
+      "services": ["dental-care", "diagnostics", "vaccination", "general-check-up"],
+      "name": {
+        "uz": "Shifokor 04",
+        "ru": "Врач 04",
+        "en": "Doctor 04"
+      },
+      "title": {
+        "uz": "Diagnostika va stomatologiya",
+        "ru": "Диагностика и стоматология",
+        "en": "Diagnostics and dentistry"
+      },
+      "bio": {
+        "uz": "Ma’lumot jamoa tasdiqlangandan keyin to‘ldiriladi. Hozircha bu yozuv bazadagi vaqtinchalik qiymat.",
+        "ru": "Информация будет заполнена после согласования состава команды. Пока это временное значение из базы.",
+        "en": "Details will be filled in once the team roster is confirmed. For now this is a temporary database value."
+      }
+    }
+  ],
+  "journal": [
+    {
+      "slug": "first-days-at-home",
+      "category": "puppy_care",
+      "cover": "/images/journal-puppy.jpg",
+      "minutes": 5,
+      "publishedOffsetDays": -12,
+      "title": {
+        "uz": "Yangi bachcha: birinchi uch kun",
+        "ru": "Новый щенок: первые три дня",
+        "en": "A new puppy: the first three days"
+      },
+      "excerpt": {
+        "uz": "Yangi uy — yangi hidlar, tovushlar va qoidalar. Birinchi uch kun nima muhim va nimani kechiktirish kerak.",
+        "ru": "Новый дом — новые запахи, звуки и правила. Что важно в первые три дня, а что можно отложить.",
+        "en": "A new home means new smells, sounds and rules. What matters in the first three days — and what can wait."
+      },
+      "body": {
+        "uz": "Birinchi uch kun — o‘rganish kunlari. Endi uni o‘rgatish emas, tinchlantirish muhim.\n\nUyga kelganda birinchi ish — sokin joy tayyorlash: yumshoq to‘shak, suv va ozgina makon. Mehmonga kelganlarni bir kunga cheklab qo‘ying: bachcha hozir uxlashni ham o‘rganmoqda.\n\nOvqatni almashtirish shoshilmang. Avval eski ratsionda davom etib, keyin 5–7 kun ichida yangisiga o‘ting — bu oshqozonni tinch tutadi.\n\nBirinchi ko‘rikka yoziling, lekin uni uyga kelgan birinchi kunga rejalashtirmang. Bir hafta ichida — hayvon yangi muhitga o‘rganib olgach, ko‘rik ancha samarali o‘tadi.\n\nKuzatish uchun uch narsa: ishtaha, suv va uyqu. Uchtasidan biri o‘zgarsa, uni yozib qo‘ying va shifokorga aytib bering.",
+        "ru": "Первые три дня — дни привыкания. Сейчас важнее не обучение, а спокойствие.\n\nПервое, что стоит сделать дома — тихое место: мягкая лежанка, вода и немного личного пространства. Гостей лучше отложить на день: щенок сейчас учится даже спать.\n\nНе спешите менять корм. Сначала продолжайте прежний рацион, затем переводите на новый за 5–7 дней — так спокойнее желудку.\n\nЗапишитесь на первый приём, но не в день приезда. Через неделю осмотр пройдёт заметно спокойнее, когда животное освоится.\n\nСледите за тремя вещами: аппетит, вода и сон. Если меняется что-то одно — запишите дату и расскажите врачу.",
+        "en": "The first three days are for settling in, not training.\n\nStart with a quiet spot: a soft bed, water and a little territory of their own. Postpone visitors for a day — a puppy is learning how to sleep right now.\n\nDo not rush a food change. Keep the previous diet first, then transition over five to seven days; it is easier on the stomach.\n\nBook the first appointment, but not on arrival day. A week later the examination goes far better once the animal has settled.\n\nWatch three things: appetite, water and sleep. If one of them changes, write down the date and tell your vet."
+      }
+    },
+    {
+      "slug": "kitten-first-year",
+      "category": "kitten_care",
+      "cover": "/images/journal-cat.jpg",
+      "minutes": 4,
+      "publishedOffsetDays": -8,
+      "title": {
+        "uz": "Mushukning birinchi yili",
+        "ru": "Первый год котёнка",
+        "en": "A kitten's first year"
+      },
+      "excerpt": {
+        "uz": "Birinchi yilda tanlanadigan narsalar: ratsion, idish, sandiq va veterinarga tanishish.",
+        "ru": "Что выбирается в первый год: рацион, посуда, лоток и знакомство с врачом.",
+        "en": "Choices made in the first year: diet, bowls, litter and getting to know a vet."
+      },
+      "body": {
+        "uz": "Mushuklarda birinchi yil — bu o‘sish va odatlar shakllanadigan davr.\n\nSuv idishi alohida muhim: ko‘p mushuklar suvni ovqat yonida emas, boshqa joyda ichishni yaxshi ko‘radi. Ikki joyga qo‘ying.\n\nRatsionni bir marta va keskin o‘zgartirmang. Yosh mushuklarda o‘sish uchun energiya zichligi boshqacha — shuning uchun “kitten” deb belgilangan ovqat tanlanadi.\n\nSandiq — joylashuvi muhim: shovqinsiz, lekin kirish qiyin bo‘lmagan burchak. Bir nechta sandiq qo‘yish birinchi oylarda yordam beradi.\n\nBirinchi veterinarga tashrif emlash va umumiy ko‘rikdan boshlanadi. Mushukni tashuvchi sumkani uyda ochiq qoldirib, uni o‘rganib olishga ruxsat bering — safar kamroq stressli bo‘ladi.",
+        "ru": "Первый год у котёнка — это рост и формирование привычек.\n\nОтдельно про воду: многие коты пьют не рядом с едой, а в другом месте. Поставьте две чашки.\n\nНе меняйте рацион резко и один раз. У котят плотность энергии для роста другая, поэтому выбирают корм с пометкой «kitten».\n\nЛоток — вопрос расположения: тихий, но не труднодоступный угол. Несколько лотков в первые месяцы реально помогают.\n\nПервый визит к врачу начинается с осмотра и вакцинации. Переноску оставьте дома открытой — пусть котёнок её изучит, тогда дорога будет спокойнее.",
+        "en": "A kitten's first year is growth and habit formation.\n\nAbout water: many cats prefer to drink away from their food. Place two bowls in different spots.\n\nChange the diet gradually, not once. Growing kittens need a different energy density, which is what a kitten-formula food provides.\n\nThe litter tray is about placement: a quiet corner that is still easy to reach. Several trays in the first months genuinely help.\n\nThe first vet visit starts with an examination and vaccination. Leave the carrier open at home so the kitten learns it — the trip becomes far less stressful."
+      }
+    },
+    {
+      "slug": "teeth-that-last",
+      "category": "dental_care",
+      "cover": "/images/journal-dental.jpg",
+      "minutes": 6,
+      "publishedOffsetDays": -5,
+      "title": {
+        "uz": "Umrbod tishlar",
+        "ru": "Зубы на всю жизнь",
+        "en": "Teeth that last"
+      },
+      "excerpt": {
+        "uz": "Tish toshining shakllanishi sekin kechadi va uyda seziladi. Nimani kuzatish kerak.",
+        "ru": "Зубной камень формируется медленно и заметен дома. За чем следить.",
+        "en": "Tartar builds slowly and can be spotted at home. What to watch for."
+      },
+      "body": {
+        "uz": "Ko‘p egalari hidni birinchi signal deb biladi, lekin aslida undan oldingi belgilar bor.\n\nQizil chiziq — tizma atrofidagi to‘qima rangi. Agar u qizargan bo‘lsa, bu yallig‘lanish boshlanganini bildirishi mumkin.\n\nOvqat chaynashning o‘zgarishi: bir tomonlama chaynash, qattiq ovqatni tashlab qo‘yish, boshni burib chaynash.\n\nUyda parvarish — bu kunlik mashg‘ulot emas. Haftada bir necha marta, qisqa va tinch. Mahsulot emas, odat muhim.\n\nTosh paydo bo‘lganda uni uyda olib tashlab bo‘lmaydi. Bu klinika muammosi va uni baholash uchun ko‘rik kerak.",
+        "ru": "Многие владельцы считают первым сигналом запах, но есть признаки раньше.\n\nКрасная линия — цвет ткани вокруг зуба. Если она покраснела, это может говорить о начале воспаления.\n\nИзменение жевания: жевание на одну сторону, отказ от твёрдого корма, поворот головы во время еды.\n\nДомашний уход — не ежедневная обязанность. Несколько коротких, спокойных занятий в неделю. Важна привычка, а не средство.\n\nКогда камень уже появился, убрать его дома нельзя. Это вопрос клиники, и для оценки нужен осмотр.",
+        "en": "Many owners treat smell as the first signal, but there are earlier signs.\n\nThe red line is the colour of the tissue around the tooth. When it reddens, inflammation may be starting.\n\nChanges in chewing: chewing on one side, leaving hard food behind, turning the head while eating.\n\nHome care is not a daily duty. A few short, calm sessions a week. The habit matters more than the product.\n\nOnce tartar is present it cannot be removed at home. That is a clinic matter and needs an examination to assess."
+      }
+    },
+    {
+      "slug": "watching-at-home",
+      "category": "prevention",
+      "cover": "/images/vet-hands-puppy.jpg",
+      "minutes": 5,
+      "publishedOffsetDays": -2,
+      "title": {
+        "uz": "Uyda kuzatish san’ati",
+        "ru": "Искусство наблюдения дома",
+        "en": "The art of watching at home"
+      },
+      "excerpt": {
+        "uz": "Klinikada ko‘rinmaydigan narsalarni egasi ko‘radi. Uch daqiqalik kuzatish qanday yoziladi.",
+        "ru": "Владелец видит то, что не видно в клинике. Как вести трёхминутные наблюдения.",
+        "en": "Owners see what a clinic cannot. How to keep three-minute observations."
+      },
+      "body": {
+        "uz": "Biz ko‘p ma’lumotni tekshiruvdan emas, so‘rovdan olamiz. Aniq kuzatish — tekshiruvni tezlashtiradi.\n\nUch narsani yozib boring: ovqat miqdori (gramm yoki o‘lchagich bilan), suv ichilgan miqdor va uyquning o‘zgargani.\n\nOyda bir marta vazn. Bir xil vaqtda, bir xil tarozida. Kichik o‘zgarishlar uzoq davom etganda ma’noli.\n\nXulq-atvorni so‘z bilan emas, holat bilan yozing: “dam olmadi”, “zinalab chiqmay qo‘ydi”, “kechasi uyg‘onadi”. Bu gaplar tekshiruvda yo‘naltiruvchi bo‘ladi.\n\nKuzatish — tashxis emas. Bu shifokorga beriladigan eng foydali material.",
+        "ru": "Мы получаем много данных не из исследований, а из разговора. Точное наблюдение ускоряет проверку.\n\nЗаписывайте три вещи: количество еды (в граммах или мерной чашкой), выпитую воду и изменения сна.\n\nВзвешивайте раз в месяц. В одно время, на одних весах. Значимы небольшие изменения, которые длятся долго.\n\nПоведение описывайте не словами-оценками, а состояниями: «не отдыхал», «перестал подниматься по лестнице», «просыпается ночью». Такие фразы направляют осмотр.\n\nНаблюдение — не диагноз. Это самый полезный материал, который вы можете передать врачу.",
+        "en": "Much of what we learn comes from conversation, not tests. Precise observation speeds up the examination.\n\nWrite down three things: the amount of food (in grams or by measuring cup), water drunk and any change in sleep.\n\nWeigh once a month, same time, same scales. Small changes matter when they persist.\n\nDescribe behaviour as states, not judgements: 'did not rest', 'stopped using the stairs', 'wakes at night'. Those phrases direct the examination.\n\nObservation is not a diagnosis. It is the most useful material you can hand to a vet."
+      }
+    }
+  ]
+}

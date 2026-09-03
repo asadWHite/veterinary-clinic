@@ -1,15 +1,16 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
+  const base = process.env.SITE_URL ?? "http://localhost:3000";
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/account", "/pets", "/api", "/appointments"],
+        disallow: ["/api/", "/uz/admin", "/ru/admin", "/en/admin", "/uz/account", "/ru/account", "/en/account"],
       },
     ],
-    sitemap: `${site.url}/sitemap.xml`,
+    sitemap: `${base}/sitemap.xml`,
+    host: base,
   };
 }

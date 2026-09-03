@@ -1,66 +1,63 @@
 import { NextResponse } from "next/server";
-import { checkDatabase } from "@/db";
-import { getDoctorsWithAvailabilitySafe, getServiceBySlug } from "@/lib/clinic";
-import { getAvailabilityRange, isUuid, todayISO } from "@/lib/availability";
-import type { DayAvailability } from "@/lib/availability";
+import { resolveBookingContext, slotsForDay } from "@/lib/booking/server";
+import { BOOKING_HORIZON_DAYS, bookingDayRange, nowInZone } from "@/lib/format";
+import { normalizeLocale } from "@/lib/i18n/config";
+import { isDatabaseConfigured } from "@/db";
+import { getAvailabilitySummary } from "@/lib/booking/availability";
 
 export const dynamic = "force-dynamic";
 
+/**
+ * GET /api/availability
+ *   ?service=<slug>&doctor=<slug|any>&day=<YYYY-MM-DD>            → slots for one day
+ *   ?service=<slug>&doctor=<slug|any>&range=<n>&from=<YYYY-MM-DD> → availability per day
+ */
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const doctorId = url.searchParams.get("doctorId");
   const serviceSlug = url.searchParams.get("service");
-  const days = Math.min(Math.max(Number(url.searchParams.get("days") ?? 14), 1), 21);
+  const doctorSlug = url.searchParams.get("doctor") ?? "any";
+  const day = url.searchParams.get("day");
+  const range = Math.min(Number(url.searchParams.get("range") ?? 0) || 0, 60);
+  const locale = normalizeLocale(url.searchParams.get("locale") ?? "uz");
 
-  const service = await getServiceBySlug(serviceSlug ?? "");
-  const duration = service?.durationMinutes ?? 30;
-  const { doctors, scheduleUnavailable } = await getDoctorsWithAvailabilitySafe(duration);
-
-  const status = await checkDatabase();
-  if (!status.ok) {
-    // Degrade gracefully: the UI renders an empty schedule instead of failing.
-    return NextResponse.json(
-      { doctors, duration, days: {}, status: "database" },
-      { status: 200, headers: { "cache-control": "no-store" } },
-    );
+  if (!serviceSlug) {
+    return NextResponse.json({ error: "validation" }, { status: 400 });
   }
 
-  if (!doctorId) {
-    return NextResponse.json(
-      { doctors, duration, days: {}, status: scheduleUnavailable ? "error" : "ok" },
-      { headers: { "cache-control": "no-store" } },
-    );
-  }
-
-  // Placeholder ids (`offline-…`) come from the static fallback and have no
-  // real schedule behind them — report that instead of querying for a UUID
-  // that does not exist and blowing the whole request up.
-  if (!isUuid(doctorId)) {
-    return NextResponse.json(
-      { doctors, duration, days: {}, status: "unknown-doctor" },
-      { headers: { "cache-control": "no-store" } },
-    );
-  }
-
-  let schedule: Record<string, DayAvailability> = {};
   try {
-    const range = await getAvailabilityRange({
-      doctorIds: [doctorId],
-      startDate: todayISO(),
-      days,
-      durationMinutes: duration,
-    });
-    schedule = range[doctorId] ?? {};
-  } catch (error) {
-    console.error("[availability] range failed:", error);
-    return NextResponse.json(
-      { doctors, duration, days: {}, status: "error" },
-      { headers: { "cache-control": "no-store" } },
-    );
-  }
+    const context = await resolveBookingContext(serviceSlug, doctorSlug === "any" ? "any" : doctorSlug, locale);
+    if (!context) {
+      return NextResponse.json({ error: "not_found" }, { status: 404 });
+    }
 
-  return NextResponse.json(
-    { doctors, duration, days: schedule, status: "ok" },
-    { headers: { "cache-control": "no-store" } },
-  );
+    if (day) {
+      const slots = await slotsForDay(context, day);
+      return NextResponse.json({
+        day,
+        durationMinutes: context.durationMinutes,
+        timezone: context.timezone,
+        doctors: context.doctors,
+        offline: !isDatabaseConfigured,
+        slots,
+      });
+    }
+
+    const from = url.searchParams.get("from") ?? nowInZone(context.timezone).day;
+    const days = bookingDayRange(from, Math.max(range, BOOKING_HORIZON_DAYS));
+    const summary = await getAvailabilitySummary({
+      days,
+      durationMinutes: context.durationMinutes,
+      doctorIds: context.doctorIds,
+      timezone: context.timezone,
+    });
+    return NextResponse.json({
+      durationMinutes: context.durationMinutes,
+      timezone: context.timezone,
+      doctors: context.doctors,
+      offline: !isDatabaseConfigured,
+      days: summary,
+    });
+  } catch {
+    return NextResponse.json({ error: "db" }, { status: 503 });
+  }
 }

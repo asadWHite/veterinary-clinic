@@ -1,623 +1,991 @@
 {
-  "common": {
-    "continue": "Continue",
-    "back": "Back",
-    "cancel": "Cancel",
-    "save": "Save",
-    "saving": "Saving…",
-    "close": "Close",
-    "select": "Select",
-    "selected": "Selected",
-    "skip": "Skip",
-    "loading": "Loading…",
-    "optional": "Optional",
-    "view": "View",
-    "read": "Read",
-    "book": "Book a visit",
-    "callClinic": "Call the clinic",
-    "minutes": "min",
-    "hours": "hr",
-    "duration": "Duration",
-    "yes": "Yes",
-    "no": "No",
-    "notSure": "Not sure",
-    "none": "None",
-    "comingSoon": "Coming soon",
-    "nothingYet": "Nothing yet",
-    "error": "Something went wrong.",
-    "retry": "Try again",
-    "backHome": "Back home",
-    "backToSite": "Back to site",
-    "placeholderNotice": "Clinic details, phone numbers and hours on this site are placeholders."
-  },
   "meta": {
-    "description": "Modern veterinary care built around prevention, quiet observation and calm handling. Studio-standard diagnostics, surgery and dentistry for dogs, cats and small companions."
+    "siteTitle": "ELVET — Veterinary Clinic, Tashkent",
+    "siteDescription": "ELVET Veterinary Clinic in Tashkent. Online booking, pet passports, doctor schedules. Monday–Friday 10:00–19:00, Saturday–Sunday 11:00–19:00. +998 99 406 46 40.",
+    "home": "Home",
+    "services": "Services",
+    "doctors": "Doctors",
+    "journal": "Journal",
+    "reviews": "Reviews",
+    "book": "Booking",
+    "notFound": "Page not found"
   },
   "nav": {
-    "home": "Home",
-    "about": "About",
-    "care": "Care",
-    "doctors": "Clinicians",
-    "pets": "Pets",
+    "services": "Services",
+    "doctors": "Doctors",
+    "about": "Clinic",
     "journal": "Journal",
-    "gallery": "Gallery",
-    "contact": "Contact",
-    "book": "Book a visit",
+    "reviews": "Reviews",
+    "book": "Book",
+    "login": "Sign in",
     "account": "Account",
-    "login": "Login",
     "logout": "Sign out",
+    "admin": "Admin",
     "menu": "Menu",
     "close": "Close",
     "language": "Language",
-    "skip": "Skip to content"
-  },
-  "footer": {
-    "tagline": "Care for every little life.",
-    "navigate": "Navigate",
-    "contact": "Contact",
-    "follow": "Follow",
-    "privacy": "Privacy",
-    "terms": "Terms",
-    "rights": "Placeholder details pending launch.",
-    "instagram": "Instagram",
-    "telegram": "Telegram"
-  },
-  "hero": {
-    "eyebrow": "Veterinary care",
-    "eyebrowSub": "01 — Every little life",
-    "line1": "Care for",
-    "line2": "every little",
-    "line3": "life.",
-    "srTitle": "Care for every little life.",
-    "focus1": "Prevention",
-    "focus2": "Diagnosis",
-    "focus3": "Care",
-    "book": "Book a visit",
-    "meetTeam": "Meet the team"
-  },
-  "marquee": {
-    "prevention": "Prevention",
-    "diagnosis": "Diagnosis",
-    "surgery": "Surgery",
-    "dentistry": "Dentistry",
-    "dermatology": "Dermatology",
-    "diagnostics": "Diagnostics",
-    "seniorCare": "Senior care",
-    "nutrition": "Nutrition"
+    "skipToContent": "Skip to content",
+    "tagline": "Veterinary care",
+    "contact": "Contact"
   },
   "home": {
-    "emotional": {
-      "label": "02 — What we actually do",
-      "line1": "They can't",
-      "line2": "tell us",
-      "line3": "what hurts.",
-      "response": "So we learn to notice.",
-      "cta": "Start with who they are",
+    "hero": {
+      "label": "01 / Care",
+      "title": "They cannot",
+      "titleAccent": "tell us.",
+      "lead": "So we listen, observe and explain. Every visit is a conversation, not a verdict. Calm, consistent, clearly explained veterinary care.",
+      "primaryCta": "Book an appointment",
+      "secondaryCta": "Explore services",
+      "imageAlt": "Golden retriever puppy in studio light on a near-white background",
+      "scroll": "Scroll"
+    },
+    "services": {
+      "label": "04 / Services",
+      "title": "Everything",
+      "titleAccent": "we do.",
+      "lead": "Every service has a defined duration — you know the time commitment before you arrive.",
+      "viewAll": "All services",
+      "book": "Book",
+      "duration": "Duration"
+    },
+    "philosophy": {
+      "label": "03 / How we care",
+      "title": "They cannot",
+      "titleAccent": "explain",
+      "lead": "what hurts. So we learn to notice first, and examine second.",
       "items": [
         {
-          "k": "Observation",
-          "v": "Weight, appetite, water, sleep, gait. Most findings start as a small change at home."
+          "title": "Observation",
+          "body": "Weight, appetite, water, sleep, gait. Almost everything starts with a small change at home."
         },
         {
-          "k": "Examination",
-          "v": "Quiet handling, unhurried time, and a clinician who explains what they are checking."
+          "title": "Consultation",
+          "body": "Calm handling, unhurried time and a vet who explains what is being checked."
         },
         {
-          "k": "Follow-through",
-          "v": "A written summary, a plan you can follow, and reminders for what comes next."
+          "title": "Continuity",
+          "body": "A written summary, a plan you understand and reminders for what comes next."
         }
       ]
     },
-    "species": {
-      "label": "03 — Who we look after",
-      "title1": "Different",
-      "title2": "companions,",
-      "title3": "different care.",
-      "who": "Who is coming to see us",
-      "breed": "Breed",
-      "cta": "About"
-    },
-    "care": {
-      "label": "04 — Care",
-      "title1": "Everything",
-      "title2": "we do."
-    },
     "doctors": {
-      "label": "05 — Trust",
-      "title1": "Calm hands,",
-      "title2": "plain language.",
-      "note": "Our clinicians are placeholders for now — names, portraits and credentials will be published once the practice team is confirmed.",
-      "all": "All clinicians",
-      "nextAvailable": "Next available",
-      "full": "Full",
-      "code": "Clinician"
+      "label": "05 / Trust",
+      "title": "Quiet hands,",
+      "titleAccent": "plain words.",
+      "lead": "The team list is published once the roster is confirmed. Names and schedules are placeholders for now — all data comes from the database.",
+      "viewAll": "All doctors",
+      "book": "Book with this doctor",
+      "favorite": "Save",
+      "unfavorite": "Saved",
+      "experience": "years of practice",
+      "languages": "Languages",
+      "services": "Services",
+      "reviewsCount": "approved reviews",
+      "noReviews": "no reviews yet",
+      "schedule": "Working days",
+      "notRated": "Not rated yet"
+    },
+    "booking": {
+      "label": "06 / Booking",
+      "title": "From questions",
+      "titleAccent": "to a time.",
+      "lead": "Booking is ten steps. We only ask what is relevant — the questionnaire adapts to your answers.",
+      "start": "Start booking",
+      "note": "Guest booking works too. An account is never required."
+    },
+    "story": {
+      "label": "07 / The clinic",
+      "title": "A calm environment is part of the treatment.",
+      "paragraphs": [
+        "While designing the clinic we kept returning to one question: how does an animal feel inside this room?",
+        "Light, sound, smell, pace — each one changes an examination. So we chose consistency over speed.",
+        "Every visit ends with a written summary: what was checked, why, and what happens next."
+      ],
+      "pillars": [
+        {
+          "title": "Written summary",
+          "body": "A plan you can read again at home."
+        },
+        {
+          "title": "One doctor",
+          "body": "A specialist who knows your animal."
+        },
+        {
+          "title": "Reminders",
+          "body": "Vaccination and prevention on schedule."
+        }
+      ]
     },
     "journal": {
-      "label": "06 — Journal",
+      "label": "08 / Journal",
       "title": "Worth reading.",
-      "minutes": "min"
+      "lead": "Everyday care, vaccination, nutrition and seasonal advice.",
+      "viewAll": "All articles",
+      "read": "Read",
+      "minutes": "min read"
     },
-    "emergency": {
-      "label": "06 — Urgent",
-      "title1": "Need help",
-      "title2": "now?",
-      "body": "If your companion may need urgent attention, calling is faster than booking online. Tell us what is happening and we will make room.",
-      "call": "Call the clinic",
-      "directions": "Get directions",
-      "note": "[WORKING HOURS] — we do not claim out-of-hours cover."
+    "reviews": {
+      "label": "09 / Trust",
+      "title": "What clients",
+      "titleAccent": "write.",
+      "lead": "Reviews are only possible after a completed appointment and go through moderation.",
+      "empty": "No approved reviews yet. Be the first.",
+      "average": "average rating",
+      "write": "Write a review"
     },
-    "finalCta": {
-      "label": "07 — Before you go",
-      "title1": "For every",
-      "title2": "little",
-      "title3": "life.",
-      "book": "Book a visit",
-      "ask": "Ask a question first"
+    "cta": {
+      "label": "10 / Before you go",
+      "title": "Because they are",
+      "titleAccent": "family.",
+      "lead": "They look at us with trust. We answer with the kind of care they will never be able to describe.",
+      "button": "Book an appointment",
+      "note": "Working hours are set by the clinic — we do not claim to work through the night.",
+      "imageAlt": "Dog portrait in soft light on a near-white background"
     }
   },
-  "about": {
-    "title": "We watch carefully.",
-    "intro1": "{clinic} is built around one idea: animals rarely announce what is wrong. They change small things — appetite, water, sleep, gait — and the people who live with them notice first.",
-    "intro2": "So we start by listening to what you have seen, and we take the time to explain what we are checking and why.",
-    "approachLabel": "01 — Our approach",
-    "approachTitle": "Quiet, unhurried, honest.",
-    "principles": [
-      {
-        "k": "Prevention first",
-        "v": "The least dramatic part of veterinary medicine is the most useful. Vaccination, parasite control, weight and dental care prevent far more than they treat."
-      },
-      {
-        "k": "Observation over assumption",
-        "v": "We ask about appetite, water, sleep and behaviour before we reach for anything else. Your description is clinical information."
-      },
-      {
-        "k": "Explain, don't lecture",
-        "v": "You should leave understanding what was checked, what was found, and what happens next — in plain language."
-      },
-      {
-        "k": "No unnecessary treatment",
-        "v": "If nothing needs doing, we say so. Trust lasts longer than a transaction."
-      }
-    ],
-    "teamLabel": "02 — Our team",
-    "teamTitle": "The people who will actually be in the room.",
-    "teamNote": "Clinician names, portraits, roles and availability are placeholders. Nothing here should be read as a published credential.",
-    "clinicLabel": "03 — Our clinic",
-    "clinicTitle": "Rooms built for calm.",
-    "clinicBody1": "Separate waiting areas for dogs and cats, non-slip surfaces, and rooms large enough that nobody has to be pinned to a table to be examined.",
-    "clinicBody2": "In-house laboratory, digital radiology, ultrasound, and a surgical theatre with continuous anaesthesia monitoring.",
-    "clinicCta": "See the photography",
-    "whyLabel": "04 — Why we care",
-    "whyBody": "Because they cannot tell us. Because you noticed. Because a small change, caught early, is almost always simpler than the same change caught late."
-  },
-  "care": {
-    "title1": "Everything",
-    "title2": "we do.",
-    "intro": "Ten kinds of visit, each with enough time booked to do it properly. Prices are placeholders until the clinic publishes its list.",
-    "from": "from",
-    "bookThis": "Book this",
-    "notSureLabel": "11 — Not sure which?",
-    "notSureTitle1": "You don't have",
-    "notSureTitle2": "to decide.",
-    "notSureBody": "Start booking and answer a few plain questions about what you have noticed. We will recommend the right kind of visit — no medical vocabulary required.",
-    "notSureCta": "Start with your companion"
-  },
-  "doctorsPage": {
-    "title1": "Calm",
-    "title2": "hands.",
-    "intro": "Four clinicians, four specialisms, one standard: explain what you are checking, and never rush the animal in front of you.",
-    "note": "Names and portraits are placeholders pending the confirmed practice team.",
-    "role": "Role",
-    "nextAvailable": "Next available",
-    "sees": "Sees",
-    "languages": "Languages",
-    "bookWith": "Book with this clinician",
-    "save": "Save",
-    "saved": "Saved"
-  },
-  "gallery": {
-    "title1": "The",
-    "title2": "subjects.",
-    "intro": "Every portrait in this campaign is shot the same way: studio lighting, natural shadow, and nothing behind the animal but white. Consistency is the whole point.",
-    "hint": "Tap any portrait to open it full size. Arrow keys move through the set.",
-    "studio": "studio photography on pure white",
-    "of": "of"
-  },
-  "journal": {
-    "title1": "Worth",
-    "title2": "reading.",
-    "intro": "General educational content, written to be useful — not to sell a treatment. Nothing here replaces an examination.",
-    "readMore": "Keep reading",
-    "minutes": "min read",
-    "disclaimer": "This article is general educational information, not veterinary advice for a specific animal. If something about your companion concerns you, book an examination or call the clinic.",
-    "backToAll": "All writing",
-    "notFound": "This article could not be found."
-  },
-  "contact": {
-    "title1": "Say",
-    "title2": "hello.",
-    "intro": "For anything urgent, calling is always faster than writing. For everything else, we reply within a working day.",
+  "footer": {
+    "tagline": "Care for every small life.",
+    "navigation": "Navigation",
+    "servicesTitle": "Services",
+    "contact": "Contact",
+    "hours": "Working hours",
+    "legal": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "rights": "All rights reserved.",
+    "configurableNote": "Stored in the database — not filled in yet.",
     "address": "Address",
-    "city": "City",
     "phone": "Phone",
     "email": "Email",
-    "hours": "Hours",
+    "emergency": "Emergencies",
+    "emergencyNote": "With urgent signs, calling is faster than booking online.",
+    "lastAppointment": "Last appointment",
     "instagram": "Instagram",
-    "telegram": "Telegram",
-    "note": "All contact details are placeholders. Replace before launch."
+    "addressFull": "Yakkasaroy, Shoxjahon 4A, Tashkent"
   },
-  "legal": {
-    "privacyTitle": "Privacy",
-    "privacyIntro": "What we hold, why we hold it, and what you can ask us to do about it.",
-    "termsTitle": "Terms",
-    "termsIntro": "The basics of booking, arriving and cancelling.",
-    "note": "Placeholder document. Replace with reviewed legal text before launch."
+  "services": {
+    "label": "Services",
+    "title": "Services",
+    "lead": "Clear names, clear durations. No hidden steps.",
+    "duration": "Duration",
+    "book": "Book this service",
+    "includes": "What it includes",
+    "notFound": "Service not found",
+    "related": "Related services"
   },
-  "notFound": {
-    "title1": "Nothing",
-    "title2": "here.",
-    "body": "The page you were looking for has moved, or never existed. The cat is unbothered."
+  "doctors": {
+    "label": "Doctors",
+    "title": "The team",
+    "lead": "Data comes from the database. Years of experience appear only when verified.",
+    "placeholderNotice": "Once the roster is confirmed, names and portraits will be replaced. Booking already works end to end.",
+    "experience": "years of practice",
+    "languages": "Languages",
+    "services": "Services",
+    "schedule": "Schedule",
+    "notFound": "Doctor not found",
+    "book": "Book",
+    "favorite": "Save",
+    "unfavorite": "Saved",
+    "reviews": "Reviews"
+  },
+  "journal": {
+    "label": "Journal",
+    "title": "Journal",
+    "lead": "Short, useful writing about everyday care.",
+    "back": "Back to journal",
+    "minutes": "min read",
+    "notFound": "Article not found",
+    "empty": "No articles yet. Coming soon.",
+    "related": "Keep reading"
+  },
+  "reviewsPage": {
+    "label": "Reviews",
+    "title": "Reviews",
+    "lead": "Only after a completed appointment. Every review is moderated.",
+    "empty": "No approved reviews yet.",
+    "emptyHint": "The first one could be yours — after your appointment, from your account.",
+    "mine": "My reviews",
+    "write": "Write a review",
+    "rating": "Rating",
+    "body": "Your experience",
+    "bodyPlaceholder": "How did the visit go? What worked, what could be better?",
+    "submit": "Submit",
+    "pending": "In moderation",
+    "loginRequired": "Sign in to write a review.",
+    "notEligible": "Reviews open after a completed appointment.",
+    "thanks": "Thank you. Your review will appear after moderation.",
+    "average": "average",
+    "basedOn": "based on approved reviews"
   },
   "booking": {
-    "title": "Book a visit",
-    "progressLabel": "Booking progress",
-    "questionOf": "Question {current} of {total}",
-    "selectOneToContinue": "Select one to continue",
-    "chooseToContinue": "Choose a portrait to continue",
-    "yourCompanions": "Your companions",
-    "continueWith": "Continue with {name}",
+    "title": "Booking",
+    "lead": "Ten steps. Each question is asked only when it matters.",
     "steps": {
-      "companion": "Companion",
+      "animal": "Animal",
+      "pet": "Pet passport",
       "age": "Age",
-      "concern": "Concern",
-      "context": "Context",
-      "care": "Care",
+      "reason": "Reason",
+      "questions": "Questions",
+      "recommendation": "Recommendation",
       "doctor": "Doctor",
-      "time": "Time",
-      "confirm": "Confirm"
+      "datetime": "Date & time",
+      "client": "Your details",
+      "summary": "Summary"
     },
-    "companion": {
-      "eyebrow": "01 — Companion",
-      "title1": "Let's start",
-      "title2": "with your",
-      "title3": "companion.",
-      "prompt": "Who are we going to be looking after? Tap the portrait."
+    "animal": {
+      "question": "What brings you here today?",
+      "lead": "We start with the animal — that keeps every following question relevant.",
+      "dog": "Dog",
+      "cat": "Cat",
+      "other": "Other animal",
+      "dogNote": "Joints, skin, nutrition, behaviour.",
+      "catNote": "Calm room, low-stress exam, urinary health.",
+      "otherNote": "Small mammals, birds and others."
+    },
+    "pet": {
+      "question": "Choose your pet",
+      "lead": "Pets saved in your account. Or add a new one.",
+      "addNew": "Add a new pet",
+      "guest": "Continue as guest",
+      "guestNote": "An account is not required.",
+      "name": "Name",
+      "namePlaceholder": "For example: Rex",
+      "breed": "Breed",
+      "breedPlaceholder": "For example: Labrador",
+      "birthDate": "Date of birth",
+      "weight": "Weight (kg)",
+      "sex": "Sex",
+      "male": "Male",
+      "female": "Female",
+      "notes": "Additional notes",
+      "years": "years old"
     },
     "age": {
-      "eyebrow": "02 — Age",
-      "title1": "How old",
-      "title2": "are they?",
-      "prompt": "Age changes what we check and how much time we book.",
-      "orExact": "Or enter their exact age",
-      "years": "years",
-      "understood": "Understood — {stage}"
+      "question": "How old are they?",
+      "lead": "Age changes prevention and approach.",
+      "baby": "Baby (0–6 months)",
+      "young": "Young (6 months – 2 years)",
+      "adult": "Adult (2–7 years)",
+      "senior": "Senior (7+ years)",
+      "babyNote": "First vaccines, socialisation, growth.",
+      "youngNote": "Parasites, nutrition, dentistry.",
+      "adultNote": "Annual exam, weight, teeth.",
+      "seniorNote": "Joints, blood, kidneys — gentle monitoring."
     },
-    "concern": {
-      "eyebrow": "03 — Concern",
-      "title1": "What brought",
-      "title2": "you here",
-      "title3": "today?",
-      "prompt": "In your own words. We will work out the clinical part.",
-      "continueQuiet": "Continue",
-      "continueMore": "Tell us more"
+    "reason": {
+      "question": "Why do you need a visit?",
+      "lead": "Questions adapt to the reason.",
+      "hint": "If there are several reasons, pick the main one and mention the rest in a note."
     },
-    "questionnaire": {
-      "eyebrow": "04 — Context",
-      "backAnswer": "← Previous answer",
-      "backConcern": "← Back to concern",
-      "multiPrompt": "Select everything that applies — you can choose more than one.",
-      "optionalPrompt": "Optional. Anything you want the clinician to read before the visit.",
-      "anythingElsePlaceholder": "Habits, triggers, other animals at home, anything that worries you…"
+    "questions": {
+      "lead": "The next question depends on your answer.",
+      "continue": "Continue",
+      "back": "Back",
+      "skip": "Skip this question",
+      "optional": "Optional",
+      "typePlaceholder": "Type here…",
+      "notePlaceholder": "Anything the vet should know…",
+      "multiHint": "You can select several answers",
+      "of": "question",
+      "other": "Other"
     },
-    "care": {
-      "eyebrow": "05 — Recommended care",
-      "title1": "Here's what",
-      "title2": "we recommend.",
-      "recommended": "Recommended care",
-      "promptAttention": "Prompt attention",
-      "chooseClinician": "Choose a clinician",
-      "change": "This isn't right — choose something else",
-      "close": "Close",
-      "noDiagnosis": "We do not diagnose online. This is a recommendation about the right kind of visit, not about what is wrong."
+    "recommendation": {
+      "label": "Recommendation",
+      "title": "Based on what you told us, this visit type may be appropriate.",
+      "service": "Recommended service",
+      "why": "Why it may be appropriate",
+      "duration": "Estimated duration",
+      "urgency": "Urgency",
+      "urgencyRoutine": "Routine",
+      "urgencySoon": "Soon",
+      "urgencyUrgent": "Urgent",
+      "urgentNote": "These signs may require prompt veterinary attention. Please contact the clinic as soon as possible.",
+      "disclaimer": "This is not a diagnosis. A final conclusion is only possible after an examination.",
+      "continue": "Choose a doctor",
+      "changeService": "Choose another service",
+      "reasons": {
+        "checkup": "A routine exam keeps prevention aligned with age and breed.",
+        "vaccination": "Vaccination starts with a plan based on previous vaccinations.",
+        "injury": "An injury needs an examination first, and diagnostics if required.",
+        "skin": "Skin signs call for a dermatological exam and diagnostics if needed.",
+        "dental": "Signs in the mouth begin with a dental examination.",
+        "nutrition": "Nutrition needs weight, age and overall health looked at together.",
+        "surgery": "Before a procedure we plan an examination and preparation.",
+        "other": "When the cause is unclear, a general consultation is the calmest start.",
+        "something_wrong": {
+          "not_eating": "Loss of appetite has many causes — a general consultation is the starting point.",
+          "vomiting": "The length of vomiting and the risk of dehydration are assessed during the exam.",
+          "diarrhea": "The duration of diarrhoea and any blood are assessed during the exam.",
+          "coughing": "Finding the cause of a cough takes an exam and, if needed, diagnostics.",
+          "breathing": "Breathing difficulty is not something to postpone.",
+          "pain": "Locating pain starts with an examination and checks.",
+          "low_energy": "Low energy can involve many systems — a general consultation is needed.",
+          "skin": "Skin signs begin with a dermatological examination.",
+          "behavior": "A behaviour change often has a physical cause — an exam is needed.",
+          "other": "When the cause is unclear, a general consultation is the calmest start."
+        }
+      }
     },
     "doctor": {
-      "eyebrow": "06 — Clinician",
-      "title1": "Who would",
-      "title2": "you like",
-      "title3": "to see?",
-      "prompt": "Clinicians matching “{specialty}” are shown first. Availability shown is real, based on our schedule right now.",
-      "bestMatch": "Best match",
-      "available": "Available",
-      "confirmSpecies": "Confirm species on arrival",
-      "continueWith": "Continue with {name}",
-      "chooseTime": "Choose a time",
-      "fullList": "see the full list",
-      "nextAvailable": "Next available",
-      "full": "Full",
-      "noSchedule": "No schedule set",
-      "scheduleUnavailable": "Schedule unknown",
-      "scheduleUnavailableTitle": "Could not load availability",
-      "scheduleUnavailableBody": "The clinicians are shown, but their schedules could not be checked. Refresh the page or try again shortly."
+      "question": "Choose a doctor",
+      "lead": "Doctors who provide this service are shown.",
+      "any": "Any available doctor",
+      "anyNote": "We will offer the earliest free time.",
+      "none": "No doctor found for this service.",
+      "availableDays": "Working days",
+      "select": "Select",
+      "selected": "Selected"
     },
-    "time": {
-      "eyebrow": "07 — Time",
-      "title1": "When suits",
-      "title2": "you?",
-      "prompt": "{doctor} · {specialty}. This appointment needs {duration} of uninterrupted time, so only slots that fit fully are shown.",
-      "chooseDay": "Choose a day",
-      "swipe": "Swipe →",
-      "available": "Available",
-      "limited": "Limited or closed",
-      "closed": "Closed",
-      "closedBody": "We are not open on this day",
-      "fullyBooked": "Fully booked",
-      "morning": "Morning",
-      "afternoon": "Afternoon",
-      "evening": "Evening",
-      "slotsOpen": "{count} slots open",
-      "slotOpen": "1 slot open",
-      "confirmDetails": "Confirm details",
-      "past": "Past",
-      "booked": "Booked",
-      "unavailable": "Unavailable",
+    "datetime": {
+      "question": "When would you like to come?",
+      "lead": "Available times come from the real schedule — booked times are struck through.",
+      "loading": "Loading available times…",
+      "noSlots": "No free time on this day. Choose another date.",
+      "error": "Could not load the schedule. Please try again.",
+      "retry": "Retry",
       "legendAvailable": "Available",
       "legendBooked": "Booked",
-      "legendPast": "PAST — already passed",
-      "legendBlocked": "UNAVAILABLE — blocked or break",
-      "passedDay": "That day has already passed.",
-      "noScheduleTitle": "No schedule found",
-      "noScheduleBody": "Working hours have not been set for this clinician yet. Please choose another clinician or call the clinic.",
-      "noSlotsTitle": "No time left",
-      "noSlotsBody": "Nothing fits this visit on that day. Please choose another day.",
-      "loadErrorTitle": "Schedule not loaded",
-      "loadErrorBody": "We could not check availability. Please try again.",
-      "pickAnotherClinician": "Choose another clinician"
+      "legendPast": "Passed",
+      "legendBlocked": "Closed",
+      "slotTaken": "This time was just booked. Please choose another.",
+      "slotUnavailable": "This time does not fit",
+      "minutes": "minute appointment",
+      "assignedDoctor": "Doctor",
+      "assignedNote": "Assigned automatically based on free time."
     },
-    "details": {
-      "eyebrow": "08 — Confirm",
-      "title1": "Almost",
-      "title2": "there.",
-      "guestPrompt": "No account needed. We will use these details to confirm the visit.",
-      "userPrompt": "We will use the details on your account.",
-      "yourName": "Your name",
+    "client": {
+      "question": "How can we reach you?",
+      "lead": "For confirmation and a reminder.",
+      "name": "Your name",
       "phone": "Phone",
       "email": "Email",
-      "companionName": "Companion's name",
-      "anythingToAdd": "Anything to add?",
-      "notesPlaceholder": "Optional — anything the clinician should know before the visit.",
-      "summary": "Summary",
-      "confirm": "Confirm the visit",
-      "booking": "Booking…",
-      "termsNote": "By booking you agree to our terms. Clinic details, phone numbers and hours on this site are placeholders.",
-      "justBooked": "Someone just took that slot. Pick another time and try again."
+      "emailOptional": "Email (optional)",
+      "notes": "Additional note",
+      "guestNote": "Booking as a guest. No account needed."
     },
     "summary": {
-      "title": "Your visit",
-      "companion": "Companion",
-      "care": "Care",
-      "changed": "(changed)",
-      "clinician": "Clinician",
-      "date": "Date",
-      "time": "Time",
-      "urgency": "Urgency",
-      "privacy": "Everything you tell us is used only to prepare the right kind of visit. We never diagnose online."
-    },
-    "confirmation": {
-      "confirmed": "Confirmed",
-      "title1": "You're",
-      "title2": "all set.",
-      "companion": "Companion",
-      "care": "Care",
-      "clinician": "Clinician",
+      "question": "Is everything correct?",
+      "lead": "One last look before confirming.",
+      "pet": "Pet",
+      "service": "Service",
+      "doctor": "Doctor",
       "date": "Date",
       "time": "Time",
       "duration": "Duration",
+      "client": "Client",
+      "contact": "Contact",
+      "toldUs": "What you told us",
+      "confirm": "Confirm and book",
+      "creating": "Booking…",
+      "consent": "By confirming you agree that these details are used for this appointment."
+    },
+    "confirmation": {
+      "title": "Your appointment is booked.",
+      "lead": "We will contact you once the clinic confirms it.",
+      "bookingId": "Booking ID",
       "status": "Status",
-      "appointmentId": "Appointment ID",
-      "keepReference": "Keep this reference for any change to the visit.",
-      "alsoCall": "Please also call us",
+      "addToCalendar": "Add to calendar",
       "viewAppointment": "View appointment",
       "backHome": "Back home",
-      "emailNote": "Confirmation emails are not configured in this build. Your visit is saved and appears in your account if you were signed in."
-    },
-    "urgency": {
-      "routine": "Routine",
-      "soon": "Soon",
-      "urgent": "Prompt attention",
-      "routineNote": "Book at a time that suits you.",
-      "soonNote": "We recommend being seen within the next few days.",
-      "urgentNote": "Please call the clinic as well as booking."
+      "accountOffer": "Create an account to keep pets and appointments in one place.",
+      "createAccount": "Create account",
+      "guestEmailNote": "If you left an email, quote your booking ID when contacting the clinic."
     },
     "errors": {
-      "slotTaken": "This time was just booked. Please choose another.",
-      "past": "That time has already passed. Please choose another.",
       "generic": "Something went wrong. Please try again.",
-      "network": "Network error. Please try again.",
-      "datePassed": "That date has already passed.",
-      "chooseDate": "Please choose a date and time.",
-      "addName": "Please add a name.",
-      "addYourName": "Please add your name.",
-      "addPhone": "Please enter your phone number.",
-      "unknownService": "Unknown service.",
-      "chooseClinician": "Please choose a clinician.",
-      "saveFailed": "Could not save the appointment.",
-      "databaseDown": "Booking needs a working database. Set DATABASE_URL in your host's environment variables and redeploy — everything else on this site still works."
+      "network": "Network error. Check your connection and try again.",
+      "db": "Appointments are temporarily unavailable. Please try again later.",
+      "slotTaken": "This time was just booked. Please choose another time.",
+      "validation": "Please check the details and submit again.",
+      "notFound": "Data not found.",
+      "bookingOffline": "Submitting an online booking is not available yet. Please call the clinic — we will hold the selected time for you."
+    },
+    "offlineNote": "The online calendar is not connected yet: the times shown come from the ELVET working hours. Please call to confirm.",
+    "resumeDraft": "You have a booking in progress. Continue?",
+    "resumeDraftAction": "Continue",
+    "resumeDraftDismiss": "Start over"
+  },
+  "questions": {
+    "vaccine_type": "Which vaccination?",
+    "vaccine_status": "Vaccinated before?",
+    "last_vaccine_when": "When was the last vaccination?",
+    "recent_illness": "Any illness in the last 2 weeks?",
+    "main_concern": "What is the main concern?",
+    "not_eating_duration": "How long has your pet not been eating?",
+    "still_drinking": "Are they still drinking water?",
+    "energy_level": "How is their energy level?",
+    "extra_note": "Anything else? (optional)",
+    "vomiting_duration": "How long has the vomiting lasted?",
+    "vomiting_frequency": "How frequently?",
+    "diarrhea_duration": "How long has the diarrhoea lasted?",
+    "diarrhea_blood": "Any blood or mucus?",
+    "cough_duration": "When did the cough start?",
+    "cough_type": "What kind of cough?",
+    "breathing_since": "When did the breathing difficulty start?",
+    "breathing_rest": "Difficulty at rest too?",
+    "pain_where": "Where does the pain seem to be?",
+    "pain_severity": "How strong is the pain?",
+    "injury_what": "What happened?",
+    "injury_when": "When did it happen?",
+    "injury_severe": "Severe pain or inability to move?",
+    "skin_sign": "What did you notice on the skin?",
+    "skin_duration": "How long has it been happening?",
+    "skin_itching": "Any itching?",
+    "dental_sign": "What did you notice in the mouth?",
+    "dental_duration": "How long has it been happening?",
+    "nutrition_goal": "What is the goal?",
+    "nutrition_food": "What food are you giving now?",
+    "surgery_type": "What kind of procedure is expected?",
+    "surgery_when": "When were you planning it?",
+    "checkup_last": "When was the last check-up?",
+    "checkup_concern": "Is anything worrying you?",
+    "other_text": "Describe briefly — what happened?"
+  },
+  "answers": {
+    "vaccine_type": {
+      "complex": "Complex (several)",
+      "rabies": "Rabies",
+      "unknown": "Not sure",
+      "other": "Other"
+    },
+    "vaccine_status": {
+      "yes": "Yes, vaccinated",
+      "no": "No",
+      "unknown": "Not sure"
+    },
+    "recent_illness": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "main_concern": {
+      "not_eating": "Not eating",
+      "vomiting": "Vomiting",
+      "diarrhea": "Diarrhoea",
+      "coughing": "Coughing",
+      "breathing": "Difficulty breathing",
+      "pain": "Pain",
+      "low_energy": "Low energy",
+      "skin": "Skin issue",
+      "behavior": "Behaviour change",
+      "other": "Other"
+    },
+    "not_eating_duration": {
+      "lt_12h": "Less than 12 hours",
+      "12_24h": "12–24 hours",
+      "24_48h": "1–2 days",
+      "gt_48h": "More than 2 days"
+    },
+    "still_drinking": {
+      "yes": "Yes, drinking",
+      "little": "Less than usual",
+      "no": "No"
+    },
+    "energy_level": {
+      "normal": "Normal",
+      "slightly_low": "Slightly low",
+      "very_low": "Very low"
+    },
+    "vomiting_duration": {
+      "today": "Started today",
+      "1_2_days": "1–2 days",
+      "gt_2_days": "More than 2 days"
+    },
+    "vomiting_frequency": {
+      "once": "Once",
+      "few": "2–3 times",
+      "repeated": "Repeatedly"
+    },
+    "can_drink": {
+      "yes": "Yes, keeps it down",
+      "no": "No, brings it back up"
+    },
+    "diarrhea_duration": {
+      "today": "Today",
+      "1_2_days": "1–2 days",
+      "gt_2_days": "More than 2 days"
+    },
+    "diarrhea_blood": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "cough_duration": {
+      "today": "Today",
+      "few_days": "A few days",
+      "weeks": "A few weeks"
+    },
+    "cough_type": {
+      "dry": "Dry",
+      "wet": "Wet",
+      "honking": "Honking / strange"
+    },
+    "breathing_since": {
+      "now": "Just started",
+      "today": "Today",
+      "yesterday": "Yesterday"
+    },
+    "breathing_rest": {
+      "yes": "Yes, at rest too",
+      "no": "No, only when moving"
+    },
+    "pain_where": {
+      "abdomen": "Abdomen",
+      "limb": "Limb / paw",
+      "back": "Back",
+      "mouth": "Mouth / teeth",
+      "ear": "Ear",
+      "unknown": "Not clear"
+    },
+    "pain_severity": {
+      "mild": "Mild",
+      "moderate": "Moderate",
+      "severe": "Severe"
+    },
+    "injury_when": {
+      "now": "Just happened",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "earlier": "Earlier"
+    },
+    "injury_severe": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "skin_sign": {
+      "itching": "Itching",
+      "redness": "Redness",
+      "hair_loss": "Hair loss",
+      "wounds": "Wounds / scratches",
+      "lumps": "Lumps / swelling",
+      "parasites": "Parasites",
+      "other": "Other"
+    },
+    "skin_duration": {
+      "few_days": "A few days",
+      "weeks": "A few weeks",
+      "months": "Months"
+    },
+    "skin_itching": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "dental_sign": {
+      "bad_breath": "Bad breath",
+      "tartar": "Tartar / plaque",
+      "tooth_loss": "Loose or lost teeth",
+      "pain_eating": "Pain while chewing",
+      "drooling": "Drooling",
+      "other": "Other"
+    },
+    "dental_duration": {
+      "few_days": "A few days",
+      "weeks": "A few weeks",
+      "months": "Months"
+    },
+    "nutrition_goal": {
+      "weight": "Weight management",
+      "puppy": "Growth period",
+      "senior": "Senior age",
+      "allergy": "Allergy / sensitivity",
+      "home_food": "Switching to home food"
+    },
+    "surgery_type": {
+      "sterilization": "Sterilisation",
+      "dental": "Dental",
+      "lump": "Lump removal",
+      "orthopedic": "Orthopaedic",
+      "other": "Other"
+    },
+    "surgery_when": {
+      "asap": "As soon as possible",
+      "weeks": "Within 1–2 weeks",
+      "planning": "Just planning"
+    },
+    "checkup_last": {
+      "lt_6m": "Less than 6 months",
+      "6_12m": "6–12 months",
+      "gt_12m": "More than a year",
+      "never": "Never"
+    },
+    "checkup_concern": {
+      "weight": "Weight",
+      "behavior": "Behaviour",
+      "food": "Appetite",
+      "mobility": "Mobility",
+      "nothing": "Nothing"
+    },
+    "yes_no": {
+      "yes": "Yes",
+      "no": "No"
     }
+  },
+  "reasons": {
+    "checkup": "Routine check-up",
+    "vaccination": "Vaccination",
+    "something_wrong": "Something seems wrong",
+    "injury": "Injury",
+    "skin": "Skin problem",
+    "dental": "Dental problem",
+    "nutrition": "Nutrition",
+    "surgery": "Surgery",
+    "other": "Other"
+  },
+  "concerns": {
+    "not_eating": "Not eating",
+    "vomiting": "Vomiting",
+    "diarrhea": "Diarrhoea",
+    "coughing": "Coughing",
+    "breathing": "Difficulty breathing",
+    "pain": "Pain",
+    "low_energy": "Low energy",
+    "skin": "Skin issue",
+    "behavior": "Behaviour change",
+    "other": "Other"
   },
   "species": {
     "dog": "Dog",
     "cat": "Cat",
-    "small": "Rabbit",
-    "bird": "Bird",
-    "other": "Other"
+    "other": "Other animal"
   },
-  "concern": {
-    "check-up": "Just a check-up",
-    "vaccination": "Vaccination",
-    "something-wrong": "Something seems wrong",
-    "injury": "Injury",
-    "eating-drinking-change": "Eating or drinking change",
-    "skin-coat": "Skin or coat",
-    "dental": "Dental",
-    "digestive": "Digestive",
-    "behavior": "Behaviour",
-    "follow-up": "Follow-up",
-    "other": "Other"
-  },
-  "rec": {
-    "evidence": {
-      "noticed": "Noticed",
-      "duration": "Duration",
-      "appetite": "Appetite",
-      "drinking": "Drinking",
-      "breathing": "Breathing",
-      "now": "Condition now",
-      "vaccinations": "Vaccinations",
-      "lastVisit": "Last visit"
-    }
-  },
-  "ageStage": {
-    "baby": "Puppy / Kitten",
+  "lifeStages": {
+    "baby": "Baby",
     "young": "Young",
     "adult": "Adult",
     "senior": "Senior"
   },
-  "auth": {
-    "loginTitle": "Welcome back.",
-    "registerTitle": "Join the clinic.",
-    "forgotTitle": "Reset your password.",
-    "resetTitle": "A new password.",
-    "missingTitle": "Missing link.",
-    "eyebrow": "Account",
-    "guestNote": "Accounts are optional — you can always book as a guest.",
-    "email": "Email",
-    "password": "Password",
-    "name": "Your name",
-    "phone": "Phone",
-    "signIn": "Sign in",
-    "createAccount": "Create account",
-    "signingIn": "One moment…",
-    "forgot": "Forgot password",
-    "haveAccount": "Already have an account?",
-    "noAccount": "Create an account",
-    "passwordHint": "At least 8 characters.",
-    "sendReset": "Send reset link",
-    "setNewPassword": "Set new password",
-    "resetSent": "If an account exists for {email}, a reset link has been created. Email delivery is not configured in this build, so the link is shown here.",
-    "resetLink": "Reset link",
-    "requestNew": "Request a new link",
-    "missingBody": "This page needs a reset link. Request a new one and use it within an hour.",
-    "deliveryNote": "Email delivery is not configured in this build, so reset links are displayed on screen instead of being sent.",
-    "errors": {
-      "invalidCredentials": "Email or password is incorrect.",
-      "emailExists": "An account with this email already exists.",
-      "weakPassword": "Use at least 8 characters.",
-      "invalidEmail": "Please enter a valid email address.",
-      "nameRequired": "Please enter your name.",
-      "expired": "This link has expired.",
-      "generic": "Could not complete the request."
-    }
+  "statuses": {
+    "pending": "Pending",
+    "confirmed": "Confirmed",
+    "completed": "Completed",
+    "cancelled": "Cancelled",
+    "no_show": "No-show"
+  },
+  "urgency": {
+    "routine": "Routine",
+    "soon": "Soon",
+    "urgent": "Urgent"
   },
   "account": {
-    "title": "Your account",
-    "overview": "Overview",
-    "appointments": "Appointments",
-    "pets": "Pets",
-    "reviews": "Reviews",
-    "favorites": "Favorites",
-    "settings": "Settings",
-    "greeting1": "Good to",
-    "greeting2": "see you.",
-    "nextVisit": "Next visit",
-    "yourCompanions": "Your companions",
-    "managePets": "Manage pets",
-    "noCompanions": "No companions yet",
-    "noCompanionsBody": "Add a profile and we will keep their history, vaccinations and reminders in one place.",
-    "addCompanion": "Add a companion",
-    "vaccinationReminders": "Vaccination reminders",
-    "documents": "Documents",
-    "contactOnFile": "Contact on file",
-    "updateDetails": "Update details",
-    "yourVisits": "Your visits.",
-    "nothingBooked": "Nothing booked yet",
-    "nothingBookedBody": "Start with who your companion is — we will take it from there.",
-    "view": "View",
-    "status": "Status",
-    "clinician": "Clinician",
-    "specialization": "Specialization",
-    "reviewsTitle": "What you told us.",
-    "reviewsIntro": "Only visits you have reviewed. We publish nothing without you writing it.",
-    "noReviews": "No reviews yet",
-    "noReviewsBody": "After a completed visit you can leave a review from the appointments list.",
-    "savedClinicians": "Saved clinicians.",
-    "noFavorites": "Nothing saved yet",
-    "noFavoritesBody": "Save a clinician from the booking flow or the clinicians page to see their next availability here.",
-    "browse": "Browse clinicians",
-    "yourDetails": "Your details.",
-    "security": "Security",
-    "securityBody": "Signing out ends this session on this device. Passwords are changed with a reset link.",
-    "changePassword": "Change password",
-    "data": "Data",
-    "dataBody": "Your companions, appointments and notes are visible only to you and the clinic. Ask us any time for a copy or a deletion.",
-    "privacyNotice": "Privacy notice",
-    "saved": "Saved.",
-    "emailFixed": "Email is fixed once the account exists.",
-    "saveChanges": "Save changes",
+    "title": "Account",
+    "hello": "Hello",
+    "nav": {
+      "overview": "Overview",
+      "pets": "Pets",
+      "appointments": "Appointments",
+      "reviews": "Reviews",
+      "favorites": "Saved doctors",
+      "settings": "Settings"
+    },
+    "overview": {
+      "next": "Next appointment",
+      "noUpcoming": "No upcoming appointments.",
+      "bookNow": "Book now",
+      "past": "Past appointments",
+      "pets": "My pets",
+      "reminders": "Vaccination reminders",
+      "noReminders": "No reminders yet.",
+      "favorites": "Saved doctors",
+      "reviews": "My reviews",
+      "memberSince": "Member since"
+    },
+    "pets": {
+      "title": "Pets",
+      "lead": "A digital passport for each animal.",
+      "add": "Add a pet",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteConfirm": "Delete this pet?",
+      "empty": "No pets yet.",
+      "emptyHint": "Add a passport — booking becomes much faster.",
+      "saved": "Saved",
+      "passport": "Digital passport",
+      "age": "Age",
+      "unknown": "Unknown",
+      "appointments": "Appointments"
+    },
+    "appointments": {
+      "title": "Appointments",
+      "lead": "Upcoming and past visits.",
+      "empty": "No appointments yet.",
+      "emptyHint": "Book your first visit.",
+      "code": "Code",
+      "cancel": "Cancel",
+      "cancelConfirm": "Cancel this appointment?",
+      "cancelled": "Cancelled",
+      "details": "Details",
+      "writeReview": "Write a review",
+      "today": "Today"
+    },
+    "reviews": {
+      "title": "My reviews",
+      "lead": "Only for completed appointments.",
+      "empty": "No reviews written yet.",
+      "status": "Status"
+    },
+    "favorites": {
+      "title": "Saved doctors",
+      "lead": "For faster booking.",
+      "empty": "No saved doctors yet.",
+      "emptyHint": "Use the star on a doctor card to save them.",
+      "remove": "Remove"
+    },
+    "settings": {
+      "title": "Settings",
+      "lead": "Profile and security.",
+      "profile": "Profile",
+      "fullName": "Full name",
+      "phone": "Phone",
+      "email": "Email (cannot be changed)",
+      "language": "Language",
+      "save": "Save",
+      "password": "Change password",
+      "current": "Current password",
+      "new": "New password",
+      "confirm": "Repeat new password",
+      "updated": "Updated",
+      "passwordUpdated": "Password changed"
+    }
+  },
+  "auth": {
+    "login": "Sign in",
+    "register": "Create account",
+    "forgot": "Reset password",
+    "reset": "New password",
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full name",
+    "phone": "Phone",
+    "confirm": "Repeat password",
+    "signIn": "Sign in",
+    "signUp": "Create account",
     "signOut": "Sign out",
-    "signingOut": "Signing out…"
+    "loginLead": "Appointments, pet passports and reviews in one place.",
+    "registerLead": "An account is optional — but convenient.",
+    "forgotLead": "Enter your email and we will send a reset link.",
+    "forgotSent": "If that email exists, a reset link has been sent.",
+    "forgotDevToken": "No email provider is configured — the link is shown below.",
+    "resetLead": "Choose a new password.",
+    "resetDone": "Password updated. Please sign in.",
+    "haveAccount": "Already have an account?",
+    "noAccount": "No account yet?",
+    "backToLogin": "Back to sign in",
+    "passwordHint": "At least 8 characters.",
+    "privacyNote": "Your details are only used for appointments.",
+    "errors": {
+      "invalid": "Wrong email or password.",
+      "taken": "This email is already registered.",
+      "short": "Password must be at least 8 characters.",
+      "mismatch": "Passwords do not match.",
+      "invalidEmail": "Invalid email format.",
+      "required": "Please fill in this field.",
+      "token": "This link is invalid or has expired.",
+      "generic": "Something went wrong. Please try again."
+    }
   },
-  "pets": {
-    "title1": "The ones",
-    "title2": "you love.",
-    "add": "Add a companion",
-    "newCompanion": "New companion",
-    "name": "Name",
-    "species": "Species",
-    "breed": "Breed",
-    "lifeStage": "Life stage",
-    "weight": "Weight",
-    "weightUnit": "kg",
-    "sex": "Sex",
-    "portrait": "Portrait",
-    "portraitNote": "Studio portraits stand in until you upload a photo of your own companion.",
-    "save": "Save companion",
-    "profile": "Profile",
-    "bookFor": "Book for {name}",
-    "appointments": "Appointments",
-    "noVisits": "No visits recorded yet.",
-    "medicalHistory": "Medical history",
-    "medicalBody": "Clinical notes, laboratory results and documents will be filed here after each visit.",
-    "vaccinations": "Vaccinations",
-    "vaccinationsBody": "A vaccination record can be added once the first visit is completed.",
-    "birthYear": "Birth year",
-    "age": "Age",
-    "allCompanions": "All companions"
+  "admin": {
+    "title": "Admin panel",
+    "lead": "Appointments, schedules, reviews and content.",
+    "nav": {
+      "dashboard": "Overview",
+      "appointments": "Appointments",
+      "schedule": "Schedule",
+      "reviews": "Reviews",
+      "journal": "Journal",
+      "settings": "Clinic data",
+      "backToSite": "Back to site"
+    },
+    "dashboard": {
+      "today": "Today's appointments",
+      "upcoming": "Upcoming",
+      "urgent": "Urgent cases",
+      "emptyToday": "No appointments today.",
+      "stats": "Statuses",
+      "noUpcoming": "No upcoming appointments."
+    },
+    "appointments": {
+      "title": "Appointments",
+      "search": "Search",
+      "searchPlaceholder": "Name, phone, email, pet, booking ID",
+      "filters": "Filters",
+      "allDoctors": "All doctors",
+      "allServices": "All services",
+      "allStatuses": "All statuses",
+      "allUrgency": "Any urgency",
+      "from": "From",
+      "to": "To",
+      "apply": "Apply",
+      "reset": "Reset",
+      "empty": "Nothing found.",
+      "details": "Appointment details",
+      "client": "Client",
+      "pet": "Pet",
+      "visit": "Visit",
+      "toldUs": "What the client told us",
+      "noAnswers": "No questionnaire answers.",
+      "changeStatus": "Change status",
+      "urgency": "Urgency",
+      "notes": "Client note",
+      "internalNotes": "Internal notes",
+      "save": "Save",
+      "saved": "Saved",
+      "calendar": "Calendar",
+      "legend": "Legend",
+      "blocked": "Closed",
+      "work": "Working hours",
+      "break": "Break",
+      "booked": "Booked",
+      "free": "Free"
+    },
+    "schedule": {
+      "title": "Doctor schedules",
+      "lead": "Working hours, breaks and blocked periods.",
+      "weekday": "Weekday",
+      "work": "Working hours",
+      "break": "Break",
+      "add": "Add",
+      "remove": "Remove",
+      "from": "From",
+      "to": "To",
+      "blockedTitle": "Blocked periods",
+      "blockedLead": "Block or unblock time on a chosen day.",
+      "block": "Block",
+      "unblock": "Unblock",
+      "reason": "Reason",
+      "day": "Day",
+      "saved": "Saved",
+      "empty": "No schedule defined."
+    },
+    "reviews": {
+      "title": "Review moderation",
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "approve": "Approve",
+      "reject": "Reject",
+      "empty": "No reviews.",
+      "from": "Author"
+    },
+    "journal": {
+      "title": "Journal management",
+      "new": "New article",
+      "slug": "Slug",
+      "titleUz": "Title (UZ)",
+      "titleRu": "Title (RU)",
+      "titleEn": "Title (EN)",
+      "excerpt": "Excerpt",
+      "body": "Body",
+      "category": "Category",
+      "cover": "Cover image URL",
+      "minutes": "Reading minutes",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "save": "Save",
+      "saved": "Saved",
+      "delete": "Delete",
+      "empty": "No articles."
+    },
+    "settings": {
+      "title": "Clinic data",
+      "lead": "These values are used in every contact block across the site.",
+      "clinicName": "Clinic name",
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "hours": "Working hours",
+      "emergencyPhone": "Emergency phone",
+      "timezone": "Time zone",
+      "save": "Save",
+      "saved": "Saved",
+      "placeholderHint": "Empty values appear on the site as visible [TO BE SET] tokens.",
+      "phone2": "Second phone",
+      "instagram": "Instagram",
+      "lastAppointment": "Last appointment"
+    },
+    "access": {
+      "denied": "Access denied.",
+      "deniedHint": "This area is for administrators and doctors only.",
+      "doctorScope": "You only see your own appointments.",
+      "preVisit": "Pre-visit",
+      "preVisitHint": "Client answers, for preparation."
+    }
   },
-  "appointment": {
-    "title": "Appointment",
-    "care": "Care",
-    "clinician": "Clinician",
-    "date": "Date",
-    "time": "Time",
-    "duration": "Duration",
-    "appointmentId": "Appointment ID",
-    "notes": "Notes for the clinician",
-    "bookAnother": "Book another visit",
-    "allAppointments": "All appointments",
-    "changeNote": "Need to change or cancel? Call the clinic and quote the appointment ID."
-  },
-  "review": {
-    "howWas": "How was the visit?",
-    "aFewWords": "A few words",
-    "save": "Save review",
-    "write": "Write a review",
-    "saved": "Thank you — review saved.",
-    "stars": "{count} stars"
-  },
-  "time": {
+  "common": {
+    "loading": "Loading…",
+    "save": "Save",
+    "saving": "Saving…",
+    "saved": "Saved",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "continue": "Continue",
+    "confirm": "Confirm",
+    "optional": "optional",
+    "none": "None",
+    "unknown": "Unknown",
+    "close": "Close",
+    "error": "Error",
+    "retry": "Retry",
+    "minutes": "min",
+    "minutesFull": "minutes",
+    "at": "·",
+    "select": "Select",
+    "search": "Search",
+    "notConfigured": "[TO BE SET]",
     "today": "Today",
     "tomorrow": "Tomorrow",
-    "yesterday": "Yesterday"
+    "weekdays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "weekdaysShort": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat",
+      "Sun"
+    ],
+    "youAreHere": "You are here",
+    "viewAll": "View all",
+    "guest": "Guest",
+    "yes": "Yes",
+    "no": "No"
   },
-  "notAvailable": "—"
+  "validation": {
+    "required": "This field is required",
+    "invalidEmail": "Invalid email",
+    "invalidPhone": "Invalid phone number",
+    "tooShort": "Too short"
+  },
+  "errors": {
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "The link may be out of date. Continue from the home page.",
+    "goHome": "Go home",
+    "dbUnavailable": "The service is temporarily unavailable. Please try again later."
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "ELVET PET CLINIC",
+    "lead": "Tashkent, Yakkasaroy. Call us — describe the condition and we will find a time.",
+    "address": "Address",
+    "phones": "Phone",
+    "hours": "Working hours",
+    "hoursWeekdays": "Monday–Friday",
+    "hoursWeekend": "Saturday–Sunday",
+    "lastAppointment": "Last appointment",
+    "instagram": "Instagram",
+    "followUs": "Follow us",
+    "callNow": "Call now",
+    "openMap": "Open in maps",
+    "urgent": "Emergencies",
+    "urgentNote": "With breathing difficulty, severe pain, refusing food for a long time or an injury, calling is faster than booking online.",
+    "bookOnline": "Book online",
+    "visitAlso": "Also"
+  }
 }

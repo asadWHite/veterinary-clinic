@@ -1,82 +1,108 @@
-# [CLINIC NAME] — Veterinary Care
+# ELVET — Veterinary Clinic · Tashkent
 
-Ultra-premium veterinary clinic website with an intelligent booking system and full
-**UZ / RU / EN** multilingual support.
+Premium editorial website + booking platform for **ELVET Veterinary Clinic**
+(Yakkasaroy, Shoxjahon 4A, Tashkent).
 
-- **Editorial art direction** — white canvas, natural green palette, controlled brutalist grid
-- **Studio animal photography** — every portrait isolated on pure white
-- **Satoshi** type system (self-hosted) + Instrument Serif editorial accents
-- **Intelligent booking** — starts with *who your companion is*, asks only relevant questions,
-  recommends the right kind of visit (never a diagnosis), then real doctor / date / time selection
-- **Real availability** — schedule − breaks − blocked periods − existing appointments,
-  with database-enforced double-booking protection
-- **Accounts** — pets, appointments, reviews, favorites, settings; guest booking supported
+* **Editorial art direction** — warm off-white canvas, deep forest green, sage and charcoal;
+  numbered sections (01 / CARE …), hairline separators, generous whitespace, studio animal photography.
+* **UZ / RU / EN** — every interface string, question, answer, status and error is translated
+  (`src/locales/*.json`). Database values stay language-neutral.
+* **10-step booking flow** — animal → pet passport → age → reason → adaptive questions →
+  recommendation (never a diagnosis) → doctor → date → **real available time** → client details →
+  summary → confirmation with booking ID and `.ics` export.
+* **Real availability** — schedule − breaks − blocked periods − existing appointments, with a
+  "last appointment 18:30" cap and database-enforced double-booking protection.
+* **Accounts** — pet passports, appointments, reviews, favourites, settings; guest booking supported.
+* **Admin** — dashboard, searchable appointments with a readable questionnaire timeline,
+  schedule/blocked-period management, review moderation, journal CMS, clinic data.
+
+---
+
+## Clinic data
+
+All clinic information lives in **`src/clinic-content.json`** (the single source of truth):
+
+| Field | Value |
+| --- | --- |
+| Brand | ELVET · Ветеринарная клиника ELVET · ELVET Veterinary Clinic |
+| Address | Yakkasaroy, Shoxjahon 4A, Tashkent, Uzbekistan |
+| Phones | +998 99 406 46 40 · +998 98 700 46 40 (clickable `tel:` links) |
+| Instagram | [@elvet.uz](https://instagram.com/elvet.uz) |
+| Hours | Mon–Fri 10:00–19:00 · Sat–Sun 11:00–19:00 |
+| Last appointment | 18:30 |
+| Website | elvet.uz |
+
+When a database is connected, values stored in `clinic_settings` **override** these defaults
+(edit them in `/uz/admin/settings`). When it is not connected, the bundled content is used, so
+the site never renders empty placeholders.
 
 ---
 
 ## Tech stack
 
-| Layer      | Choice |
-| ---------- | ------ |
-| Framework  | Next.js (App Router) |
-| Language   | TypeScript |
-| Styling    | Tailwind CSS v4 |
-| Database   | PostgreSQL via Drizzle ORM |
-| Auth       | Cookie sessions, scrypt password hashing |
-| Fonts      | Satoshi (self-hosted woff2) + Instrument Serif |
+| Layer | Choice |
+| --- | --- |
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind CSS v4 |
+| Database | PostgreSQL via Drizzle ORM |
+| Auth | Cookie sessions, scrypt password hashing (httpOnly, SameSite=Lax) |
+| Fonts | Manrope + Lora (next/font, latin + cyrillic subsets) |
 
 ---
 
 ## Getting started
 
-### 1. Install
-
 ```bash
 npm install
+cp .env.example .env          # set DATABASE_URL
+npx drizzle-kit push          # create the schema
+node scripts/seed.mjs         # ELVET services, doctors, schedule, journal, settings
+npm run dev
 ```
 
-### 2. Configure the database
+### Environment variables
 
-```bash
-cp .env.example .env
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `DATABASE_URL` | for booking/accounts/admin | PostgreSQL connection string. Without it the site runs from the bundled clinic content and booking submission is disabled (visitors are shown the clinic phone numbers). |
+| `SITE_URL` | optional | Canonical URL for metadata, sitemap and structured data (defaults to `https://elvet.uz`). |
+| `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD` | optional | Admin account created by the seed script. |
+
+No secret is ever committed: `.env` is git-ignored, and only `.env.example` is tracked.
+
+### Database
+
+`npx drizzle-kit push` creates 19 tables (profiles, sessions, pets, services, doctors,
+availability, blocked_slots, appointments, appointment_answers, reviews, favourites,
+journal_posts, notifications, medical records, vaccinations, documents, clinic_settings…).
+
+Double-booking is prevented twice: an exclusion constraint
+(`appointments_no_overlap`, `btree_gist`) plus `pg_advisory_xact_lock` inside the insert
+transaction. Re-apply the constraint after a fresh `push`:
+
+```sql
+CREATE EXTENSION IF NOT EXISTS btree_gist;
+ALTER TABLE appointments ADD CONSTRAINT appointments_no_overlap
+  EXCLUDE USING gist (doctor_id WITH =, int4range(start_minute, end_minute) WITH &&)
+  WHERE (status IN ('pending','confirmed'));
 ```
-
-Set `DATABASE_URL` to your PostgreSQL instance:
-
-```
-DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:5432/app_db
-```
-
-### 3. Create the tables
-
-```bash
-npx drizzle-kit push
-```
-
-The clinic (clinicians, services, schedules, blocked periods and demo appointments) is seeded
-automatically and idempotently on first request.
-
-### 4. Run
-
-```bash
-npm run dev      # development
-npm run build && npm run start   # production
-```
-
-Open http://localhost:3000
 
 ---
 
-## Scripts
+## Deployment (Vercel)
 
-| Command | Description |
-| ------- | ----------- |
-| `npm run dev` | Start the dev server |
-| `npm run build` | Production build |
-| `npm run start` | Start the production server |
-| `npm run typecheck` | TypeScript, no emit |
-| `npm run lint` | ESLint |
-| `npx drizzle-kit push` | Apply the schema to the database |
+1. Import the repository — framework preset **Next.js** (`vercel.json` already sets
+   `framework: nextjs`, `buildCommand: npm run build`).
+2. Add `DATABASE_URL` (Vercel Postgres, Neon or Supabase connection string) and, optionally,
+   `SITE_URL=https://elvet.uz`.
+3. Run the schema + seed once against that database:
+   `npx drizzle-kit push && node scripts/seed.mjs` (with `DATABASE_URL` exported locally).
+4. Deploy. `/api/health` returns `{"ok":true}` when the database responds.
+
+Without `DATABASE_URL` the deployment still builds and serves the complete marketing site,
+booking is limited to choosing a time from the real ELVET schedule, and submission asks
+visitors to call the clinic — no availability is ever faked.
 
 ---
 
@@ -84,101 +110,30 @@ Open http://localhost:3000
 
 ```
 src/
-  app/                      # routes (App Router)
-    (site)/                 # marketing pages: home, about, care, doctors, journal, gallery, contact
-    account/                # personal area: overview, appointments, reviews, favorites, settings
-    pets/                   # companion profiles
-    booking/                # the booking experience
-    appointments/[publicId] # appointment reference page
-    api/                    # auth, availability, bookings, pets, reviews, favorites, health
-  components/
-    hero/  home/  booking/  doctors/  account/  pets/  gallery/  navigation/  footer/  ui/
-  data/                     # questions, recommendations, services, care, journal, animals
-  db/                       # schema + idempotent seed
-  i18n/                     # provider, server helpers, localized type helpers
-  locales/                  # uz.json · ru.json · en.json
-  lib/                      # availability engine, auth, clinic queries, formatting
-  types/  hooks/
-public/images/              # animals/ · doctors/ (all on pure white)
+  app/                     routes ([locale] segment, api, sitemap, robots)
+    api/availability       real slot computation (also works from the bundled schedule)
+    api/appointments       transactional booking creation (409 on conflict)
+  components/              layout (header/footer) + ui primitives
+  features/
+    booking/               BookingFlow, steps, questionnaire engine, labels
+    doctors/ account/ admin/ auth/ reviews/ home/
+  lib/
+    booking/               questions, recommendation, availability, server context
+    clinic.ts              typed access to clinic-content.json (offline source of truth)
+    queries.ts             data access with offline fallback
+    auth.ts format.ts settings.ts i18n/
+  locales/                 uz.json · ru.json · en.json
+  db/                      schema + lazy client
+scripts/seed.mjs           idempotent ELVET seed
 ```
 
----
-
-## Deploying to Vercel
-
-The app is designed to **degrade gracefully**: if `DATABASE_URL` is missing or unreachable, every
-page still renders (200) with a small notice, and only booking is disabled — you never get a
-blank server-error screen.
-
-### 1. Create a database
-
-Any hosted Postgres works — [Neon](https://neon.tech) (free), Supabase, or Vercel Postgres.
-
-> **⚠️ Supabase users — important.**
-> The *direct* connection string (`db.<project-ref>.supabase.co:5432`) resolves to **IPv6 only**.
-> Vercel functions usually cannot reach it, so you get `ENETUNREACH` / a server error.
->
-> Use the **Connection pooling** URI instead ( Supabase → **Connect** → *Connection pooling* →
-> **Session mode** ). It looks like this and is IPv4:
->
-> ```
-> postgresql://postgres.<project-ref>:<password>@aws-0-<region>.pooler.supabase.com:5432/postgres
-> ```
->
-> If your password contains special characters such as `@`, they must be URL-encoded
-> ( `@` → `%40` ), otherwise the connection string will not parse.
->
-> **Connection limit.** Session mode allows only **15 clients per project**. The app therefore
-> opens a single connection per instance ( `max: 1` ). If you expect heavy traffic, set
-> `PG_POOL_MAX` or switch `DATABASE_URL` to the transaction-mode pooler ( port `6543` ).
-
-### 2. Set the environment variable
-
-Vercel → your project → **Settings → Environment Variables**:
-
-| Name | Value |
-| ---- | ----- |
-| `DATABASE_URL` | `postgresql://…?sslmode=require` |
-
-Add it for **Production**, **Preview** and **Development**, then **Redeploy**.
-
-### 3. Create the tables
-
-Run once from your machine with the same `DATABASE_URL`:
+## Quality gates
 
 ```bash
-DATABASE_URL="postgres://…" npx drizzle-kit push
+npm run lint
+npm run typecheck
+npm run build
 ```
 
-### 4. Verify
-
-Open `https://your-app.vercel.app/api/health` — you should see:
-
-```json
-{"ok":true,"database":"connected"}
-```
-
-If it says `"database":"unavailable"`, the banner on the site will also tell you. TLS is enabled
-automatically for any non-localhost host, so hosted Postgres works without extra config.
-
----
-
-## Multilingual (UZ / RU / EN)
-
-- Default language: **Uzbek**
-- Locale is stored in a cookie (`vc_locale`) and lives in React state, so switching language
-  re-renders the tree **without losing booking state** — answers, questionnaire position,
-  recommendation, doctor, date and time all survive.
-- Localized entry URLs work too: `/?lang=ru`, `/?lang=en` (middleware persists the cookie).
-- Internal values stay language-independent (`dog`, `adult`, `vomiting`), so the questionnaire
-  and recommendation engines are identical in every language.
-
----
-
-## Important
-
-All clinic information is a **placeholder** pending launch: `[CLINIC NAME]`, `Dr. [DOCTOR NAME]`,
-`[ADDRESS]`, `[PHONE]`, `[EMAIL]`, `[WORKING HOURS]`. No real clinicians, credentials, ratings or
-reviews are published anywhere in this project.
-
-The booking system never diagnoses. It only recommends the appropriate *kind* of visit.
+Accessibility: semantic landmarks, skip link, visible focus rings, `aria-pressed` on every
+option button, `prefers-reduced-motion` support, native cursor (no custom cursor).

@@ -1,623 +1,991 @@
 {
-  "common": {
-    "continue": "Davom etish",
-    "back": "Orqaga",
-    "cancel": "Bekor qilish",
-    "save": "Saqlash",
-    "saving": "Saqlanmoqda…",
-    "close": "Yopish",
-    "select": "Tanlash",
-    "selected": "Tanlangan",
-    "skip": "O‘tkazib yuborish",
-    "loading": "Yuklanmoqda…",
-    "optional": "Majburiy emas",
-    "view": "Ko‘rish",
-    "read": "O‘qish",
-    "book": "Qabulga yozilish",
-    "callClinic": "Klinikaga qo‘ng‘iroq qilish",
-    "minutes": "daqiqa",
-    "hours": "soat",
-    "duration": "Davomiyligi",
-    "yes": "Ha",
-    "no": "Yo‘q",
-    "notSure": "Aniq emas",
-    "none": "Yo‘q",
-    "comingSoon": "Tez orada",
-    "nothingYet": "Hozircha hech narsa yo‘q",
-    "error": "Bir narsa noto‘g‘ri ketdi.",
-    "retry": "Yana urinib ko‘rish",
-    "backHome": "Bosh sahifaga",
-    "backToSite": "Saytga qaytish",
-    "placeholderNotice": "Saytdagi klinika manzili, telefon raqamlari va ish vaqti — vaqtinchalik ma’lumotlar."
-  },
   "meta": {
-    "description": "Profilaktika, diqqatli kuzatuv va tinch muomala asosidagi zamonaviy veterinariya xizmati. Itlar, mushuklar va mayda hayvonlar uchun tashxis, jarrohlik va stomatologiya."
+    "siteTitle": "ELVET — Veterinar Klinika, Toshkent",
+    "siteDescription": "ELVET veterinariya klinikasi, Toshkent. Onlayn yozilish, hayvonlar pasporti, shifokorlar jadvali. Dushanba–Juma 10:00–19:00, Shanba–Yakshanba 11:00–19:00. +998 99 406 46 40.",
+    "home": "Bosh sahifa",
+    "services": "Xizmatlar",
+    "doctors": "Shifokorlar",
+    "journal": "Jurnal",
+    "reviews": "Sharhlar",
+    "book": "Yozilish",
+    "notFound": "Sahifa topilmadi"
   },
   "nav": {
-    "home": "Bosh sahifa",
-    "about": "Biz haqimizda",
-    "care": "Xizmatlar",
+    "services": "Xizmatlar",
     "doctors": "Shifokorlar",
-    "pets": "Hayvonlar",
+    "about": "Klinika",
     "journal": "Jurnal",
-    "gallery": "Galereya",
-    "contact": "Aloqa",
-    "book": "Qabulga yozilish",
-    "account": "Kabinet",
+    "reviews": "Sharhlar",
+    "book": "Yozilish",
     "login": "Kirish",
+    "account": "Kabinet",
     "logout": "Chiqish",
+    "admin": "Admin",
     "menu": "Menyu",
     "close": "Yopish",
     "language": "Til",
-    "skip": "Matnga o‘tish"
-  },
-  "footer": {
-    "tagline": "Har bir kichik hayotga g‘amxo‘rlik.",
-    "navigate": "Navigatsiya",
-    "contact": "Aloqa",
-    "follow": "Ijtimoiy tarmoqlar",
-    "privacy": "Maxfiylik",
-    "terms": "Shartlar",
-    "rights": "Ishga tushirishgacha bo‘lgan vaqtinchalik ma’lumotlar.",
-    "instagram": "Instagram",
-    "telegram": "Telegram"
-  },
-  "hero": {
-    "eyebrow": "Veterinar xizmati",
-    "eyebrowSub": "01 — Har bir kichik hayot",
-    "line1": "Har bir",
-    "line2": "kichik hayotga",
-    "line3": "g‘amxo‘rlik.",
-    "srTitle": "Har bir kichik hayotga g‘amxo‘rlik.",
-    "focus1": "Profilaktika",
-    "focus2": "Tashxis",
-    "focus3": "G‘amxo‘rlik",
-    "book": "Qabulga yozilish",
-    "meetTeam": "Jamoa bilan tanishish"
-  },
-  "marquee": {
-    "prevention": "Profilaktika",
-    "diagnosis": "Tashxis",
-    "surgery": "Jarrohlik",
-    "dentistry": "Stomatologiya",
-    "dermatology": "Dermatologiya",
-    "diagnostics": "Tahlillar",
-    "seniorCare": "Qari hayvonlar",
-    "nutrition": "Ovqatlanish"
+    "skipToContent": "Asosiy kontentga o‘tish",
+    "tagline": "Veterinar g‘amxo‘rligi",
+    "contact": "Bog‘lanish"
   },
   "home": {
-    "emotional": {
-      "label": "02 — Biz nima qilamiz",
-      "line1": "Ular bizga",
-      "line2": "aytolmaydi",
-      "line3": "nima og‘riyotganini.",
-      "response": "Shuning uchun biz sezishni o‘rganamiz.",
-      "cta": "Hayvoningizdan boshlaymiz",
+    "hero": {
+      "label": "01 / G‘amxo‘rlik",
+      "title": "Ular aytib",
+      "titleAccent": "berolmaydi.",
+      "lead": "Biz tinglaymiz, kuzatamiz va tushuntiramiz. Har bir tashrif — qaror emas, suhbat. Uy hayvoningiz uchun tinch, izchil va tushunarli veterinar yordam.",
+      "primaryCta": "Yozilish",
+      "secondaryCta": "Xizmatlarni ko‘rish",
+      "imageAlt": "Studio nurida, oq fonda olingan oltin retriver bolasi",
+      "scroll": "Pastga suring"
+    },
+    "services": {
+      "label": "04 / Xizmatlar",
+      "title": "Biz qiladigan",
+      "titleAccent": "hamma narsa.",
+      "lead": "Har bir xizmat aniq davomiylikka ega — siz vaqtngizni oldindan bilasiz.",
+      "viewAll": "Barcha xizmatlar",
+      "book": "Yozilish",
+      "duration": "Davomiylik"
+    },
+    "philosophy": {
+      "label": "03 / Qanday g‘amxo‘rlik qilamiz",
+      "title": "Ular bizga",
+      "titleAccent": "aytolmaydi",
+      "lead": "nima og‘riyotganini. Shuning uchun biz avval sezishni, keyin tekshirishni o‘rganamiz.",
       "items": [
         {
-          "k": "Kuzatish",
-          "v": "Vazn, ishtaha, suv, uyqu, yurish. Ko‘p narsalar uyda kichik o‘zgarishdan boshlanadi."
+          "title": "Kuzatish",
+          "body": "Vazn, ishtaha, suv, uyqu, yurish. Ko‘p narsalar uyda kichik o‘zgarishdan boshlanadi."
         },
         {
-          "k": "Ko‘rik",
-          "v": "Tinch muomala, shoshilmas vaqt va nima tekshirayotganini tushuntiradigan shifokor."
+          "title": "Ko‘rik",
+          "body": "Tinch muomala, shoshilmas vaqt va nima tekshirayotganini tushuntiradigan shifokor."
         },
         {
-          "k": "Davomiylik",
-          "v": "Yozma xulosa, tushunarli reja va keyingi qadamlar uchun eslatmalar."
+          "title": "Davomiylik",
+          "body": "Yozma xulosa, tushunarli reja va keyingi qadamlar uchun eslatmalar."
         }
       ]
     },
-    "species": {
-      "label": "03 — Kimlarga g‘amxo‘rlik qilamiz",
-      "title1": "Turli",
-      "title2": "hayvonlar —",
-      "title3": "turli g‘amxo‘rlik.",
-      "who": "Kim kelmoqda",
-      "breed": "Zot",
-      "cta": "Batafsil"
-    },
-    "care": {
-      "label": "04 — Xizmatlar",
-      "title1": "Biz qiladigan",
-      "title2": "hamma narsa."
-    },
     "doctors": {
-      "label": "05 — Ishonch",
-      "title1": "Tinch qo‘llar,",
-      "title2": "oddiy so‘zlar.",
-      "note": "Shifokorlar ismlari, portretlari va ma’lumotlari hozircha vaqtinchalik. Jamoa tarkimi tasdiqlangach, ularni e’lon qilamiz.",
-      "all": "Barcha shifokorlar",
-      "nextAvailable": "Eng yaqin vaqt",
-      "full": "Bo‘sh vaqt yo‘q",
-      "code": "Shifokor"
+      "label": "05 / Ishonch",
+      "title": "Tinch qo‘llar,",
+      "titleAccent": "oddiy so‘zlar.",
+      "lead": "Jamoa ro‘yxati tasdiqlangandan keyin e’lon qilinadi. Hozircha ismlar va jadvallar vaqtinchalik — ma’lumotlar bazasidan olinadi.",
+      "viewAll": "Barcha shifokorlar",
+      "book": "Bu shifokorga yozilish",
+      "favorite": "Saqlash",
+      "unfavorite": "Saqlangan",
+      "experience": "yillik tajriba",
+      "languages": "Tillar",
+      "services": "Xizmatlar",
+      "reviewsCount": "tasdiqlangan sharh",
+      "noReviews": "sharh yo‘q",
+      "schedule": "Ish kunlari",
+      "notRated": "Hali baholanmagan"
+    },
+    "booking": {
+      "label": "06 / Yozilish",
+      "title": "Savollardan",
+      "titleAccent": "vaqtgacha.",
+      "lead": "Yozilish 10 qadamdan iborat. Biz faqat kerakli savollarni beramiz — javoblaringizga qarab.",
+      "start": "Yozilishni boshlash",
+      "note": "Mehmon sifatida ham yozilish mumkin. Kabinet shart emas."
+    },
+    "story": {
+      "label": "07 / Klinika",
+      "title": "Tinch muhit — davolashning bir qismi.",
+      "paragraphs": [
+        "Klinikani loyihalashtiranda biz bir savolga qaytadan-qayta qaytdik: hayvon bu xonada o‘zini qanday his qiladi?",
+        "Yorug‘lik, ovoz, hid, tezlik — barchasi tekshiruvga ta’sir qiladi. Shuning uchun biz shoshilinchlikni emas, izchillikni tanladik.",
+        "Har bir tashrif yozma xulosada tugaydi: nima ko‘rildi, nima uchun va keyingi qadam qanday."
+      ],
+      "pillars": [
+        {
+          "title": "Yozma xulosa",
+          "body": "Har bir tashrifdan keyin tushunarli reja."
+        },
+        {
+          "title": "Bir shifokor",
+          "body": "Hayvoningizni biladigan bir mutaxassis."
+        },
+        {
+          "title": "Eslatmalar",
+          "body": "Emlash va profilaktika eslatmalari."
+        }
+      ]
     },
     "journal": {
-      "label": "06 — Jurnal",
+      "label": "08 / Jurnal",
       "title": "O‘qishga arziydi.",
-      "minutes": "daqiqa"
+      "lead": "Kundalik g‘amxo‘rlik, emlash, ovqatlanish va mavsumiy maslahatlar.",
+      "viewAll": "Barcha yozuvlar",
+      "read": "O‘qish",
+      "minutes": "daqiqalik o‘qish"
     },
-    "emergency": {
-      "label": "06 — Shoshilinch",
-      "title1": "Hoziroq",
-      "title2": "yordam kerakmi?",
-      "body": "Hayvonga shoshilinch yordam kerak bo‘lishi mumkin bo‘lsa, qo‘ng‘iroq qilish onlayn yozilishdan tezroq. Nima bo‘layotganini aytib bering, biz vaqt topamiz.",
-      "call": "Klinikaga qo‘ng‘iroq qilish",
-      "directions": "Manzilni ko‘rish",
-      "note": "[ISH VAQTI] — biz tunda ham ishlaymiz deb aytmaymiz."
+    "reviews": {
+      "label": "09 / Ishonch",
+      "title": "Mijozlar",
+      "titleAccent": "yozganlari.",
+      "lead": "Sharhlar faqat yakunlangan qabuldan keyin yoziladi va moderatsiyadan o‘tadi.",
+      "empty": "Hali tasdiqlangan sharh yo‘q. Birinchi bo‘lib yozing.",
+      "average": "o‘rtacha baho",
+      "write": "Sharh yozish"
     },
-    "finalCta": {
-      "label": "07 — Xayrlashishdan oldin",
-      "title1": "Har bir",
-      "title2": "kichik",
-      "title3": "hayot uchun.",
-      "book": "Qabulga yozilish",
-      "ask": "Avval savol berish"
+    "cta": {
+      "label": "10 / Xayrlashishdan oldin",
+      "title": "Chunki ular",
+      "titleAccent": "oilaning bir bo‘lagi.",
+      "lead": "Ular bizga ishonch bilan qaraydi. Biz esa ularga ovoz chiqarmaydigan g‘amxo‘rlik bilan javob beramiz.",
+      "button": "Yozilish",
+      "note": "Ish vaqti klinikada sozlanadi — biz tunda ham ishlaymiz deb aytmaymiz.",
+      "imageAlt": "Yumshoq nurda, oq fonda olingan it portreti"
     }
   },
-  "about": {
-    "title": "Biz diqqat bilan kuzatamiz.",
-    "intro1": "{clinic} bitta g‘oya ustiga qurilgan: hayvonlar nima noto‘g‘riligini o‘zlari aytmaydi. Ular kichik narsalarni o‘zgartiradi — ishtaha, suv, uyqu, yurish — va buni birinchi bo‘lib yonida yashagan odam sezadi.",
-    "intro2": "Shuning uchun biz siz ko‘rgan narsangizni tinglashdan boshlaymiz va nima va nima uchun tekshirayotganimizni tushuntirishga vaqt ajratamiz.",
-    "approachLabel": "01 — Bizning yondashuv",
-    "approachTitle": "Tinch, shoshilmas, halol.",
-    "principles": [
-      {
-        "k": "Avval profilaktika",
-        "v": "Veterinariyaning eng ko‘zga tashlanmaydigan qismi eng foydalisi. Emlash, parazitlardan himoya, vazn va tishlarga g‘amxo‘rlik davolashdan ko‘proq narsani oldini oladi."
-      },
-      {
-        "k": "Taxmin emas, kuzatish",
-        "v": "Biz avval ishtaha, suv, uyqu va xulq haqida so‘raymiz. Sizning tasviringiz — bu klinik ma’lumot."
-      },
-      {
-        "k": "Tushuntirish, tanbeh emas",
-        "v": "Siz nima tekshirilganini, nima topilganini va keyin nima bo‘lishini oddiy so‘zlar bilan tushinib ketishingiz kerak."
-      },
-      {
-        "k": "Ortiqcha davolash yo‘q",
-        "v": "Agar hech narsa qilish shart bo‘lmasa, biz shunday deymiz. Ishonch bitta savdodan uzoqroq yashaydi."
-      }
-    ],
-    "teamLabel": "02 — Bizning jamoa",
-    "teamTitle": "Xonada haqiqatan bo‘ladigan odamlar.",
-    "teamNote": "Shifokorlar ismlari, portretlari, rollari va jadvali — vaqtinchalik. Bularni e’lon qilingan malaka sifatida qabul qilmaslik kerak.",
-    "clinicLabel": "03 — Bizning klinika",
-    "clinicTitle": "Tinchlik uchun qurilgan xonalar.",
-    "clinicBody1": "Itlar va mushuklar uchun alohida kutish zonalari, sirg‘almaydigan pol va hech kimni tekshirish uchun stolga bosib turishga majbur bo‘lmaydigan keng xonalar.",
-    "clinicBody2": "O‘z laboratoriyamiz, raqamli rentgen, ultratovush va anesteziyani uzluksiz kuzatib turadigan operatsion xona.",
-    "clinicCta": "Fotolarni ko‘rish",
-    "whyLabel": "04 — Nega bizga muhim",
-    "whyBody": "Chunki ular bizga ayta olmaydi. Chunki siz sezdingiz. Chunki erta sezilgan kichik o‘zgarish deyarli har doim kech sezilgan xuddi shu o‘zgarishdan osonroq."
-  },
-  "care": {
-    "title1": "Biz qiladigan",
-    "title2": "hamma narsa.",
-    "intro": "O‘n xil qabul, har biriga yetarli vaqt ajratilgan. Narxlar klinika narx ro‘yxati e’lon qilinmaguncha vaqtinchalik.",
-    "from": "dan",
-    "bookThis": "Shunga yozilish",
-    "notSureLabel": "11 — Qaysi biri ekanini bilmasangiz",
-    "notSureTitle1": "Buni o‘zingiz",
-    "notSureTitle2": "hal qilishingiz shart emas.",
-    "notSureBody": "Yozilishni boshlang va nima sezganingiz haqida bir nechta oddiy savolga javob bering. Biz mos keladigan qabulni tavsiya qilamiz — tibbiy atamalar bilishi shart emas.",
-    "notSureCta": "Hayvoningizdan boshlang"
-  },
-  "doctorsPage": {
-    "title1": "Tinch",
-    "title2": "qo‘llar.",
-    "intro": "To‘rt shifokor, to‘rt yo‘nalish, bitta standart: nima tekshirayotganingizni tushuntiring va oldingizdagi hayvonni hech qachon shoshiltirmang.",
-    "note": "Ismlar va portretlar jamoa tasdiqlanmaguncha vaqtinchalik.",
-    "role": "Lavozim",
-    "nextAvailable": "Eng yaqin vaqt",
-    "sees": "Qabul qiladi",
-    "languages": "Tillar",
-    "bookWith": "Bu shifokorga yozilish",
-    "save": "Saqlash",
-    "saved": "Saqlandi"
-  },
-  "gallery": {
-    "title1": "Bizning",
-    "title2": "qahramonlar.",
-    "intro": "Bu seriyadagi har bir portret bir xilda suratga olingan: studiya yorug‘ligi, tabiiy soya va hayvon orqasida faqat oq rang. Butun g‘oya ana shu birxillikda.",
-    "hint": "Portretni bosib katta ko‘rishingiz mumkin. Strelka tugmalari seriyani yuritadi.",
-    "studio": "toza oq fonda studiya surati",
-    "of": "/"
-  },
-  "journal": {
-    "title1": "O‘qishga",
-    "title2": "arziydi.",
-    "intro": "Foydali bo‘lishi uchun yozilgan umumiy ma’rifiy matnlar — davolashni sotish uchun emas. Bular ko‘rik o‘rnini bosmaydi.",
-    "readMore": "Yana o‘qish",
-    "minutes": "daqiqa o‘qish",
-    "disclaimer": "Bu maqola umumiy ma’rifiy ma’lumot bo‘lib, muayyan hayvon uchun veterinariya tavsiyasi emas. Hayvoningizda biror narsa sizni bezovta qilsa, ko‘rikka yoziling yoki klinikaga qo‘ng‘iroq qiling.",
-    "backToAll": "Barcha matnlar",
-    "notFound": "Bu material topilmadi."
-  },
-  "contact": {
-    "title1": "Salom",
-    "title2": "ayting.",
-    "intro": "Shoshilinch holatlarda qo‘ng‘iroq har doim xat yozishdan tez. Qolgan hollarda bir ish kuni ichida javob beramiz.",
+  "footer": {
+    "tagline": "Har bir kichik hayotga g‘amxo‘rlik.",
+    "navigation": "Navigatsiya",
+    "servicesTitle": "Xizmatlar",
+    "contact": "Bog‘lanish",
+    "hours": "Ish vaqti",
+    "legal": "Huquqiy",
+    "privacy": "Maxfiylik",
+    "terms": "Shartlar",
+    "rights": "Barcha huquqlar himoyalangan.",
+    "configurableNote": "Ma’lumotlar bazasida sozlanadi — hozircha to‘ldirilmagan.",
     "address": "Manzil",
-    "city": "Shahar",
     "phone": "Telefon",
     "email": "Email",
-    "hours": "Ish vaqti",
+    "emergency": "Shoshilinch holatlar",
+    "emergencyNote": "Shoshilinch belgilar bo‘lsa — qo‘ng‘iroq qilish onlayn yozilishdan tezroq.",
+    "lastAppointment": "Oxirgi qabul",
     "instagram": "Instagram",
-    "telegram": "Telegram",
-    "note": "Barcha aloqa ma’lumotlari vaqtinchalik. Ishga tushirishdan oldin almashtirilsin."
+    "addressFull": "Yakkasaroy, Shoxjahon 4A, Toshkent"
   },
-  "legal": {
-    "privacyTitle": "Maxfiylik",
-    "privacyIntro": "Nimani saqlaymiz, nega saqlaymiz va undan siz nimani so‘rashingiz mumkin.",
-    "termsTitle": "Shartlar",
-    "termsIntro": "Yozilish, kelish va bekor qilish asoslari.",
-    "note": "Vaqtinchalik hujjat. Ishga tushirishdan oldin tekshirilgan yuridik matn bilan almashtirilsin."
+  "services": {
+    "label": "Xizmatlar",
+    "title": "Xizmatlar",
+    "lead": "Aniq nomlar, aniq davomiylik. Yashirin to‘lov va yashirin narx yo‘q.",
+    "duration": "Davomiylik",
+    "book": "Bu xizmatga yozilish",
+    "includes": "Nimalarni o‘z ichiga oladi",
+    "notFound": "Xizmat topilmadi",
+    "related": "O‘xshash xizmatlar"
   },
-  "notFound": {
-    "title1": "Bu yerda",
-    "title2": "hech narsa yo‘q.",
-    "body": "Siz izlagan sahifa ko‘chib ketgan yoki umuman mavjud emas. Mushukqa befarq."
+  "doctors": {
+    "label": "Shifokorlar",
+    "title": "Jamoa",
+    "lead": "Ma’lumotlar bazasidan olingan. Tajriba yillari faqat tasdiqlangan bo‘lsa ko‘rsatiladi.",
+    "placeholderNotice": "Jamoa tarkibi tasdiqlangach, ismlar va portretlar almashtiriladi. Hozircha yozilish to‘liq ishlaydi.",
+    "experience": "yillik tajriba",
+    "languages": "Tillar",
+    "services": "Xizmatlar",
+    "schedule": "Ish jadvali",
+    "notFound": "Shifokor topilmadi",
+    "book": "Yozilish",
+    "favorite": "Saqlash",
+    "unfavorite": "Saqlangan",
+    "reviews": "Sharhlar"
+  },
+  "journal": {
+    "label": "Jurnal",
+    "title": "Jurnal",
+    "lead": "Kundalik g‘amxo‘rlik haqida sodda va foydali matnlar.",
+    "back": "Jurnalga qaytish",
+    "minutes": "daqiqalik o‘qish",
+    "notFound": "Yozuv topilmadi",
+    "empty": "Hozircha yozuv yo‘q. Tez orada qo‘shiladi.",
+    "related": "O‘qishni davom eting"
+  },
+  "reviewsPage": {
+    "label": "Sharhlar",
+    "title": "Sharhlar",
+    "lead": "Faqat yakunlangan qabuldan keyin. Har bir sharh moderatsiyadan o‘tadi.",
+    "empty": "Hali tasdiqlangan sharh yo‘q.",
+    "emptyHint": "Birinchi sharh sizniki bo‘lishi mumkin — qabuldan keyin kabinetda yozing.",
+    "mine": "Mening sharhlarim",
+    "write": "Sharh yozish",
+    "rating": "Baho",
+    "body": "Sizning tajribangiz",
+    "bodyPlaceholder": "Qabul qanday o‘tdi? Nima yaxshi bo‘ldi, nima yaxshilanishi mumkin?",
+    "submit": "Yuborish",
+    "pending": "Moderatsiyada",
+    "loginRequired": "Sharh yozish uchun kabinetga kiring.",
+    "notEligible": "Sharh faqat yakunlangan qabuldan keyin yoziladi.",
+    "thanks": "Rahmat. Sharhingiz moderatsiyadan keyin paydo bo‘ladi.",
+    "average": "o‘rtacha",
+    "basedOn": "tasdiqlangan sharh asosida"
   },
   "booking": {
-    "title": "Qabulga yozilish",
-    "progressLabel": "Yozilish bosqichlari",
-    "questionOf": "{total} savoldan {current}-sisi",
-    "selectOneToContinue": "Davom etish uchun bittasini tanlang",
-    "chooseToContinue": "Davom etish uchun portretni tanlang",
-    "yourCompanions": "Sizning hayvonlaringiz",
-    "continueWith": "{name} bilan davom etish",
+    "title": "Yozilish",
+    "lead": "10 qadam. Har bir savol faqat kerak bo‘lganda so‘raladi.",
     "steps": {
-      "companion": "Hayvon",
-      "age": "Yoshi",
-      "concern": "Sabab",
-      "context": "Tafsilotlar",
-      "care": "Qabul",
+      "animal": "Hayvon",
+      "pet": "Hayvon passporti",
+      "age": "Yosh",
+      "reason": "Sabab",
+      "questions": "Savollar",
+      "recommendation": "Tavsiya",
       "doctor": "Shifokor",
-      "time": "Vaqt",
-      "confirm": "Tasdiqlash"
+      "datetime": "Sana va vaqt",
+      "client": "Ma’lumotlar",
+      "summary": "Tasdiqlash"
     },
-    "companion": {
-      "eyebrow": "01 — Hayvon",
-      "title1": "Hayvoningizdan",
-      "title2": "boshlaymiz.",
-      "title3": "",
-      "prompt": "Biz kimga g‘amxo‘rlik qilamiz? Portretni bosing."
+    "animal": {
+      "question": "Bugun nima bilan keldingiz?",
+      "lead": "Avval hayvonni tanlaymiz — shunda savollar to‘g‘ri bo‘ladi.",
+      "dog": "It",
+      "cat": "Mushuk",
+      "other": "Boshqa hayvon",
+      "dogNote": "Bo‘g‘imlar, teri, ovqatlanish, xulq-atvor.",
+      "catNote": "Tinch muhit, stresssiz ko‘rik, idrar tizimi.",
+      "otherNote": "Kichik sut emizuvchilar, qushlar va boshqalar."
+    },
+    "pet": {
+      "question": "Hayvoningizni tanlang",
+      "lead": "Kabinetda saqlangan hayvonlaringiz. Yoki yangisini qo‘shing.",
+      "addNew": "Yangi hayvon qo‘shish",
+      "guest": "Mehmon sifatida davom etish",
+      "guestNote": "Hisob ochish shart emas.",
+      "name": "Ismi",
+      "namePlaceholder": "Masalan: Rexus",
+      "breed": "Zoti",
+      "breedPlaceholder": "Masalan: Labrador",
+      "birthDate": "Tug‘ilgan sana",
+      "weight": "Vazn (kg)",
+      "sex": "Jinsi",
+      "male": "Erkak",
+      "female": "Urg‘ochi",
+      "notes": "Qo‘shimcha izoh",
+      "years": "yosh"
     },
     "age": {
-      "eyebrow": "02 — Yosh",
-      "title1": "U",
-      "title2": "necha yoshda?",
-      "prompt": "Yosh nimalarni tekshirishimiz va qancha vaqt ajratishimizni belgilaydi.",
-      "orExact": "Yoki aniq yoshini kiriting",
-      "years": "yosh",
-      "understood": "Tushundim — {stage}"
+      "question": "Yoshi qancha?",
+      "lead": "Yoshga qarab profilaktika va yondashuv farq qiladi.",
+      "baby": "Bola (0–6 oy)",
+      "young": "Yosh (6 oy – 2 yil)",
+      "adult": "Voyaga yetgan (2–7 yil)",
+      "senior": "Keksa (7+ yil)",
+      "babyNote": "Birinchi emlash, socializatsiya, o‘sish.",
+      "youngNote": "Parazitlar, oziqlanish, stomatologiya.",
+      "adultNote": "Yillik ko‘rik, vazn, tishlar.",
+      "seniorNote": "Bo‘g‘imlar, qon, buyraklar — yumshoq monitoring."
     },
-    "concern": {
-      "eyebrow": "03 — Sabab",
-      "title1": "Sizni bugun",
-      "title2": "nima",
-      "title3": "olib keldi?",
-      "prompt": "O‘z so‘zlaringiz bilan ayting. Tibbiy qismini biz aniqlaymiz.",
-      "continueQuiet": "Davom etish",
-      "continueMore": "Batafsilroq"
+    "reason": {
+      "question": "Nima uchun kelmoqchisiz?",
+      "lead": "Sababga qarab savollar moslashadi.",
+      "hint": "Ikkita sabab bo‘lsa — eng muhimini tanlang va izohda yozing."
     },
-    "questionnaire": {
-      "eyebrow": "04 — Tafsilotlar",
-      "backAnswer": "← Oldingi savol",
-      "backConcern": "← Sababga qaytish",
-      "multiPrompt": "Mos keladiganlarining hammasini tanlang — bir nechtasini ham bo‘ladi.",
-      "optionalPrompt": "Majburiy emas. Shifokor tashrifdan oldin o‘qishi kerak bo‘lgan narsalarni yozing.",
-      "anythingElsePlaceholder": "Odatlari, uyda boshqa hayvonlar, sizni bezovta qilgan narsalar…"
+    "questions": {
+      "lead": "Javobingizga qarab keyingi savol aniqlanadi.",
+      "continue": "Davom etish",
+      "back": "Orqaga",
+      "skip": "Bu savolni o‘tkazib yuborish",
+      "optional": "Ixtiyoriy",
+      "typePlaceholder": "Yozing…",
+      "notePlaceholder": "Shifokor bilishi kerak bo‘lgan narsalar…",
+      "multiHint": "Bir nechta javob tanlash mumkin",
+      "of": "savol",
+      "other": "Boshqa"
     },
-    "care": {
-      "eyebrow": "05 — Tavsiya etilgan qabul",
-      "title1": "Biz shuni",
-      "title2": "tavsiya qilamiz.",
-      "recommended": "Tavsiya etilgan qabul",
-      "promptAttention": "Tezkor e’tibor kerak",
-      "chooseClinician": "Shifokor tanlash",
-      "change": "Bu to‘g‘ri emas — boshqasini tanlash",
-      "close": "Yopish",
-      "noDiagnosis": "Biz onlayn tashxis qo‘ymaymiz. Bu faqat qanday qabul kerakligi haqidagi tavsiya, nima bo‘lgani haqida emas."
+    "recommendation": {
+      "label": "Tavsiya",
+      "title": "Siz aytganlarga qarab, bunday tashrif mos bo‘lishi mumkin.",
+      "service": "Tavsiya etilgan xizmat",
+      "why": "Nega mos bo‘lishi mumkin",
+      "duration": "Taxminiy davomiylik",
+      "urgency": "Muhimlik",
+      "urgencyRoutine": "Rejali",
+      "urgencySoon": "Tez orada",
+      "urgencyUrgent": "Shoshilinch",
+      "urgentNote": "Bu belgilar tezkor veterinar yordam talab qilishi mumkin. Iltimos, klinikaga imkon qadar tez bog‘laning.",
+      "disclaimer": "Bu tashxis emas. Yakuniy xulosa faqat ko‘rikdan keyin beriladi.",
+      "continue": "Shifokorni tanlash",
+      "changeService": "Boshqa xizmatni tanlash",
+      "reasons": {
+        "checkup": "Rejali ko‘rik yosh va zotga qarab profilaktikani boshqarishga yordam beradi.",
+        "vaccination": "Emlash mavjud emlash holatiga qarab reja tuzishdan boshlanadi.",
+        "injury": "Shikastlanishda avval ko‘rik va kerak bo‘lsa diagnostika talab qilinadi.",
+        "skin": "Teri belgilari uchun dermatologik ko‘rik va kerak bo‘lsa diagnostika mos keladi.",
+        "dental": "Og‘iz belgilari stomatologik ko‘rik bilan boshlanadi.",
+        "nutrition": "Ovqatlanish masalasi vazn, yosh va sog‘liq holatini birga ko‘rishni talab qiladi.",
+        "surgery": "Aralashuvdan oldin ko‘rik va tayyorgarlik rejalashtiriladi.",
+        "other": "Sabab aniq bo‘lmaganda umumiy ko‘rik eng tinch boshlanish nuqtasi.",
+        "something_wrong": {
+          "not_eating": "Ishtahani yo‘qolishi ko‘p sabablarga ega — umumiy ko‘rik boshlanish nuqtasi.",
+          "vomiting": "Qusish davomiyligi va suvsizlanish xavfi ko‘rikda baholanadi.",
+          "diarrhea": "Ich buzilishi davomiyligi va qon borligi ko‘rikda baholanadi.",
+          "coughing": "Yo‘tal sababini aniqlash uchun ko‘rik va kerak bo‘lsa diagnostika kerak.",
+          "breathing": "Nafas olish qiyinligi kechiktirilmaydigan holat hisoblanadi.",
+          "pain": "Og‘riq manbasini aniqlash ko‘rik va tekshiruvdan boshlanadi.",
+          "low_energy": "Letargiya ko‘p tizimlarga taalluqli bo‘lishi mumkin — umumiy ko‘rik kerak.",
+          "skin": "Teri belgilari dermatologik ko‘rik bilan boshlanadi.",
+          "behavior": "Xulq-atvor o‘zgarishi ko‘pincha jismoniy sabab bilan bog‘liq — ko‘rik kerak.",
+          "other": "Sabab aniq bo‘lmaganda umumiy ko‘rik eng tinch boshlanish nuqtasi."
+        }
+      }
     },
     "doctor": {
-      "eyebrow": "06 — Shifokor",
-      "title1": "Kimni",
-      "title2": "ko‘rmoqchi",
-      "title3": "bo‘lasiz?",
-      "prompt": "Birinchi navbatda «{specialty}» yo‘nalishidagi shifokorlar ko‘rsatilgan. Ko‘rsatilgan vaqt haqiqiy va hozirgi jadvalga asoslangan.",
-      "bestMatch": "Eng mos",
-      "available": "Bo‘sh",
-      "confirmSpecies": "Kelganda turini ayting",
-      "continueWith": "{name} bilan davom etish",
-      "chooseTime": "Vaqt tanlash",
-      "fullList": "to‘liq ro‘yxatni ko‘rish",
-      "nextAvailable": "Eng yaqin vaqt",
-      "full": "Bo‘sh vaqt yo‘q",
-      "noSchedule": "Jadval kiritilmagan",
-      "scheduleUnavailable": "Jadval noma’lum",
-      "scheduleUnavailableTitle": "Bo‘sh vaqtlarni yuklab bo‘lmadi",
-      "scheduleUnavailableBody": "Shifokorlar ko‘rsatilgan, lekin jadvalni tekshirib bo‘lmadi. Sahifani yangilang yoki keyinroq urinib ko‘ring."
+      "question": "Shifokorni tanlang",
+      "lead": "Xizmatni bajaradigan shifokorlar ko‘rsatilgan.",
+      "any": "Bo‘sh vaqti bor shifokor",
+      "anyNote": "Biz eng erta bo‘sh vaqtni taklif qilamiz.",
+      "none": "Bu xizmat uchun shifokor topilmadi.",
+      "availableDays": "Ish kunlari",
+      "select": "Tanlash",
+      "selected": "Tanlangan"
     },
-    "time": {
-      "eyebrow": "07 — Vaqt",
-      "title1": "Qachon",
-      "title2": "qulay?",
-      "prompt": "{doctor} · {specialty}. Bu qabulga {duration} uzluksiz vaqt kerak, shuning uchun faqat to‘liq sig‘adigan vaqtlar ko‘rsatilgan.",
-      "chooseDay": "Kunni tanlang",
-      "swipe": "Suring →",
-      "available": "Bo‘sh vaqt bor",
-      "limited": "Kam joy yoki yopiq",
-      "closed": "Yopiq",
-      "closedBody": "Bu kuni ishlamaymiz",
-      "fullyBooked": "To‘lgan",
-      "morning": "Ertalab",
-      "afternoon": "Kunduzi",
-      "evening": "Kechqurun",
-      "slotsOpen": "bo‘sh vaqt: {count}",
-      "slotOpen": "1 ta bo‘sh vaqt",
-      "confirmDetails": "Ma’lumotlarni tasdiqlash",
-      "past": "O‘tdi",
-      "booked": "Band",
-      "unavailable": "Mavjud emas",
+    "datetime": {
+      "question": "Qachon kelasiz?",
+      "lead": "Bo‘sh vaqtlar real jadvaldan olinadi — band vaqt bosib o‘tilgan.",
+      "loading": "Bo‘sh vaqtlar yuklanmoqda…",
+      "noSlots": "Bu kunda bo‘sh vaqt yo‘q. Boshqa kunni tanlang.",
+      "error": "Jadvalni hozir olib bo‘lmadi. Yana urinib ko‘ring.",
+      "retry": "Qayta urinish",
       "legendAvailable": "Bo‘sh",
       "legendBooked": "Band",
-      "legendPast": "O‘TDI — vaqti o‘tib ketgan",
-      "legendBlocked": "MAVJUD EMAS — tanaffus yoki blok",
-      "passedDay": "Bu kun o‘tib ketgan.",
-      "noScheduleTitle": "Jadval topilmadi",
-      "noScheduleBody": "Bu shifokor uchun hozircha ish jadvali kiritilmagan. Boshqa shifokorni tanlang yoki klinikaga qo‘ng‘iroq qiling.",
-      "noSlotsTitle": "Bo‘sh vaqt yo‘q",
-      "noSlotsBody": "Bu kunda ushbu qabul uchun mos vaqt qolmadi. Boshqa kunni tanlang.",
-      "loadErrorTitle": "Jadval yuklanmadi",
-      "loadErrorBody": "Bo‘sh vaqtlarni tekshirib bo‘lmadi. Iltimos, qayta urinib ko‘ring.",
-      "pickAnotherClinician": "Boshqa shifokorni tanlash"
+      "legendPast": "O‘tgan",
+      "legendBlocked": "Yopiq",
+      "slotTaken": "Bu vaqt endigina band qilindi. Boshqa vaqtni tanlang.",
+      "slotUnavailable": "Bu vaqt mos kelmaydi",
+      "minutes": "daqiqalik qabul",
+      "assignedDoctor": "Shifokor",
+      "assignedNote": "Bo‘sh vaqt bo‘yicha avtomatik tayinlandi."
     },
-    "details": {
-      "eyebrow": "08 — Tasdiqlash",
-      "title1": "Deyarli",
-      "title2": "tayyor.",
-      "guestPrompt": "Kabinet shart emas. Tashrifni tasdiqlash uchun shu ma’lumotlardan foydalanamiz.",
-      "userPrompt": "Kabinetingizdagi ma’lumotlardan foydalanamiz.",
-      "yourName": "Ismingiz",
+    "client": {
+      "question": "Siz bilan qanday bog‘lanamiz?",
+      "lead": "Tasdiqlash va eslatma uchun.",
+      "name": "Ismingiz",
       "phone": "Telefon",
       "email": "Email",
-      "companionName": "Hayvonning ismi",
-      "anythingToAdd": "Yana nimadir qo‘shasizmi?",
-      "notesPlaceholder": "Majburiy emas — shifokor tashrifdan oldin bilishi kerak bo‘lgan narsalar.",
-      "summary": "Xulosa",
-      "confirm": "Yozilishni tasdiqlash",
-      "booking": "Yozilmoqda…",
-      "termsNote": "Yozilganingizda shartlarimizga rozilik bildirasiz. Saytdagi klinika ma’lumotlari, telefonlar va ish vaqti — vaqtinchalik.",
-      "justBooked": "Bu vaqtni kimdir hozir band qildi. Boshqa vaqtni tanlab qayta urinib ko‘ring."
+      "emailOptional": "Email (ixtiyoriy)",
+      "notes": "Qo‘shimcha izoh",
+      "guestNote": "Mehmon sifatida yozilmoqda. Hisob shart emas."
     },
     "summary": {
-      "title": "Sizning tashrifingiz",
-      "companion": "Hayvon",
-      "care": "Qabul",
-      "changed": "(o‘zgartirildi)",
-      "clinician": "Shifokor",
+      "question": "Hammasi to‘g‘rimi?",
+      "lead": "Tasdiqlashdan oldin bir ko‘rib chiqing.",
+      "pet": "Hayvon",
+      "service": "Xizmat",
+      "doctor": "Shifokor",
       "date": "Sana",
       "time": "Vaqt",
-      "urgency": "Shoshilinchlik",
-      "privacy": "Aytganlaringiz faqat mos keladigan qabulni tayyorlash uchun ishlatiladi. Biz hech qachon onlayn tashxis qo‘ymaymiz."
+      "duration": "Davomiylik",
+      "client": "Mijoz",
+      "contact": "Bog‘lanish",
+      "toldUs": "Siz bizga aytganingiz",
+      "confirm": "Tasdiqlash va yozilish",
+      "creating": "Yozilmoqda…",
+      "consent": "Tasdiqlash bilan siz ma’lumotlaringizshu qabul uchun ishlatilishiga rozilik bildirasiz."
     },
     "confirmation": {
-      "confirmed": "Tasdiqlandi",
-      "title1": "Hammasi",
-      "title2": "tayyor.",
-      "companion": "Hayvon",
-      "care": "Qabul",
-      "clinician": "Shifokor",
-      "date": "Sana",
-      "time": "Vaqt",
-      "duration": "Davomiyligi",
+      "title": "Yozilish qabul qilindi.",
+      "lead": "Klinikada tasdiqlangandan keyin siz bilan bog‘lanamiz.",
+      "bookingId": "Yozilish kodi",
       "status": "Holat",
-      "appointmentId": "Yozilish raqami",
-      "keepReference": "Tashrif o‘zgarsa shu raqamni saqlab qo‘ying.",
-      "alsoCall": "Iltimos, qo‘ng‘iroq ham qiling",
-      "viewAppointment": "Yozilishni ko‘rish",
+      "addToCalendar": "Kalendarga qo‘shish",
+      "viewAppointment": "Qabulni ko‘rish",
       "backHome": "Bosh sahifaga",
-      "emailNote": "Bu versiyada tasdiqlash xatlari sozlanmagan. Tashrif saqlandi va tizimda bo‘lsangiz kabinetda ko‘rinadi."
-    },
-    "urgency": {
-      "routine": "Rejalashtirilgan",
-      "soon": "Tez orada",
-      "urgent": "Tezkor e’tibor",
-      "routineNote": "O‘zingizga qulay vaqtni tanlang.",
-      "soonNote": "Bir necha kun ichida ko‘rinishni tavsiya qilamiz.",
-      "urgentNote": "Yozilish bilan birga klinikaga qo‘ng‘iroq qiling."
+      "accountOffer": "Hayvonlaringiz va qabullaringiz bir joyda saqlanishi uchun hisob oching.",
+      "createAccount": "Hisob ochish",
+      "guestEmailNote": "Email kiritgan bo‘lsangiz, kodni shu manzilga yubordik deb hisoblang."
     },
     "errors": {
-      "slotTaken": "Bu vaqt hozirgina band qilindi. Boshqa vaqtni tanlang.",
-      "past": "Bu vaqt o‘tib ketgan. Boshqa vaqtni tanlang.",
-      "generic": "Bir narsa noto‘g‘ri ketdi. Yana urinib ko‘ring.",
-      "network": "Tarmoq xatosi. Yana urinib ko‘ring.",
-      "datePassed": "Bu sana o‘tib ketgan.",
-      "chooseDate": "Iltimos, sana va vaqtni tanlang.",
-      "addName": "Ismni kiriting.",
-      "addYourName": "Ismingizni kiriting.",
-      "addPhone": "Telefon raqamingizni kiriting.",
-      "unknownService": "Noma’lum xizmat.",
-      "chooseClinician": "Iltimos, shifokorni tanlang.",
-      "saveFailed": "Yozilishni saqlab bo‘lmadi.",
-      "databaseDown": "Qabulga yozilish ishlaydigan ma’lumot bazasini talab qiladi. Hosting muhit o‘zgaruvchilarida DATABASE_URL ni o‘rnating va qayta deploy qiling — saytning boshqa bo‘limlari ishlaydi."
+      "generic": "Nimadir xato ketdi. Yana urinib ko‘ring.",
+      "network": "Tarmoq xatosi. Internetni tekshirib, qayta urinib ko‘ring.",
+      "db": "Qabullar hozircha mavjud emas. Keyinroq urinib ko‘ring.",
+      "slotTaken": "Bu vaqt endigina band qilindi. Boshqa vaqtni tanlang.",
+      "validation": "Ma’lumotlarni tekshirib qayta yuboring.",
+      "notFound": "Ma’lumot topilmadi.",
+      "bookingOffline": "Onlayn yozilishni yuborish hozircha mavjud emas. Iltimos, klinika raqamiga qo‘ng‘iroq qiling — tanlangan vaqtni biz siz uchun saqlab qo‘yamiz."
+    },
+    "offlineNote": "Onlayn kalendar hozircha ulanmagan: ko‘rsatilgan vaqtlar ELVET ish jadvalidan olingan. Tasdiqlash uchun qo‘ng‘iroq qiling.",
+    "resumeDraft": "Yozilish jarayoni saqlangan. Davom etasizmi?",
+    "resumeDraftAction": "Davom etish",
+    "resumeDraftDismiss": "Yangidan boshlash"
+  },
+  "questions": {
+    "vaccine_type": "Qaysi emlash?",
+    "vaccine_status": "Oldin emlanganmi?",
+    "last_vaccine_when": "Oxirgi emlash qachon bo‘lgan?",
+    "recent_illness": "Oxirgi 2 haftada kasallik bo‘lganmi?",
+    "main_concern": "Asosiy muammo nima?",
+    "not_eating_duration": "Qancha vaqtdan beri ovqat yemayapti?",
+    "still_drinking": "Suv ichyaptimi?",
+    "energy_level": "Energiyasi qanday?",
+    "extra_note": "Qo‘shimcha izoh (ixtiyoriy)",
+    "vomiting_duration": "Qachondan beri qusyapti?",
+    "vomiting_frequency": "Qanchalik tez-tez?",
+    "diarrhea_duration": "Qachondan beri ichi buzilgan?",
+    "diarrhea_blood": "Ichida qon yoki shilimshiq bormi?",
+    "cough_duration": "Yo‘tal qachondan boshlangan?",
+    "cough_type": "Qanday yo‘tal?",
+    "breathing_since": "Nafas olish qiyinligi qachondan boshlandi?",
+    "breathing_rest": "Tinch turganda ham qiyinmi?",
+    "pain_where": "Og‘riq qayerda seziladi?",
+    "pain_severity": "Og‘riq qanchalik kuchli?",
+    "injury_what": "Nima bo‘ldi?",
+    "injury_when": "Qachon bo‘ldi?",
+    "injury_severe": "Kuchli og‘riq yoki harakat qila olmaslik bormi?",
+    "skin_sign": "Terida nimani payqadingiz?",
+    "skin_duration": "Qancha vaqtdan beri davom etyapti?",
+    "skin_itching": "Qichishish bormi?",
+    "dental_sign": "Tishlarda / og‘izda nimani payqadingiz?",
+    "dental_duration": "Qancha vaqtdan beri?",
+    "nutrition_goal": "Maqsad nima?",
+    "nutrition_food": "Hozir qanday ovqat beryapsiz?",
+    "surgery_type": "Qanday aralashuv kerak deb o‘ylaysiz?",
+    "surgery_when": "Qachun rejalashtirgan edingiz?",
+    "checkup_last": "Oxirgi ko‘rik qachon bo‘lgan?",
+    "checkup_concern": "Sizni bezovta qilayotgan narsa bormi?",
+    "other_text": "Qisqacha yozing — nima bo‘ldi?"
+  },
+  "answers": {
+    "vaccine_type": {
+      "complex": "Kompleks (bir nechasi)",
+      "rabies": "Quturish",
+      "unknown": "Bilmayman",
+      "other": "Boshqa"
+    },
+    "vaccine_status": {
+      "yes": "Ha, emlangan",
+      "no": "Yo‘q",
+      "unknown": "Bilmayman"
+    },
+    "recent_illness": {
+      "yes": "Ha, bo‘lgan",
+      "no": "Yo‘q"
+    },
+    "main_concern": {
+      "not_eating": "Ovqat yemayapti",
+      "vomiting": "Qusyapti",
+      "diarrhea": "Ichi buzilgan",
+      "coughing": "Yo‘tal",
+      "breathing": "Nafas olish qiyin",
+      "pain": "Og‘riq",
+      "low_energy": "Letargiya",
+      "skin": "Teri muammosi",
+      "behavior": "Xulq-atvor o‘zgardi",
+      "other": "Boshqa"
+    },
+    "not_eating_duration": {
+      "lt_12h": "12 soatdan kam",
+      "12_24h": "12–24 soat",
+      "24_48h": "1–2 kun",
+      "gt_48h": "2 kundan ko‘p"
+    },
+    "still_drinking": {
+      "yes": "Ha, ichyapti",
+      "little": "Kamroq",
+      "no": "Yo‘q"
+    },
+    "energy_level": {
+      "normal": "Oddiy",
+      "slightly_low": "Biroz pasaygan",
+      "very_low": "Juda past"
+    },
+    "vomiting_duration": {
+      "today": "Bugun boshlandi",
+      "1_2_days": "1–2 kun",
+      "gt_2_days": "2 kundan ko‘p"
+    },
+    "vomiting_frequency": {
+      "once": "Bir marta",
+      "few": "2–3 marta",
+      "repeated": "Ko‘p marta"
+    },
+    "can_drink": {
+      "yes": "Ha, ichyapti",
+      "no": "Yo‘q, tushadi"
+    },
+    "diarrhea_duration": {
+      "today": "Bugun",
+      "1_2_days": "1–2 kun",
+      "gt_2_days": "2 kundan ko‘p"
+    },
+    "diarrhea_blood": {
+      "yes": "Ha",
+      "no": "Yo‘q"
+    },
+    "cough_duration": {
+      "today": "Bugun",
+      "few_days": "Bir necha kun",
+      "weeks": "Bir necha hafta"
+    },
+    "cough_type": {
+      "dry": "Quruq",
+      "wet": "Ho‘l",
+      "honking": "O‘xshovli / g‘alati"
+    },
+    "breathing_since": {
+      "now": "Hozir boshlandi",
+      "today": "Bugun",
+      "yesterday": "Kecha"
+    },
+    "breathing_rest": {
+      "yes": "Ha, tinch turganda ham",
+      "no": "Yo‘q, faqat harakatda"
+    },
+    "pain_where": {
+      "abdomen": "Qorin",
+      "limb": "Oyoq / oyoq-qo‘l",
+      "back": "Orqa",
+      "mouth": "Og‘iz / tish",
+      "ear": "Quloq",
+      "unknown": "Aniq emas"
+    },
+    "pain_severity": {
+      "mild": "Yengil",
+      "moderate": "O‘rtacha",
+      "severe": "Kuchli"
+    },
+    "injury_when": {
+      "now": "Hozir bo‘ldi",
+      "today": "Bugun",
+      "yesterday": "Kecha",
+      "earlier": "Undan oldin"
+    },
+    "injury_severe": {
+      "yes": "Ha",
+      "no": "Yo‘q"
+    },
+    "skin_sign": {
+      "itching": "Qichishish",
+      "redness": "Qizarish",
+      "hair_loss": "Jun tushishi",
+      "wounds": "Yara / qichima",
+      "lumps": "Tugun / shish",
+      "parasites": "Parazitlar",
+      "other": "Boshqa"
+    },
+    "skin_duration": {
+      "few_days": "Bir necha kun",
+      "weeks": "Bir necha hafta",
+      "months": "Oylar"
+    },
+    "skin_itching": {
+      "yes": "Ha",
+      "no": "Yo‘q"
+    },
+    "dental_sign": {
+      "bad_breath": "Yoqimsiz hid",
+      "tartar": "Tosh / qotiq",
+      "tooth_loss": "Tish tushishi",
+      "pain_eating": "Ovqat chaynashda qiynaladi",
+      "drooling": "So‘lak oqishi",
+      "other": "Boshqa"
+    },
+    "dental_duration": {
+      "few_days": "Bir necha kun",
+      "weeks": "Bir necha hafta",
+      "months": "Oylar"
+    },
+    "nutrition_goal": {
+      "weight": "Vaznni boshqarish",
+      "puppy": "O‘sish davri",
+      "senior": "Keksa yosh",
+      "allergy": "Alergiya / noqulaylik",
+      "home_food": "Uy ovqatiga o‘tish"
+    },
+    "surgery_type": {
+      "sterilization": "Sterillash",
+      "dental": "Stomatologik",
+      "lump": "Tugunni olib tashlash",
+      "orthopedic": "Ortopedik",
+      "other": "Boshqa"
+    },
+    "surgery_when": {
+      "asap": "Imkon qadar tez",
+      "weeks": "1–2 hafta ichida",
+      "planning": "Rejalashtirayapman"
+    },
+    "checkup_last": {
+      "lt_6m": "6 oydan kam",
+      "6_12m": "6–12 oy",
+      "gt_12m": "1 yildan ko‘p",
+      "never": "Hech bo‘lmagan"
+    },
+    "checkup_concern": {
+      "weight": "Vazn",
+      "behavior": "Xulq-atvor",
+      "food": "Ovqatlanish",
+      "mobility": "Harakatchanlik",
+      "nothing": "Hech narsa"
+    },
+    "yes_no": {
+      "yes": "Ha",
+      "no": "Yo‘q"
     }
+  },
+  "reasons": {
+    "checkup": "Rejali ko‘rik",
+    "vaccination": "Emlash",
+    "something_wrong": "Bir narsa noto‘g‘ri",
+    "injury": "Shikast / jarohat",
+    "skin": "Teri muammosi",
+    "dental": "Tish muammosi",
+    "nutrition": "Ovqatlanish",
+    "surgery": "Jarrohlik",
+    "other": "Boshqa"
+  },
+  "concerns": {
+    "not_eating": "Ovqat yemayapti",
+    "vomiting": "Qusyapti",
+    "diarrhea": "Ichi buzilgan",
+    "coughing": "Yo‘tal",
+    "breathing": "Nafas olish qiyin",
+    "pain": "Og‘riq",
+    "low_energy": "Letargiya",
+    "skin": "Teri muammosi",
+    "behavior": "Xulq-atvor o‘zgardi",
+    "other": "Boshqa"
   },
   "species": {
     "dog": "It",
     "cat": "Mushuk",
-    "small": "Quyon",
-    "bird": "Qush",
-    "other": "Boshqa"
+    "other": "Boshqa hayvon"
   },
-  "concern": {
-    "check-up": "Oddiy ko‘rik",
-    "vaccination": "Emlash",
-    "something-wrong": "Bir narsa noto‘g‘ri",
-    "injury": "Jarohat",
-    "eating-drinking-change": "Ovqat yoki suv o‘zgarishi",
-    "skin-coat": "Teri yoki jun",
-    "dental": "Tishlar",
-    "digestive": "Ovqat hazm qilish",
-    "behavior": "Xulq-atvor",
-    "follow-up": "Qayta ko‘rik",
-    "other": "Boshqa"
-  },
-  "rec": {
-    "evidence": {
-      "noticed": "Sezilgan",
-      "duration": "Davomiyligi",
-      "appetite": "Ishtaha",
-      "drinking": "Suv ichish",
-      "breathing": "Nafas",
-      "now": "Hozirgi holati",
-      "vaccinations": "Emlashlar",
-      "lastVisit": "Oxirgi tashrif"
-    }
-  },
-  "ageStage": {
-    "baby": "Kuchik / mushukcha",
+  "lifeStages": {
+    "baby": "Bola",
     "young": "Yosh",
     "adult": "Voyaga yetgan",
-    "senior": "Qari"
+    "senior": "Keksa"
   },
-  "auth": {
-    "loginTitle": "Xush kelibsiz.",
-    "registerTitle": "Klinikaga qo‘shiling.",
-    "forgotTitle": "Parolni tiklash.",
-    "resetTitle": "Yangi parol.",
-    "missingTitle": "Havola yo‘q.",
-    "eyebrow": "Kabinet",
-    "guestNote": "Kabinet majburiy emas — har doim ro‘yxatdan o‘tmasdan yozilishingiz mumkin.",
-    "email": "Email",
-    "password": "Parol",
-    "name": "Ismingiz",
-    "phone": "Telefon",
-    "signIn": "Kirish",
-    "createAccount": "Kabinet yaratish",
-    "signingIn": "Bir daqiqa…",
-    "forgot": "Parolni unutdingizmi",
-    "haveAccount": "Kabinetingiz bormi?",
-    "noAccount": "Kabinet yaratish",
-    "passwordHint": "Kamida 8 belgi.",
-    "sendReset": "Havola yuborish",
-    "setNewPassword": "Yangi parol qo‘yish",
-    "resetSent": "Agar {email} uchun kabinet mavjud bo‘lsa, tiklash havolasi yaratildi. Bu versiyada email sozlanmagan, shuning uchun havola shu yerda ko‘rsatilgan.",
-    "resetLink": "Tiklash havolasi",
-    "requestNew": "Yangi havola so‘rash",
-    "missingBody": "Bu sahifa tiklash havolasini talab qiladi. Yangisini so‘rang va bir soat ichida ishlating.",
-    "deliveryNote": "Bu versiyada email sozlanmagan, shuning uchun tiklash havolalari xat yuborilmasdan ekranda ko‘rsatiladi.",
-    "errors": {
-      "invalidCredentials": "Email yoki parol noto‘g‘ri.",
-      "emailExists": "Bu email bilan kabinet allaqachon mavjud.",
-      "weakPassword": "Kamida 8 belgidan foydalaning.",
-      "invalidEmail": "To‘g‘ri email manzilini kiriting.",
-      "nameRequired": "Ismingizni kiriting.",
-      "expired": "Bu havolaning muddati tugagan.",
-      "generic": "So‘rovni bajarib bo‘lmadi."
-    }
+  "statuses": {
+    "pending": "Kutilmoqda",
+    "confirmed": "Tasdiqlangan",
+    "completed": "Yakunlangan",
+    "cancelled": "Bekor qilingan",
+    "no_show": "Kelmagan"
+  },
+  "urgency": {
+    "routine": "Rejali",
+    "soon": "Tez orada",
+    "urgent": "Shoshilinch"
   },
   "account": {
-    "title": "Sizning kabinetingiz",
-    "overview": "Umumiy",
-    "appointments": "Yozilishlar",
-    "pets": "Hayvonlar",
-    "reviews": "Sharhlar",
-    "favorites": "Saqlanganlar",
-    "settings": "Sozlamalar",
-    "greeting1": "Ko‘rganimizdan",
-    "greeting2": "xursandmiz.",
-    "nextVisit": "Keyingi tashrif",
-    "yourCompanions": "Sizning hayvonlaringiz",
-    "managePets": "Hayvonlarni boshqarish",
-    "noCompanions": "Hozircha hayvon yo‘q",
-    "noCompanionsBody": "Profil qo‘shing — tarix, emlashlar va eslatmalarni bir joyda saqlaymiz.",
-    "addCompanion": "Hayvon qo‘shish",
-    "vaccinationReminders": "Emlash eslatmalari",
-    "documents": "Hujjatlar",
-    "contactOnFile": "Kabinetdagi aloqa",
-    "updateDetails": "Ma’lumotlarni yangilash",
-    "yourVisits": "Sizning tashriflaringiz.",
-    "nothingBooked": "Hozircha yozilish yo‘q",
-    "nothingBookedBody": "Hayvoningiz kimdan boshlang — qolgani bizdan.",
-    "view": "Ko‘rish",
-    "status": "Holat",
-    "clinician": "Shifokor",
-    "specialization": "Mutaxassislik",
-    "reviewsTitle": "Siz bizga aytganlaringiz.",
-    "reviewsIntro": "Faqat baholagan tashriflaringiz. Siz yozmasangiz, biz hech narsa chop etmaymiz.",
-    "noReviews": "Hozircha sharh yo‘q",
-    "noReviewsBody": "Tugallangan tashrifdan keyin yozilishlar ro‘yxatidan sharh qoldirishingiz mumkin.",
-    "savedClinicians": "Saqlangan shifokorlar.",
-    "noFavorites": "Hozircha hech narsa saqlanmagan",
-    "noFavoritesBody": "Yozilish jarayonida yoki shifokorlar sahifasida shifokorni saqlang — eng yaqin vaqti shu yerda ko‘rinadi.",
-    "browse": "Shifokorlar ro‘yxati",
-    "yourDetails": "Sizning ma’lumotlaringiz.",
-    "security": "Xavfsizlik",
-    "securityBody": "Chiqish ushbu qurilmadagi seansni yakunlaydi. Parol tiklash havolasi orqali o‘zgaradi.",
-    "changePassword": "Parolni o‘zgartirish",
-    "data": "Ma’lumotlar",
-    "dataBody": "Hayvonlaringizni, yozilishlar va izohlarni faqat siz va klinika ko‘radi. Har qanday vaqtda nusxa yoki o‘chirishni so‘rashingiz mumkin.",
-    "privacyNotice": "Maxfiylik e’loni",
-    "saved": "Saqlandi.",
-    "emailFixed": "Kabinet yaratilgach, emailni o‘zgartirib bo‘lmaydi.",
-    "saveChanges": "O‘zgarishlarni saqlash",
+    "title": "Kabinet",
+    "hello": "Assalomu alaykum",
+    "nav": {
+      "overview": "Umumiy",
+      "pets": "Hayvonlar",
+      "appointments": "Qabullar",
+      "reviews": "Sharhlar",
+      "favorites": "Saqlangan shifokorlar",
+      "settings": "Sozlamalar"
+    },
+    "overview": {
+      "next": "Keyingi qabul",
+      "noUpcoming": "Keyingi qabul yo‘q.",
+      "bookNow": "Yozilish",
+      "past": "O‘tgan qabullar",
+      "pets": "Hayvonlarim",
+      "reminders": "Emlash eslatmalari",
+      "noReminders": "Eslatma yo‘q.",
+      "favorites": "Saqlangan shifokorlar",
+      "reviews": "Sharhlarim",
+      "memberSince": "Azo bo‘lgan"
+    },
+    "pets": {
+      "title": "Hayvonlar",
+      "lead": "Har bir hayvon uchun raqamli passport.",
+      "add": "Hayvon qo‘shish",
+      "edit": "Tahrirlash",
+      "delete": "O‘chirish",
+      "deleteConfirm": "Bu hayvonni o‘chirasizmi?",
+      "empty": "Hozircha hayvon yo‘q.",
+      "emptyHint": "Pasport qo‘shsangiz, yozilish tezlashadi.",
+      "saved": "Saqlandi",
+      "passport": "Raqamli passport",
+      "age": "Yosh",
+      "unknown": "Noma’lum",
+      "appointments": "Qabullar"
+    },
+    "appointments": {
+      "title": "Qabullar",
+      "lead": "Kelgusi va o‘tgan tashriflar.",
+      "empty": "Qabul yo‘q.",
+      "emptyHint": "Birinchi qabulga yoziling.",
+      "code": "Kod",
+      "cancel": "Bekor qilish",
+      "cancelConfirm": "Qabulni bekor qilasizmi?",
+      "cancelled": "Bekor qilindi",
+      "details": "Tafsilotlar",
+      "writeReview": "Sharh yozish",
+      "today": "Bugun"
+    },
+    "reviews": {
+      "title": "Sharhlarim",
+      "lead": "Faqat yakunlangan qabullar uchun.",
+      "empty": "Hali sharh yozilmagan.",
+      "status": "Holat"
+    },
+    "favorites": {
+      "title": "Saqlangan shifokorlar",
+      "lead": "Tez yozilish uchun.",
+      "empty": "Saqlangan shifokor yo‘q.",
+      "emptyHint": "Shifokor kartasidagi yulduzcha bilan saqlashingiz mumkin.",
+      "remove": "Olib tashlash"
+    },
+    "settings": {
+      "title": "Sozlamalar",
+      "lead": "Profil va xavfsizlik.",
+      "profile": "Profil",
+      "fullName": "Ism",
+      "phone": "Telefon",
+      "email": "Email (o‘zgarmaydi)",
+      "language": "Til",
+      "save": "Saqlash",
+      "password": "Parolni almashtirish",
+      "current": "Hozirgi parol",
+      "new": "Yangi parol",
+      "confirm": "Yangi parol (yana)",
+      "updated": "Yangilandi",
+      "passwordUpdated": "Parol almashtirildi"
+    }
+  },
+  "auth": {
+    "login": "Kirish",
+    "register": "Hisob ochish",
+    "forgot": "Parolni tiklash",
+    "reset": "Yangi parol",
+    "email": "Email",
+    "password": "Parol",
+    "fullName": "Ism va familiya",
+    "phone": "Telefon",
+    "confirm": "Parolni takrorlang",
+    "signIn": "Kirish",
+    "signUp": "Hisob ochish",
     "signOut": "Chiqish",
-    "signingOut": "Chiqilmoqda…"
+    "loginLead": "Qabullar, hayvonlar pasporti va sharhlar bir joyda.",
+    "registerLead": "Hisob ochish majburiy emas — lekin qulay.",
+    "forgotLead": "Emailingizni kiriting, tiklash havolasini yuboramiz.",
+    "forgotSent": "Agar bunday email mavjud bo‘lsa, tiklash havolasi yuborildi.",
+    "forgotDevToken": "Email provayderi sozlanmagan — havola quyida ko‘rsatilgan.",
+    "resetLead": "Yangi parolni kiriting.",
+    "resetDone": "Parol yangilandi. Kiring.",
+    "haveAccount": "Hisobingiz bormi?",
+    "noAccount": "Hisobingiz yo‘qmi?",
+    "backToLogin": "Kirish sahifasiga",
+    "passwordHint": "Kamida 8 belgi.",
+    "privacyNote": "Ma’lumotlar faqat qabullar uchun ishlatiladi.",
+    "errors": {
+      "invalid": "Email yoki parol xato.",
+      "taken": "Bu email allaqachon band.",
+      "short": "Parol kamida 8 belgi bo‘lishi kerak.",
+      "mismatch": "Parollar mos kelmadi.",
+      "invalidEmail": "Email formati noto‘g‘ri.",
+      "required": "Maydonni to‘ldiring.",
+      "token": "Havola yaroqsiz yoki muddati tugagan.",
+      "generic": "Xatolik. Yana urinib ko‘ring."
+    }
   },
-  "pets": {
-    "title1": "Siz sevgan",
-    "title2": "jonivorlar.",
-    "add": "Hayvon qo‘shish",
-    "newCompanion": "Yangi hayvon",
-    "name": "Ism",
-    "species": "Turi",
-    "breed": "Zoti",
-    "lifeStage": "Yosh guruhi",
-    "weight": "Vazn",
-    "weightUnit": "kg",
-    "sex": "Jins",
-    "portrait": "Portret",
-    "portraitNote": "O‘z hayvoningiz fotosuratini yuklamaguningizcha studiya portretlari turadi.",
-    "save": "Hayvonni saqlash",
-    "profile": "Profil",
-    "bookFor": "{name} uchun yozilish",
-    "appointments": "Tashriflar",
-    "noVisits": "Hozircha tashrif yo‘q.",
-    "medicalHistory": "Tibbiy tarix",
-    "medicalBody": "Klinik izohlar, tahlil natijalari va hujjatlar tashrifdan keyin shu yerda paydo bo‘ladi.",
-    "vaccinations": "Emlashlar",
-    "vaccinationsBody": "Birinchi tashrifdan keyin emlash yozuvini qo‘shish mumkin.",
-    "birthYear": "Tug‘ilgan yili",
-    "age": "Yoshi",
-    "allCompanions": "Barcha hayvonlar"
+  "admin": {
+    "title": "Admin panel",
+    "lead": "Qabullar, jadval, sharhlar va kontent.",
+    "nav": {
+      "dashboard": "Umumiy",
+      "appointments": "Qabullar",
+      "schedule": "Jadval",
+      "reviews": "Sharhlar",
+      "journal": "Jurnal",
+      "settings": "Klinika ma’lumotlari",
+      "backToSite": "Saytga qaytish"
+    },
+    "dashboard": {
+      "today": "Bugungi qabullar",
+      "upcoming": "Kelgusi",
+      "urgent": "Shoshilinch",
+      "emptyToday": "Bugun qabul yo‘q.",
+      "stats": "Holatlar",
+      "noUpcoming": "Kelgusi qabul yo‘q."
+    },
+    "appointments": {
+      "title": "Qabullar",
+      "search": "Qidiruv",
+      "searchPlaceholder": "Ism, telefon, email, hayvon, kod",
+      "filters": "Filtrlar",
+      "allDoctors": "Barcha shifokorlar",
+      "allServices": "Barcha xizmatlar",
+      "allStatuses": "Barcha holatlar",
+      "allUrgency": "Barcha muhimlik",
+      "from": "Dan",
+      "to": "Gacha",
+      "apply": "Qo‘llash",
+      "reset": "Tozalash",
+      "empty": "Natija topilmadi.",
+      "details": "Qabul tafsilotlari",
+      "client": "Mijoz",
+      "pet": "Hayvon",
+      "visit": "Tashrif",
+      "toldUs": "Mijoz bizga aytgani",
+      "noAnswers": "Savollarga javob yo‘q.",
+      "changeStatus": "Holatni o‘zgartirish",
+      "urgency": "Muhimlik",
+      "notes": "Izoh",
+      "internalNotes": "Ichki izoh",
+      "save": "Saqlash",
+      "saved": "Saqlandi",
+      "calendar": "Kalendar",
+      "legend": "Izoh",
+      "blocked": "Yopiq vaqt",
+      "work": "Ish vaqti",
+      "break": "Tanaffus",
+      "booked": "Band",
+      "free": "Bo‘sh"
+    },
+    "schedule": {
+      "title": "Shifokor jadvali",
+      "lead": "Ish soatlari, tanaffuslar va yopilgan davrlar.",
+      "weekday": "Hafta kuni",
+      "work": "Ish vaqti",
+      "break": "Tanaffus",
+      "add": "Qo‘shish",
+      "remove": "O‘chirish",
+      "from": "Dan",
+      "to": "Gacha",
+      "blockedTitle": "Yopilgan davrlar",
+      "blockedLead": "Tanlangan kunda vaqtni yopish yoki ochish.",
+      "block": "Yopish",
+      "unblock": "Ochish",
+      "reason": "Sabab",
+      "day": "Kun",
+      "saved": "Saqlandi",
+      "empty": "Jadval yo‘q."
+    },
+    "reviews": {
+      "title": "Sharh moderatsiyasi",
+      "pending": "Kutilmoqda",
+      "approved": "Tasdiqlangan",
+      "rejected": "Rad etilgan",
+      "approve": "Tasdiqlash",
+      "reject": "Rad etish",
+      "empty": "Sharh yo‘q.",
+      "from": "Muallif"
+    },
+    "journal": {
+      "title": "Jurnal boshqaruvi",
+      "new": "Yangi yozuv",
+      "slug": "Slug",
+      "titleUz": "Sarlavha (UZ)",
+      "titleRu": "Sarlavha (RU)",
+      "titleEn": "Sarlavha (EN)",
+      "excerpt": "Qisqa matn",
+      "body": "Matn",
+      "category": "Kategoriya",
+      "cover": "Rasm URL",
+      "minutes": "O‘qish daqiqalari",
+      "publish": "Nashr qilish",
+      "unpublish": "Nashrdan olish",
+      "save": "Saqlash",
+      "saved": "Saqlandi",
+      "delete": "O‘chirish",
+      "empty": "Yozuv yo‘q."
+    },
+    "settings": {
+      "title": "Klinika ma’lumotlari",
+      "lead": "Bu qiymatlar saytning barcha kontakt joylarida ishlatiladi.",
+      "clinicName": "Klinika nomi",
+      "phone": "Telefon",
+      "email": "Email",
+      "address": "Manzil",
+      "hours": "Ish vaqti",
+      "emergencyPhone": "Shoshilinch telefon",
+      "timezone": "Vaqt zonasi",
+      "save": "Saqlash",
+      "saved": "Saqlandi",
+      "placeholderHint": "Bo‘sh qiymatlar saytda [KO‘RINADIGAN] token sifatida chiqadi.",
+      "phone2": "Ikkinchi telefon",
+      "instagram": "Instagram",
+      "lastAppointment": "Oxirgi qabul"
+    },
+    "access": {
+      "denied": "Ruxsat yo‘q.",
+      "deniedHint": "Bu bo‘lim faqat administrator va shifokorlar uchun.",
+      "doctorScope": "Siz faqat o‘z qabullaringizni ko‘rasiz.",
+      "preVisit": "Tashrifdan oldin",
+      "preVisitHint": "Mijoz javoblari — tayyorgarlik uchun."
+    }
   },
-  "appointment": {
-    "title": "Yozilish",
-    "care": "Qabul",
-    "clinician": "Shifokor",
-    "date": "Sana",
-    "time": "Vaqt",
-    "duration": "Davomiyligi",
-    "appointmentId": "Yozilish raqami",
-    "notes": "Shifokor uchun izohlar",
-    "bookAnother": "Yana yozilish",
-    "allAppointments": "Barcha yozilishlar",
-    "changeNote": "O‘zgartirish yoki bekor qilish kerakmi? Klinikaga qo‘ng‘iroq qilib yozilish raqamini ayting."
-  },
-  "review": {
-    "howWas": "Tashrif qanday o‘tdi?",
-    "aFewWords": "Bir nechta so‘z",
-    "save": "Sharhni saqlash",
-    "write": "Sharh yozish",
-    "saved": "Rahmat — sharh saqlandi.",
-    "stars": "{count} / 5"
-  },
-  "time": {
+  "common": {
+    "loading": "Yuklanmoqda…",
+    "save": "Saqlash",
+    "saving": "Saqlanmoqda…",
+    "saved": "Saqlandi",
+    "cancel": "Bekor qilish",
+    "delete": "O‘chirish",
+    "edit": "Tahrirlash",
+    "back": "Orqaga",
+    "continue": "Davom etish",
+    "confirm": "Tasdiqlash",
+    "optional": "ixtiyoriy",
+    "none": "Yo‘q",
+    "unknown": "Noma’lum",
+    "close": "Yopish",
+    "error": "Xatolik",
+    "retry": "Qayta urinish",
+    "minutes": "daq.",
+    "minutesFull": "daqiqa",
+    "at": "·",
+    "select": "Tanlang",
+    "search": "Qidirish",
+    "notConfigured": "[SO‘ZLANADI]",
     "today": "Bugun",
     "tomorrow": "Ertaga",
-    "yesterday": "Kecha"
+    "weekdays": [
+      "Dushanba",
+      "Seshanba",
+      "Chorshanba",
+      "Payshanba",
+      "Juma",
+      "Shanba",
+      "Yakshanba"
+    ],
+    "weekdaysShort": [
+      "Du",
+      "Se",
+      "Cho",
+      "Pay",
+      "Ju",
+      "Sha",
+      "Yak"
+    ],
+    "youAreHere": "Siz bu yerdasiz",
+    "viewAll": "Hammasini ko‘rish",
+    "guest": "Mehmon",
+    "yes": "Ha",
+    "no": "Yo‘q"
   },
-  "notAvailable": "—"
+  "validation": {
+    "required": "To‘ldirish kerak",
+    "invalidEmail": "Email noto‘g‘ri",
+    "invalidPhone": "Telefon noto‘g‘ri",
+    "tooShort": "Juda qisqa"
+  },
+  "errors": {
+    "notFoundTitle": "Sahifa topilmadi",
+    "notFoundBody": "Havola eski bo‘lishi mumkin. Bosh sahifadan davom eting.",
+    "goHome": "Bosh sahifaga",
+    "dbUnavailable": "Xizmat hozircha mavjud emas. Keyinroq urinib ko‘ring."
+  },
+  "contact": {
+    "label": "Bog‘lanish",
+    "title": "ELVET PET CLINIC",
+    "lead": "Toshkent, Yakkasaroy. Qo‘ng‘iroq qiling — holatni aytib bering, biz vaqt topamiz.",
+    "address": "Manzil",
+    "phones": "Telefon",
+    "hours": "Ish vaqti",
+    "hoursWeekdays": "Dushanba–Juma",
+    "hoursWeekend": "Shanba–Yakshanba",
+    "lastAppointment": "Oxirgi qabul",
+    "instagram": "Instagram",
+    "followUs": "Bizni kuzatib boring",
+    "callNow": "Qo‘ng‘iroq qiling",
+    "openMap": "Xaritada ochish",
+    "urgent": "Shoshilinch holat",
+    "urgentNote": "Nafas olish qiyinligi, kuchli og‘riq, uzoq ovqat yemaslik yoki shikastlanishda qo‘ng‘iroq qilish onlayn yozilishdan tezroq.",
+    "bookOnline": "Onlayn yozilish",
+    "visitAlso": "Shuningdek"
+  }
 }

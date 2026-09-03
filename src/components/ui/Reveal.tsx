@@ -1,65 +1,56 @@
 "use client";
 
-import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
-
-type RevealProps = {
-  children: ReactNode;
-  /** `up` fades + translates, `clip` wipes upward, `scale` fades + scales. */
-  variant?: "up" | "clip" | "scale";
-  delay?: number;
-  className?: string;
-  as?: ElementType;
-  once?: boolean;
-};
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { cn } from "@/lib/cn";
 
 /**
- * Small, dependency-free scroll reveal.
- * Motion has hierarchy: only elements that carry meaning are animated.
+ * Scroll reveal that relies on CSS transitions and respects
+ * prefers-reduced-motion (see globals.css).
  */
 export function Reveal({
   children,
-  variant = "up",
   delay = 0,
-  className = "",
-  as,
-  once = true,
-}: RevealProps) {
-  const Tag = (as ?? "div") as ElementType;
-  const ref = useRef<HTMLElement | null>(null);
-  const [shown, setShown] = useState(false);
+  className,
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setShown(true);
+    const element = ref.current;
+    if (!element) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // Reduced motion: skip the observer entirely and reveal immediately
+      // by writing the attribute directly (no state update needed).
+      element.dataset.visible = "true";
       return;
     }
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            setShown(true);
-            if (once) observer.unobserve(entry.target);
-          } else if (!once) {
-            setShown(false);
+            setVisible(true);
+            observer.disconnect();
           }
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      { rootMargin: "-8% 0px -8% 0px", threshold: 0.05 },
     );
-    observer.observe(node);
+    observer.observe(element);
     return () => observer.disconnect();
-  }, [once]);
+  }, []);
 
   return (
-    <Tag
+    <div
       ref={ref}
-      data-reveal={variant === "up" ? "" : variant}
-      className={`${shown ? "is-in" : ""} ${className}`.trim()}
-      style={{ ["--reveal-delay" as string]: `${delay}ms` }}
+      className={cn("reveal", className)}
+      data-visible={visible}
+      style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
-    </Tag>
+    </div>
   );
 }
