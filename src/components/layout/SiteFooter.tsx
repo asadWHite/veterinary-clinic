@@ -118,6 +118,12 @@ export async function SiteFooter({
               <div className="mt-2 flex flex-col gap-2">
                 <span className="label-eyebrow">{t("footer.legal")}</span>
                 <Link
+                  href={`/${locale}/admin`}
+                  className="link-underline text-sm text-ink-2 hover:text-ink"
+                >
+                  {t("nav.admin")}
+                </Link>
+                <Link
                   href={`/${locale}/legal/privacy`}
                   className="link-underline text-sm text-ink-2 hover:text-ink"
                 >

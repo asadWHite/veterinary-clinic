@@ -175,6 +175,40 @@ async function seedClinic(client: PoolClient): Promise<void> {
   }
 }
 
+/** Fallback credentials for the clinic owner. Change the password right after
+ * the first login, or set SEED_ADMIN_EMAIL / SEED_ADMIN_PASSWORD to use your own. */
+const DEFAULT_ADMIN_EMAIL = "admin@elvet.uz";
+const DEFAULT_ADMIN_PASSWORD = "elvet-admin-2026";
+
+/** Guarantees the clinic owner can sign in: creates the first admin if none exists. */
+async function ensureAdminAccount(client: PoolClient): Promise<void> {
+  try {
+    const existing = await client.query<{ total: number }>(
+      "select count(*)::int as total from profiles where role = 'admin'",
+    );
+    if (Number(existing.rows[0]?.total ?? 0) > 0) return;
+
+    const email = (process.env.SEED_ADMIN_EMAIL?.trim() || DEFAULT_ADMIN_EMAIL).toLowerCase();
+    const password = process.env.SEED_ADMIN_PASSWORD?.trim() || DEFAULT_ADMIN_PASSWORD;
+    await client.query(
+      `insert into profiles (email, password_hash, full_name, role, locale)
+       values ($1,$2,$3,'admin','uz')
+       on conflict (email) do update set role = 'admin'`,
+      [email, await hashPassword(password), "ELVET admin"],
+    );
+    console.warn(
+      "[elvet] created the first admin account for",
+      email,
+      "— change this password in account settings immediately.",
+    );
+  } catch (error) {
+    console.warn(
+      "[elvet] could not ensure the admin account:",
+      error instanceof Error ? error.message : error,
+    );
+  }
+}
+
 async function run(): Promise<BootstrapResult> {
   if (!pool) return { ok: false, reason: "not_configured" };
 
@@ -189,6 +223,7 @@ async function run(): Promise<BootstrapResult> {
     if (Number(seeded.rows[0]?.total ?? 0) === 0) {
       await seedClinic(client);
     }
+    await ensureAdminAccount(client);
     return { ok: true };
   } finally {
     client.release();
