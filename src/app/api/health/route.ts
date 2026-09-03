@@ -1,4 +1,5 @@
 import { db, isDatabaseConfigured } from "@/db";
+import { ensureDatabase } from "@/db/bootstrap";
 import { sql } from "drizzle-orm";
 
 export const dynamic = "force-dynamic";
@@ -13,8 +14,12 @@ export async function GET() {
     return Response.json({ ok: true, database: "not_configured" });
   }
   try {
+    const bootstrap = await ensureDatabase();
     await db.execute(sql`select 1`);
-    return Response.json({ ok: true, database: "connected" });
+    return Response.json({
+      ok: true,
+      database: bootstrap.ok ? "connected" : "unavailable",
+    });
   } catch {
     return Response.json({ ok: true, database: "unreachable" });
   }

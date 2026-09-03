@@ -3,6 +3,7 @@ import { resolveBookingContext, slotsForDay } from "@/lib/booking/server";
 import { BOOKING_HORIZON_DAYS, bookingDayRange, nowInZone } from "@/lib/format";
 import { normalizeLocale } from "@/lib/i18n/config";
 import { isDatabaseConfigured } from "@/db";
+import { ensureDatabase } from "@/db/bootstrap";
 import { getAvailabilitySummary } from "@/lib/booking/availability";
 
 export const dynamic = "force-dynamic";
@@ -22,6 +23,25 @@ export async function GET(request: Request) {
 
   if (!serviceSlug) {
     return NextResponse.json({ error: "validation" }, { status: 400 });
+  }
+
+  const bootstrap = await ensureDatabase();
+  if (!bootstrap.ok) {
+    // No usable database: the bundled ELVET schedule is used, and the response
+    // is flagged so the UI can tell the visitor to confirm by phone.
+    const offlineContext = await resolveBookingContext(serviceSlug, doctorSlug === "any" ? "any" : doctorSlug, locale);
+    if (!offlineContext) {
+      return NextResponse.json({ error: "not_found" }, { status: 404 });
+    }
+    const slots = await slotsForDay(offlineContext, day ?? new Date().toISOString().slice(0, 10));
+    return NextResponse.json({
+      day,
+      durationMinutes: offlineContext.durationMinutes,
+      timezone: offlineContext.timezone,
+      doctors: offlineContext.doctors,
+      offline: true,
+      slots,
+    });
   }
 
   try {

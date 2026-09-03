@@ -24,14 +24,18 @@ import {
 import { pickLocalized, type Locale } from "@/lib/i18n/config";
 import type { AppointmentStatus, DoctorCard, ServiceCard, Urgency } from "@/lib/types";
 import { isDatabaseConfigured } from "@/db";
+import { ensureDatabase } from "@/db/bootstrap";
 import { offlineDoctors, offlineJournal, offlineServices } from "@/lib/clinic";
 
 /**
  * Reads fall back to the bundled ELVET clinic content when no database is
  * configured or the connection fails, so the public site always renders.
+ * The first call also provisions the schema on an empty database.
  */
 async function withFallback<T>(run: () => Promise<T>, fallback: () => T): Promise<T> {
   if (!isDatabaseConfigured) return fallback();
+  const bootstrap = await ensureDatabase();
+  if (!bootstrap.ok) return fallback();
   try {
     return await run();
   } catch (error) {

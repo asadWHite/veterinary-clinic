@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { isDatabaseConfigured } from "@/db";
+import { ensureDatabase } from "@/db/bootstrap";
 import { and, eq, inArray, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { appointmentAnswers, appointments, notifications, pets, services, doctors } from "@/db/schema";
@@ -107,6 +108,11 @@ export async function POST(request: Request) {
   if (!isDatabaseConfigured) {
     // Online booking submission requires the clinic database. Without it the
     // client shows the clinic phone numbers instead of pretending to book.
+    return NextResponse.json({ error: "booking_offline" }, { status: 503 });
+  }
+
+  const bootstrap = await ensureDatabase();
+  if (!bootstrap.ok) {
     return NextResponse.json({ error: "booking_offline" }, { status: 503 });
   }
 
@@ -264,7 +270,13 @@ export async function POST(request: Request) {
       serviceName: serviceRow ? pickLocalized(serviceRow.title, locale) : "",
       petName,
     });
-  } catch {
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "";
+    const missingSchema = /relation .* does not exist|column .* does not exist|does not exist/i.test(message);
+    if (missingSchema) {
+      return NextResponse.json({ error: "booking_offline" }, { status: 503 });
+    }
+    console.error("[elvet] appointment creation failed:", message);
     return NextResponse.json({ error: "db" }, { status: 503 });
   }
 }
