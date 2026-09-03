@@ -18,6 +18,7 @@ import {
 } from "@/lib/queries";
 import { getClinicSettings } from "@/lib/settings";
 import { CLINIC } from "@/lib/clinic";
+import { siteUrl } from "@/lib/site-url";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { createTranslator, getDictionary } from "@/lib/i18n";
 
@@ -57,7 +58,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const average =
     totalReviews > 0 ? reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews : null;
 
-  const base = process.env.SITE_URL ?? "https://elvet.uz";
+  const base = siteUrl();
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "VeterinaryCare",

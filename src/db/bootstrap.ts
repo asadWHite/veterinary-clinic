@@ -2,6 +2,7 @@ import type { PoolClient } from "pg";
 import { pool } from "@/db";
 import { SCHEMA_STATEMENTS } from "@/db/schema.sql";
 import content from "@/clinic-content.json";
+import { hashPassword } from "@/lib/password";
 
 /**
  * Self-provisioning schema.
@@ -165,7 +166,6 @@ async function seedClinic(client: PoolClient): Promise<void> {
   const adminEmail = process.env.SEED_ADMIN_EMAIL?.trim().toLowerCase();
   const adminPassword = process.env.SEED_ADMIN_PASSWORD;
   if (adminEmail && adminPassword && adminPassword.length >= 8) {
-    const { hashPassword } = await import("@/lib/auth");
     await client.query(
       `insert into profiles (email, password_hash, full_name, role, locale)
        values ($1,$2,$3,'admin','uz')

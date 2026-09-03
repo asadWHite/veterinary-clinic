@@ -1,40 +1,23 @@
-import { randomBytes, randomUUID, scrypt as scryptCallback, timingSafeEqual } from "node:crypto";
-import { promisify } from "node:util";
 import { cookies } from "next/headers";
 import { and, eq, gt } from "drizzle-orm";
 import { db } from "@/db";
 import { profiles, sessions } from "@/db/schema";
 import { normalizeLocale, type Locale } from "@/lib/i18n/config";
 import type { SessionUser } from "@/lib/types";
+import {
+  generatePublicId as generatePublicIdImpl,
+  generateToken as generateTokenImpl,
+  hashPassword as hashPasswordImpl,
+  verifyPassword as verifyPasswordImpl,
+} from "@/lib/password";
 
-const scrypt = promisify(scryptCallback);
+export const hashPassword = hashPasswordImpl;
+export const verifyPassword = verifyPasswordImpl;
+export const generateToken = generateTokenImpl;
+export const generatePublicId = generatePublicIdImpl;
 
 export const SESSION_COOKIE = "vc_session";
 const SESSION_TTL_DAYS = 30;
-
-export async function hashPassword(password: string): Promise<string> {
-  const salt = randomBytes(16).toString("hex");
-  const derived = (await scrypt(password, salt, 64)) as Buffer;
-  return `scrypt:${salt}:${derived.toString("hex")}`;
-}
-
-export async function verifyPassword(password: string, stored: string): Promise<boolean> {
-  const [scheme, salt, hash] = stored.split(":");
-  if (scheme !== "scrypt" || !salt || !hash) return false;
-  const derived = (await scrypt(password, salt, 64)) as Buffer;
-  const expected = Buffer.from(hash, "hex");
-  if (expected.length !== derived.length) return false;
-  return timingSafeEqual(derived, expected);
-}
-
-export function generateToken(): string {
-  return randomBytes(32).toString("hex");
-}
-
-export function generatePublicId(): string {
-  const uuid = randomUUID().replace(/-/g, "");
-  return `VC-${uuid.slice(0, 5).toUpperCase()}`;
-}
 
 export async function createSession(userId: number): Promise<string> {
   const token = generateToken();

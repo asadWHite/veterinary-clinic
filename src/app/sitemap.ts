@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
 import { getDoctors, getJournalPosts, getServices } from "@/lib/queries";
+import { siteUrl } from "@/lib/site-url";
 
 export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = process.env.SITE_URL ?? "http://localhost:3000";
+  const base = siteUrl();
   const locales = ["uz", "ru", "en"] as const;
   const entries: MetadataRoute.Sitemap = [];
 

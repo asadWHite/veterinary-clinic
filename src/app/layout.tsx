@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Manrope, Lora } from "next/font/google";
 import { getLocaleFromCookies } from "@/lib/auth";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -18,7 +19,7 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(siteUrl()),
   title: {
     default: "Veterinary clinic — care that begins with understanding",
     template: "%s",
